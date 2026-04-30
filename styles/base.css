@@ -52,6 +52,13 @@
     background: rgba(255, 255, 255, 0.5);
 }
 
+.brand-logo {
+    height: 64px;
+    width: auto;
+    max-width: 240px;
+    object-fit: contain;
+}
+
 .grant-logo {
     height: 64px;
     width: auto;

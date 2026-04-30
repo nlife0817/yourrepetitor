@@ -1,5 +1,6 @@
 /* ══════════════════════════════════════════
    slide-6.css — TAM / SAM / SOM
+   Chevron-funnel + просторная таблица
    ══════════════════════════════════════════ */
 
 #slide-6 .s6-body {
@@ -7,7 +8,7 @@
     padding: 146px var(--slide-pad-x) 62px;
     display: flex;
     flex-direction: column;
-    gap: 22px;
+    gap: 26px;
     background:
         radial-gradient(circle at 88% 18%, rgba(232, 115, 74, 0.10) 0%, transparent 50%),
         radial-gradient(circle at 6% 88%, rgba(99, 102, 241, 0.05) 0%, transparent 48%),
@@ -18,7 +19,7 @@
 #slide-6 .s6-intro {
     display: flex;
     flex-direction: column;
-    gap: 7px;
+    gap: 8px;
     max-width: 1680px;
 }
 
@@ -40,7 +41,7 @@
 
 #slide-6 .s6-subhead {
     max-width: 1480px;
-    font-size: 16px;
+    font-size: 19px;
     line-height: 1.4;
     color: var(--text-secondary);
     letter-spacing: -0.006em;
@@ -50,83 +51,114 @@
     font-family: var(--font-mono);
     font-feature-settings: 'tnum';
     font-weight: 600;
-    color: var(--orange-text);
+    color: var(--accent);
     letter-spacing: -0.02em;
 }
 
-/* ══ Funnel ══ */
+/* ══ Funnel · chevron chain ══ */
+/* Стрелочные карточки: правый край в виде стрелки, левый — соответствующий вырез
+   для следующей карточки. Используем clip-path: polygon. У TAM нет выреза слева
+   (стартовая), у SAM/SOM — есть. У SOM нет правого «острия» (финальная). */
 #slide-6 .s6-funnel {
     display: grid;
-    grid-template-columns: 1fr 78px 0.86fr 78px 0.74fr;
+    grid-template-columns: 1fr 1fr 1fr;
     align-items: stretch;
-    gap: 0;
+    gap: 8px;
+    --chev: 36px;
 }
 
 #slide-6 .s6-step {
     position: relative;
+    background: var(--surface);
+    box-shadow: var(--shadow-sm);
+    min-height: 340px;
+    display: flex;
+}
+
+/* Первая ступень — стартовый блок: ровный слева, остриё справа */
+#slide-6 .s6-step.is-tam {
+    clip-path: polygon(
+        0 0,
+        calc(100% - var(--chev)) 0,
+        100% 50%,
+        calc(100% - var(--chev)) 100%,
+        0 100%
+    );
+}
+
+/* Средняя ступень — вырез слева под остриё TAM, остриё справа */
+#slide-6 .s6-step.is-sam {
+    clip-path: polygon(
+        0 0,
+        calc(100% - var(--chev)) 0,
+        100% 50%,
+        calc(100% - var(--chev)) 100%,
+        0 100%,
+        var(--chev) 50%
+    );
+}
+
+/* Финальная ступень — вырез слева, ровный справа */
+#slide-6 .s6-step.is-som {
+    clip-path: polygon(
+        0 0,
+        100% 0,
+        100% 100%,
+        0 100%,
+        var(--chev) 50%
+    );
+}
+
+/* Внутренний контейнер — отвечает за отступы с учётом clip-path */
+#slide-6 .s6-step-inner {
+    flex: 1;
     display: flex;
     flex-direction: column;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-radius: 16px;
-    padding: 18px 22px 20px;
-    box-shadow: var(--shadow-sm);
-    overflow: hidden;
+    padding: 24px 56px 24px 28px;
+    position: relative;
 }
 
-#slide-6 .s6-step::before {
-    content: '';
-    position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    height: 3px;
-    background: rgba(160, 162, 177, 0.4);
+/* У SAM и SOM padding слева больше — учитываем вырез */
+#slide-6 .s6-step.is-sam .s6-step-inner { padding-left: 56px; }
+#slide-6 .s6-step.is-som .s6-step-inner { padding-left: 56px; padding-right: 28px; }
+
+/* Цветовая дифференциация ступеней */
+#slide-6 .s6-step.is-tam {
+    background: linear-gradient(135deg, #f4f3ff 0%, #ffffff 60%, #fff8f4 100%);
 }
 
-#slide-6 .s6-step.is-tam { margin: 0 0 0 0; }
-#slide-6 .s6-step.is-sam { margin: 16px 0; }
-#slide-6 .s6-step.is-som { margin: 0; }
-
-#slide-6 .s6-step.is-tam::before {
-    background: linear-gradient(90deg, rgba(99, 102, 241, 0.55) 0%, rgba(232, 115, 74, 0.45) 100%);
-}
-#slide-6 .s6-step.is-sam::before {
-    background: rgba(232, 115, 74, 0.55);
-}
-#slide-6 .s6-step.is-som::before {
-    background: linear-gradient(90deg, var(--accent) 0%, var(--indigo) 100%);
+#slide-6 .s6-step.is-sam {
+    background: linear-gradient(135deg, #fff4ee 0%, #ffffff 100%);
 }
 
 #slide-6 .s6-step.is-som {
     background:
         radial-gradient(circle at 100% 0%, rgba(232, 115, 74, 0.16) 0%, transparent 58%),
-        linear-gradient(180deg, #fff8f4 0%, #ffffff 100%);
-    border-color: rgba(232, 115, 74, 0.38);
+        linear-gradient(180deg, #fff5ef 0%, #ffffff 100%);
     box-shadow:
-        0 0 0 4px rgba(232, 115, 74, 0.06),
-        0 14px 32px rgba(232, 115, 74, 0.13);
+        0 14px 32px rgba(232, 115, 74, 0.13),
+        var(--shadow-sm);
 }
 
+/* ── Step header ── */
 #slide-6 .s6-step-head {
     display: flex;
     align-items: baseline;
     justify-content: space-between;
     gap: 10px;
-    margin-bottom: 10px;
+    margin-bottom: 14px;
 }
 
 #slide-6 .s6-step-tag {
-    font-size: 13px;
+    font-size: 14px;
     font-weight: 700;
     letter-spacing: 0.18em;
     text-transform: uppercase;
     color: var(--text-primary);
 }
 
-#slide-6 .s6-step.is-som .s6-step-tag {
-    color: var(--accent);
-}
+#slide-6 .s6-step.is-sam .s6-step-tag { color: var(--orange-text); }
+#slide-6 .s6-step.is-som .s6-step-tag { color: var(--accent); }
 
 #slide-6 .s6-step-year {
     font-family: var(--font-mono);
@@ -135,42 +167,40 @@
     font-weight: 600;
     letter-spacing: 0.04em;
     color: var(--text-muted);
-    padding: 3px 8px;
+    padding: 3px 10px;
     background: rgba(0, 0, 0, 0.04);
     border-radius: 999px;
 }
 
+/* ── Главная цифра — крупная, «гремящая» ── */
 #slide-6 .s6-step-num {
     font-family: var(--font-mono);
     font-feature-settings: 'tnum';
-    font-size: 44px;
+    font-size: 60px;
     font-weight: 700;
     line-height: 1;
     letter-spacing: -0.045em;
     color: var(--text-primary);
 }
 
-#slide-6 .s6-step.is-tam .s6-step-num {
-    color: var(--text-primary);
-}
-
 #slide-6 .s6-step.is-sam .s6-step-num {
-    font-size: 40px;
+    font-size: 56px;
     color: var(--orange-text);
 }
 
 #slide-6 .s6-step.is-som .s6-step-num {
-    font-size: 38px;
+    font-size: 56px;
     color: var(--accent);
     text-shadow: 0 2px 22px rgba(232, 115, 74, 0.2);
 }
 
 #slide-6 .s6-step-num i {
     font-style: normal;
-    font-size: 16px;
+    font-size: 18px;
     font-weight: 500;
     color: var(--text-secondary);
     letter-spacing: -0.01em;
+    margin-left: 4px;
 }
 
 #slide-6 .s6-step.is-som .s6-step-num i {
@@ -178,156 +208,87 @@
     opacity: 0.78;
 }
 
+/* ── Формула ── */
 #slide-6 .s6-step-formula {
-    margin-top: 8px;
+    margin-top: 12px;
     font-family: var(--font-mono);
     font-feature-settings: 'tnum';
-    font-size: 12.5px;
+    font-size: 13.5px;
     font-weight: 500;
     color: var(--text-muted);
     letter-spacing: -0.005em;
 }
 
+/* ── Описание ── */
 #slide-6 .s6-step-desc {
-    margin-top: 10px;
-    font-size: 13px;
-    line-height: 1.4;
+    margin-top: 12px;
+    font-size: 14px;
+    line-height: 1.45;
     color: var(--text-secondary);
     letter-spacing: -0.004em;
 }
 
+/* ── TAM extra: 230 млрд блок ── */
 #slide-6 .s6-step-extra {
-    margin-top: 12px;
-    padding-top: 10px;
+    margin-top: auto;
+    padding-top: 14px;
     border-top: 1px dashed var(--border);
     display: flex;
     flex-direction: column;
-    gap: 2px;
+    gap: 3px;
 }
 
 #slide-6 .s6-extra-num {
     font-family: var(--font-mono);
     font-feature-settings: 'tnum';
-    font-size: 18px;
+    font-size: 22px;
     font-weight: 700;
     letter-spacing: -0.03em;
     color: var(--indigo-text);
 }
 
 #slide-6 .s6-extra-label {
-    font-size: 11.5px;
+    font-size: 12px;
     color: var(--text-muted);
     letter-spacing: -0.003em;
 }
 
+/* ── SAM meta-метка ── */
+#slide-6 .s6-step-meta {
+    margin-top: auto;
+    padding-top: 14px;
+    border-top: 1px dashed var(--border);
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-size: 12px;
+    font-weight: 600;
+    color: var(--orange-text);
+    letter-spacing: -0.005em;
+}
+
+/* ── SOM badge ── */
 #slide-6 .s6-step-badge {
-    margin-top: 12px;
+    margin-top: auto;
     align-self: flex-start;
     font-family: var(--font-mono);
     font-feature-settings: 'tnum';
-    font-size: 12.5px;
+    font-size: 13px;
     font-weight: 600;
     letter-spacing: -0.005em;
     color: #fff;
-    padding: 5px 12px;
+    padding: 6px 14px;
     background: var(--accent);
     border-radius: 999px;
     box-shadow: 0 4px 12px rgba(232, 115, 74, 0.3);
 }
 
-/* ══ Arrows between steps ══ */
-#slide-6 .s6-arrow {
-    position: relative;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    gap: 8px;
-    padding: 0 6px;
-}
-
-#slide-6 .s6-arrow svg {
-    width: 100%;
-    height: 22px;
-    stroke: var(--accent);
-    stroke-width: 1.6;
-    stroke-linecap: round;
-    stroke-linejoin: round;
-    fill: none;
-    opacity: 0.7;
-}
-
-#slide-6 .s6-arrow-2 svg {
-    stroke: var(--accent);
-    opacity: 0.85;
-}
-
-#slide-6 .s6-arrow-filter {
-    position: absolute;
-    top: 50%;
-    left: 50%;
-    transform: translate(-50%, calc(-50% - 22px));
-    font-size: 10.5px;
-    font-weight: 600;
-    letter-spacing: 0.04em;
-    color: var(--text-secondary);
-    background: var(--bg);
-    padding: 3px 8px;
-    border-radius: 6px;
-    border: 1px solid var(--border-divider);
-    white-space: nowrap;
-}
-
-/* ══ Bottom row: rationale + table ══ */
-#slide-6 .s6-bottom {
-    display: grid;
-    grid-template-columns: 0.78fr 1.22fr;
-    gap: 18px;
-    align-items: stretch;
-}
-
-#slide-6 .s6-rationale {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-    padding: 16px 20px;
-    background: var(--surface);
-    border: 1px solid var(--border);
-    border-left: 3px solid var(--accent);
-    border-radius: 14px;
-    box-shadow: var(--shadow-sm);
-}
-
-#slide-6 .s6-rationale-label {
-    font-size: 11px;
-    font-weight: 700;
-    letter-spacing: 0.16em;
-    text-transform: uppercase;
-    color: var(--accent);
-}
-
-#slide-6 .s6-rationale p {
-    font-size: 14px;
-    line-height: 1.42;
-    color: var(--text-secondary);
-    letter-spacing: -0.005em;
-}
-
-#slide-6 .s6-rationale p strong {
-    font-family: var(--font-mono);
-    font-feature-settings: 'tnum';
-    font-weight: 600;
-    color: var(--text-primary);
-    letter-spacing: -0.01em;
-}
-
-/* ══ Table ══ */
+/* ══ Table — full width ══ */
 #slide-6 .s6-table {
     display: flex;
     flex-direction: column;
     background: var(--surface);
     border: 1px solid var(--border);
-    border-radius: 14px;
+    border-radius: 16px;
     box-shadow: var(--shadow-sm);
     overflow: hidden;
 }
@@ -336,22 +297,22 @@
     display: flex;
     align-items: baseline;
     justify-content: space-between;
-    padding: 12px 20px 10px;
+    padding: 14px 24px 12px;
     border-bottom: 1px solid var(--border-divider);
 }
 
 #slide-6 .s6-table-label {
-    font-size: 11px;
+    font-size: 11.5px;
     font-weight: 700;
     letter-spacing: 0.16em;
     text-transform: uppercase;
-    color: var(--orange-text);
+    color: var(--accent);
 }
 
 #slide-6 .s6-table-cap {
     font-family: var(--font-mono);
     font-feature-settings: 'tnum';
-    font-size: 12px;
+    font-size: 12.5px;
     font-weight: 500;
     color: var(--text-muted);
     letter-spacing: 0.04em;
@@ -359,19 +320,19 @@
 
 #slide-6 .s6-table-grid {
     display: grid;
-    grid-template-columns: 0.7fr 1fr 1.1fr 1.4fr 1fr;
-    column-gap: 4px;
+    grid-template-columns: 0.5fr 0.7fr 0.7fr 0.9fr 0.7fr 1.5fr;
+    column-gap: 0;
 }
 
 #slide-6 .s6-th,
 #slide-6 .s6-td {
-    padding: 10px 16px;
+    padding: 16px 22px;
     display: flex;
     align-items: center;
 }
 
 #slide-6 .s6-th {
-    font-size: 10.5px;
+    font-size: 12px;
     font-weight: 700;
     letter-spacing: 0.14em;
     text-transform: uppercase;
@@ -385,12 +346,12 @@
 }
 
 #slide-6 .s6-td {
-    font-size: 14px;
+    font-size: 16px;
     color: var(--text-primary);
     border-bottom: 1px solid var(--border-divider);
 }
 
-#slide-6 .s6-table-grid > .s6-td:nth-last-child(-n+5) {
+#slide-6 .s6-table-grid > .s6-td:nth-last-child(-n+6) {
     border-bottom: none;
 }
 
@@ -398,7 +359,7 @@
     font-family: var(--font-mono);
     font-feature-settings: 'tnum';
     font-weight: 600;
-    font-size: 15px;
+    font-size: 17px;
     letter-spacing: -0.01em;
     color: var(--text-secondary);
 }
@@ -408,21 +369,29 @@
     font-family: var(--font-mono);
     font-feature-settings: 'tnum';
     font-weight: 500;
-    font-size: 14px;
+    font-size: 16px;
     letter-spacing: -0.015em;
     color: var(--text-primary);
 }
 
 #slide-6 .s6-td-num i {
     font-style: normal;
-    font-size: 11.5px;
+    font-size: 12px;
     font-weight: 500;
     color: var(--text-muted);
-    margin-left: 2px;
+    margin-left: 3px;
 }
 
+#slide-6 .s6-td-driver {
+    font-size: 13.5px;
+    line-height: 1.35;
+    color: var(--text-secondary);
+    letter-spacing: -0.003em;
+}
+
+/* ── Акцентная строка 2026 ── */
 #slide-6 .s6-td.is-peak {
-    background: linear-gradient(90deg, rgba(232, 115, 74, 0.10) 0%, rgba(232, 115, 74, 0.05) 100%);
+    background: linear-gradient(90deg, rgba(232, 115, 74, 0.12) 0%, rgba(232, 115, 74, 0.05) 100%);
     color: var(--accent);
     font-weight: 700;
 }
@@ -430,17 +399,29 @@
 #slide-6 .s6-td-year.is-peak {
     color: var(--accent);
     font-weight: 700;
+    font-size: 18px;
 }
 
 #slide-6 .s6-td-num.is-peak {
     color: var(--accent);
     font-weight: 700;
-    font-size: 15px;
+    font-size: 17px;
 }
 
-#slide-6 .s6-td-num.is-peak i {
+#slide-6 .s6-td-driver.is-peak {
     color: var(--orange-text);
-    opacity: 0.85;
+    font-weight: 600;
+}
+
+/* ── Подпись под таблицей ── */
+#slide-6 .s6-table-foot {
+    padding: 12px 24px 14px;
+    font-size: 12.5px;
+    line-height: 1.45;
+    color: var(--text-muted);
+    border-top: 1px solid var(--border-divider);
+    background: var(--surface-sheet);
+    letter-spacing: -0.003em;
 }
 
 /* ══ Sources ══ */
@@ -480,9 +461,11 @@
 
 @media print {
     #slide-6 .s6-step,
-    #slide-6 .s6-rationale,
     #slide-6 .s6-table,
     #slide-6 .s6-step-badge {
         box-shadow: none !important;
+    }
+    #slide-6 .s6-step-num {
+        text-shadow: none !important;
     }
 }

@@ -275,12 +275,46 @@
     margin: 0;
 }
 
+/* ── Honest gaps strip ─────────────────────── */
+.s7-gaps {
+    margin-top: 14px;
+    padding: 12px 18px;
+    border: 1px dashed var(--border);
+    border-radius: 10px;
+    background: rgba(160, 162, 177, 0.05);
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px 14px;
+    font-size: 13px;
+    line-height: 1.4;
+    color: var(--text-secondary);
+}
+
+.s7-gaps-label {
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: 0.01em;
+}
+
+.s7-gaps-item b {
+    font-weight: 600;
+    color: var(--text-primary);
+}
+
+.s7-gaps-sep {
+    width: 1px;
+    height: 14px;
+    background: var(--border);
+    display: inline-block;
+}
+
 /* ── Footnote ───────────────────────────── */
 .s7-footnote {
     font-family: var(--font-mono);
     font-size: 11px;
     color: var(--text-muted);
-    margin-top: 14px;
+    margin-top: 10px;
     letter-spacing: 0.02em;
     text-align: right;
 }

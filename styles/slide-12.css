@@ -85,11 +85,11 @@
 
 .s12-quote {
     position: absolute;
-    left: 70px;
-    right: -72px;
+    left: 50px;
+    right: -32px;
     bottom: 34px;
     z-index: 2;
-    padding: 26px 32px 28px 38px;
+    padding: 26px 32px 28px 30px;
     border-radius: 8px;
     background: rgba(26, 26, 31, 0.92);
     color: #fff;
