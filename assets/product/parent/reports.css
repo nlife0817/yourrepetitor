@@ -1,0 +1,577 @@
+/* ══════════════════════════════════════════
+   ── parent/reports.css — Отчёты родителя ──
+   ══════════════════════════════════════════ */
+
+:root {
+    --success-soft: rgba(16, 185, 129, 0.1);
+}
+
+/* ══ Header ══ */
+.pr2-header {
+    padding: 18px 20px 12px;
+    position: relative;
+    z-index: 10;
+    animation: headerIn 0.5s ease-out;
+    flex-shrink: 0;
+}
+.pr2-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    line-height: 1.15;
+}
+.pr2-subtitle {
+    margin-top: 4px;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+
+/* ══ Scrollable content ══ */
+.pr2-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px 100px;
+    position: relative;
+}
+
+/* ══ Child switcher ══ */
+.pr2-child-switcher-wrap {
+    margin: 0 -20px 12px;
+    padding: 2px 20px 8px;
+}
+.pr2-child-switcher {
+    display: flex;
+    gap: 8px;
+    overflow-x: auto;
+    padding: 2px 0;
+}
+.pr2-child-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    height: 38px;
+    padding: 0 14px 0 8px;
+    border-radius: 999px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    font-family: 'Onest', sans-serif;
+    font-size: 13px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    box-shadow: var(--shadow-xs);
+    flex-shrink: 0;
+    white-space: nowrap;
+}
+.pr2-child-chip:hover {
+    border-color: var(--border-active);
+    color: var(--text-primary);
+}
+.pr2-child-chip.active {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: #fff;
+    box-shadow: var(--shadow-active);
+}
+.pr2-child-chip-avatar {
+    width: 22px;
+    height: 22px;
+    border-radius: 7px;
+    font-size: 11px;
+    font-weight: 700;
+}
+
+/* ══ Single child card ══ */
+.pr2-single-child-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-xs);
+    margin-bottom: 14px;
+}
+.pr2-single-child-avatar {
+    width: 42px;
+    height: 42px;
+    border-radius: 14px;
+    font-size: 17px;
+}
+.pr2-single-child-info { flex: 1; min-width: 0; }
+.pr2-single-child-name {
+    font-size: 15px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+.pr2-single-child-meta {
+    margin-top: 2px;
+    font-size: 12.5px;
+    font-weight: 400;
+    color: var(--text-secondary);
+}
+
+/* ══ Period switcher (sticky) ══ */
+.pr2-period-sticky {
+    position: sticky;
+    top: 0;
+    z-index: 20;
+    background: var(--bg);
+    padding: 4px 0 12px;
+    margin: 0 -20px 0;
+    padding-left: 20px;
+    padding-right: 20px;
+}
+.pr2-period-sticky::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -10px;
+    height: 10px;
+    background: linear-gradient(to bottom, var(--bg), transparent);
+    pointer-events: none;
+}
+.pr2-period-switcher {
+    display: flex;
+    gap: 6px;
+    overflow-x: auto;
+    scrollbar-width: none;
+}
+.pr2-period-switcher::-webkit-scrollbar { display: none; }
+
+/* Local picker-chip (matches analytics) */
+.pr2-period-switcher .picker-chip {
+    flex: 1;
+    min-width: 0;
+    height: 36px;
+    padding: 0 10px;
+    border-radius: 10px;
+    border: 1.5px solid var(--border);
+    background: var(--surface);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12.5px;
+    font-weight: 500;
+    color: var(--text-secondary);
+    cursor: pointer;
+    transition: all 0.2s ease;
+    white-space: nowrap;
+    box-shadow: var(--shadow-xs);
+}
+.pr2-period-switcher .picker-chip:hover {
+    border-color: var(--border-active);
+    color: var(--text-primary);
+}
+.pr2-period-switcher .picker-chip.active {
+    background: var(--text-primary);
+    border-color: var(--text-primary);
+    color: #fff;
+    box-shadow: var(--shadow-active);
+}
+
+.pr2-period-range {
+    margin-top: 8px;
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    letter-spacing: -0.1px;
+}
+
+/* ══ Summary grid 2×2 ══ */
+.pr2-summary-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 14px;
+}
+.pr2-summary-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--shadow-xs);
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    animation: cardIn 0.35s ease-out both;
+}
+.pr2-summary-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+.pr2-summary-value {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 22px;
+    font-weight: 600;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    line-height: 1.1;
+}
+.pr2-summary-trend {
+    font-size: 12px;
+    font-weight: 500;
+    display: flex;
+    align-items: center;
+    gap: 4px;
+}
+.pr2-summary-trend.up { color: var(--success-text); }
+.pr2-summary-trend.down { color: var(--danger); }
+.pr2-summary-trend.flat { color: var(--text-muted); }
+
+/* Attendance card with progress circle */
+.pr2-summary-card--attendance { gap: 8px; }
+.pr2-attendance-row {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+.pr2-progress-circle {
+    width: 36px;
+    height: 36px;
+    flex-shrink: 0;
+}
+.pr2-progress-circle svg {
+    width: 100%;
+    height: 100%;
+    transform: rotate(-90deg);
+}
+.pr2-circle-bg {
+    fill: none;
+    stroke: var(--border-divider);
+    stroke-width: 3;
+}
+.pr2-circle-fg {
+    fill: none;
+    stroke: var(--success);
+    stroke-width: 3;
+    stroke-linecap: round;
+    stroke-dasharray: 100 100;
+    stroke-dashoffset: 100;
+    transition: stroke-dashoffset 0.5s ease-out;
+}
+
+/* ══ Chart card ══ */
+.pr2-chart-card {
+    margin-top: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--shadow-xs);
+    color: var(--accent);
+    animation: cardIn 0.35s ease-out both;
+}
+.pr2-chart-header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    margin-bottom: 12px;
+}
+.pr2-chart-title {
+    font-size: 13.5px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.2px;
+}
+.pr2-chart-toggle {
+    display: inline-flex;
+    gap: 4px;
+    padding: 3px;
+    background: var(--border-divider);
+    border-radius: 10px;
+    flex-shrink: 0;
+}
+.pr2-chart-toggle-btn {
+    border: none;
+    background: transparent;
+    font-family: 'Onest', sans-serif;
+    font-size: 11.5px;
+    font-weight: 600;
+    color: var(--text-secondary);
+    padding: 6px 10px;
+    border-radius: 8px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.pr2-chart-toggle-btn.active {
+    background: var(--surface);
+    color: var(--text-primary);
+    box-shadow: var(--shadow-sm);
+}
+.pr2-chart-canvas {
+    width: 100%;
+    height: 140px;
+    color: var(--accent);
+}
+.pr2-chart-canvas svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+.pr2-chart-area { fill: url(#pr2ChartGradient); }
+.pr2-chart-line {
+    fill: none;
+    stroke: currentColor;
+    stroke-width: 2;
+    stroke-linecap: round;
+    stroke-linejoin: round;
+}
+.pr2-chart-grid line {
+    stroke: var(--border-divider);
+    stroke-width: 1;
+}
+.pr2-chart-dots circle { fill: currentColor; }
+.pr2-chart-x-axis {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 8px;
+    padding: 0 2px;
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 10px;
+    color: var(--text-muted);
+}
+.pr2-chart-x-axis span { flex: 1; text-align: center; }
+.pr2-chart-x-axis span:first-child { text-align: left; }
+.pr2-chart-x-axis span:last-child { text-align: right; }
+
+/* ══ Section head / label ══ */
+.pr2-section-head { padding: 20px 0 10px; }
+.pr2-section-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* ══ Subjects list ══ */
+.pr2-subjects-list {
+    list-style: none;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-xs);
+    overflow: hidden;
+}
+.pr2-subject-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    position: relative;
+    animation: cardIn 0.3s ease-out both;
+}
+.pr2-subject-row + .pr2-subject-row::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 14px;
+    right: 14px;
+    height: 1px;
+    background: var(--border-divider);
+}
+.pr2-subject-icon {
+    width: 36px;
+    height: 36px;
+    border-radius: 11px;
+    background: var(--v-bg-from, var(--border-divider));
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--v-color, var(--text-secondary));
+}
+.pr2-subject-icon svg { width: 18px; height: 18px; }
+.pr2-subject-info {
+    flex: 1;
+    min-width: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+.pr2-subject-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.2;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pr2-subject-meta {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11.5px;
+    font-weight: 400;
+    color: var(--text-muted);
+    letter-spacing: -0.1px;
+}
+.pr2-subject-bar {
+    width: 56px;
+    height: 4px;
+    border-radius: 2px;
+    background: var(--border-divider);
+    overflow: hidden;
+    flex-shrink: 0;
+}
+.pr2-subject-bar-fill {
+    height: 100%;
+    background: var(--v-color, var(--accent));
+    border-radius: 2px;
+    transition: width 0.4s ease-out;
+}
+
+/* ══ Weekly attendance inline chart ══ */
+.pr2-attendance-card {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-xs);
+    padding: 16px 14px 14px;
+    animation: cardIn 0.35s ease-out both;
+}
+.pr2-attendance-bars {
+    display: flex;
+    gap: 10px;
+    align-items: flex-end;
+}
+.pr2-week-col {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 6px;
+    min-width: 0;
+}
+.pr2-week-bar {
+    width: 100%;
+    max-width: 42px;
+    height: 60px;
+    background: var(--success-soft);
+    border-radius: 8px;
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: flex-end;
+}
+.pr2-week-bar-fill {
+    width: 100%;
+    background: linear-gradient(180deg, var(--success) 0%, var(--success-text) 100%);
+    border-radius: 8px;
+    transition: height 0.45s cubic-bezier(0.16, 1, 0.3, 1);
+}
+.pr2-week-pct {
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 11px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.2px;
+}
+.pr2-week-label {
+    font-size: 10.5px;
+    font-weight: 500;
+    color: var(--text-muted);
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+}
+
+/* ══ Files list ══ */
+.pr2-files-list {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+.pr2-file-row {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding: 12px 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    box-shadow: var(--shadow-xs);
+    cursor: pointer;
+    transition: transform 0.2s ease, box-shadow 0.2s ease, border-color 0.2s ease;
+    animation: cardIn 0.3s ease-out both;
+}
+.pr2-file-row:hover {
+    border-color: var(--border-active);
+    box-shadow: var(--shadow-sm);
+    transform: translateY(-1px);
+}
+.pr2-file-row:active { transform: translateY(0); box-shadow: var(--shadow-xs); }
+.pr2-file-icon {
+    width: 38px;
+    height: 38px;
+    border-radius: 12px;
+    background: var(--error-soft);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    color: var(--danger);
+}
+.pr2-file-icon svg { width: 18px; height: 18px; }
+.pr2-file-info { flex: 1; min-width: 0; }
+.pr2-file-name {
+    font-size: 14px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.25;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+.pr2-file-date {
+    margin-top: 2px;
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-muted);
+}
+.pr2-file-chevron {
+    width: 18px;
+    height: 18px;
+    color: var(--text-muted);
+    flex-shrink: 0;
+}
+
+/* ══ Responsive ══ */
+@media (max-width: 414px) {
+    .pr2-child-chip { height: 36px; font-size: 12.5px; padding: 0 12px 0 7px; }
+    .pr2-child-chip-avatar { width: 20px; height: 20px; font-size: 10px; border-radius: 6px; }
+}
+
+@media (max-width: 375px) {
+    .pr2-content { padding: 14px 18px 100px; }
+    .pr2-child-switcher-wrap { margin: 0 -18px 12px; padding: 2px 18px 8px; }
+    .pr2-period-sticky { margin: 0 -18px; padding-left: 18px; padding-right: 18px; }
+    .pr2-summary-value { font-size: 20px; }
+    .pr2-summary-card { padding: 12px; }
+    .pr2-subject-bar { width: 48px; }
+}
+
+@media (max-width: 360px) {
+    .pr2-header { padding: 14px 16px 10px; }
+    .pr2-title { font-size: 20px; }
+    .pr2-content { padding: 12px 16px 100px; }
+    .pr2-child-switcher-wrap { margin: 0 -16px 12px; padding: 2px 16px 8px; }
+    .pr2-period-sticky { margin: 0 -16px; padding-left: 16px; padding-right: 16px; }
+    .pr2-summary-value { font-size: 18px; }
+    .pr2-chart-title { font-size: 12.5px; }
+    .pr2-chart-toggle-btn { font-size: 11px; padding: 6px 8px; }
+    .pr2-subject-name { font-size: 13.5px; }
+    .pr2-subject-meta { font-size: 11px; }
+    .pr2-subject-bar { width: 42px; }
+    .pr2-file-name { font-size: 13.5px; }
+    .pr2-week-pct { font-size: 10.5px; }
+}

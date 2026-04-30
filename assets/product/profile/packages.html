@@ -1,0 +1,220 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Пакеты занятий — Репетитор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="packages.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Top nav -->
+        <div class="top-nav">
+            <a class="top-nav-back" href="index.html" aria-label="Назад">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </a>
+            <span class="top-nav-title">Пакеты занятий</span>
+        </div>
+
+        <!-- Content -->
+        <div class="packages-content no-scrollbar" id="packagesContent">
+            <!-- Active packages -->
+            <div id="activeList"></div>
+
+            <!-- Archived section -->
+            <div id="archivedSection" style="display:none">
+                <div class="list-section-label">В архиве</div>
+                <div id="archivedList"></div>
+            </div>
+
+            <!-- Empty state -->
+            <div class="empty-state" id="emptyState">
+                <div class="empty-state-icon">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+                    </svg>
+                </div>
+                <p class="empty-state-text">Нет пакетов</p>
+                <p class="empty-state-sub">Создайте пакет занятий, чтобы продавать его ученикам</p>
+                <button class="btn-empty-create" id="btnEmptyCreate">Создать пакет</button>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav">
+                <a class="nav-item" href="../calendar/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Календарь</span>
+                </a>
+                <a class="nav-item" href="../students/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Ученики</span>
+                </a>
+                <a class="nav-item" href="../analytics/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <span>Аналитика</span>
+                </a>
+                <a class="nav-item active" aria-current="page" href="index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+            <button class="btn-fab-profile" id="btnFab" aria-label="Создать пакет" title="Создать пакет">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sheet overlay -->
+    <div class="sheet-overlay" id="sheetOverlay"></div>
+
+    <!-- ═══ Create Package Sheet ═══ -->
+    <div class="bottom-sheet sheet-base" id="createSheet" role="dialog" aria-modal="true">
+        <div class="sheet-handle-area" id="createHandle">
+            <div class="sheet-handle"></div>
+        </div>
+        <div class="sheet-body no-scrollbar">
+            <div class="sheet-title">Новый пакет</div>
+
+            <!-- Название -->
+            <div class="sheet-section">
+                <div class="section-label"><span class="dot"></span> Название</div>
+                <input class="form-input input-base" type="text" id="createName" placeholder="8 занятий по математике" autocomplete="off">
+            </div>
+
+            <!-- Количество занятий -->
+            <div class="sheet-section">
+                <div class="section-label"><span class="dot"></span> Количество занятий</div>
+                <div class="picker-row picker-row-wrap" id="createCountRow">
+                    <button class="picker-chip" data-value="2">2</button>
+                    <button class="picker-chip" data-value="4">4</button>
+                    <button class="picker-chip" data-value="5">5</button>
+                    <button class="picker-chip" data-value="6">6</button>
+                    <button class="picker-chip active" data-value="8">8</button>
+                    <button class="picker-chip" data-value="9">9</button>
+                    <button class="picker-chip" data-value="12">12</button>
+                    <button class="picker-chip" data-value="16">16</button>
+                    <div class="picker-divider"></div>
+                    <div class="picker-custom">
+                        <input class="picker-custom-input" id="createCountCustom" type="text" inputmode="numeric" placeholder="20" maxlength="3">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Цена за занятие -->
+            <div class="sheet-section">
+                <div class="section-label"><span class="dot"></span> Цена за занятие</div>
+                <div class="price-wrap">
+                    <input class="price-input input-base" type="text" id="createPrice" inputmode="numeric" placeholder="0">
+                    <span class="price-suffix">₽</span>
+                </div>
+            </div>
+
+            <!-- Порог уведомления -->
+            <div class="sheet-section">
+                <div class="section-label">Порог уведомления (осталось занятий)</div>
+                <div class="picker-row" id="createThresholdRow">
+                    <button class="picker-chip" data-value="1">1</button>
+                    <button class="picker-chip active" data-value="2">2</button>
+                    <button class="picker-chip" data-value="3">3</button>
+                    <button class="picker-chip" data-value="4">4</button>
+                    <button class="picker-chip" data-value="5">5</button>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="summary-row" id="createSummary">
+                Итого: <strong>0 ₽</strong>
+            </div>
+        </div>
+
+        <div class="sheet-footer">
+            <button class="btn-submit" id="btnCreateSubmit">
+                Создать пакет
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ═══ Edit Package Sheet ═══ -->
+    <div class="bottom-sheet sheet-base" id="editSheet" role="dialog" aria-modal="true">
+        <div class="sheet-handle-area" id="editHandle">
+            <div class="sheet-handle"></div>
+        </div>
+        <div class="sheet-body no-scrollbar">
+            <div class="sheet-title" id="editSheetTitle">Пакет</div>
+
+            <!-- Название -->
+            <div class="sheet-section">
+                <div class="section-label">Название</div>
+                <input class="form-input input-base" type="text" id="editName" autocomplete="off">
+            </div>
+
+            <!-- Цена за занятие -->
+            <div class="sheet-section">
+                <div class="section-label">Цена за занятие</div>
+                <div class="price-wrap">
+                    <input class="price-input input-base" type="text" id="editPrice" inputmode="numeric" placeholder="0">
+                    <span class="price-suffix">₽</span>
+                </div>
+            </div>
+
+            <!-- Порог уведомления -->
+            <div class="sheet-section">
+                <div class="section-label">Порог уведомления</div>
+                <div class="picker-row" id="editThresholdRow">
+                    <button class="picker-chip" data-value="1">1</button>
+                    <button class="picker-chip" data-value="2">2</button>
+                    <button class="picker-chip" data-value="3">3</button>
+                    <button class="picker-chip" data-value="4">4</button>
+                    <button class="picker-chip" data-value="5">5</button>
+                </div>
+            </div>
+
+            <!-- Summary -->
+            <div class="summary-row" id="editSummary">
+                0 занятий · итого <strong>0 ₽</strong>
+            </div>
+
+            <!-- Save -->
+            <div style="padding: 16px 0 4px;">
+                <button class="btn-submit" id="btnEditSave">Сохранить</button>
+            </div>
+
+            <!-- Archive -->
+            <div class="detail-danger-zone">
+                <button class="btn-danger-text" id="btnEditArchive">В архив</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="toastText">Пакет создан</span>
+    </div>
+
+    <script src="packages.js"></script>
+</body>
+</html>

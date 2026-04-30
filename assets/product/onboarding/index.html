@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Онбординг — Репетитор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- ══ Header с прогрессом ══ -->
+        <header class="onb-header">
+            <div class="onb-step-counter" id="onbStepCounter">Шаг 1 из 4</div>
+            <div class="onb-progress" id="onbProgress">
+                <span class="onb-progress__segment onb-progress__segment--active" data-idx="0"></span>
+                <span class="onb-progress__segment" data-idx="1"></span>
+                <span class="onb-progress__segment" data-idx="2"></span>
+                <span class="onb-progress__segment" data-idx="3"></span>
+            </div>
+        </header>
+
+        <!-- ══ Body (steps stage) ══ -->
+        <div class="onb-stage">
+
+            <!-- ─── Шаг 1. Профиль ─── -->
+            <section class="onb-step active" data-step="1">
+                <div class="onb-body no-scrollbar">
+                    <h1 class="onb-step__title">Расскажите о себе</h1>
+                    <p class="onb-step__subtitle">Эти данные увидят ваши ученики в приложении.</p>
+
+                    <div class="onb-section">
+                        <div class="section-label"><span class="dot"></span> Какие предметы преподаёте</div>
+                        <div class="chip-cloud" id="subjectsCloud"></div>
+                    </div>
+
+                    <div class="onb-section">
+                        <div class="section-label"><span class="dot"></span> О себе</div>
+                        <div class="textarea-wrap">
+                            <textarea class="onb-textarea input-base" id="aboutMe" placeholder="Образование, опыт, подход к занятиям" maxlength="400"></textarea>
+                            <span class="textarea-counter" id="aboutCounter">0 / 280</span>
+                        </div>
+                    </div>
+
+                    <div class="onb-section">
+                        <div class="section-label"><span class="dot"></span> Часовой пояс</div>
+                        <div class="select-wrap">
+                            <select class="form-select input-base" id="timezoneSelect"></select>
+                            <svg class="select-caret" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="6 9 12 15 18 9"/>
+                            </svg>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── Шаг 2. Шаблон занятия ─── -->
+            <section class="onb-step" data-step="2">
+                <div class="onb-body no-scrollbar">
+                    <h1 class="onb-step__title">Первый шаблон занятия</h1>
+                    <p class="onb-step__subtitle">Основа для быстрого создания записей в расписании.</p>
+
+                    <div class="onb-section">
+                        <div class="section-label"><span class="dot"></span> Название шаблона</div>
+                        <input class="form-input input-base" type="text" id="tplName" placeholder="Индивидуальное занятие" autocomplete="off">
+                    </div>
+
+                    <div class="onb-section">
+                        <div class="section-label"><span class="dot"></span> Длительность</div>
+                        <div class="picker-row picker-row-wrap" id="durationRow">
+                            <button class="picker-chip" data-value="30">30м</button>
+                            <button class="picker-chip" data-value="45">45м</button>
+                            <button class="picker-chip active" data-value="60">1ч</button>
+                            <button class="picker-chip" data-value="90">1.5ч</button>
+                            <button class="picker-chip" data-value="120">2ч</button>
+                            <div class="picker-divider"></div>
+                            <div class="picker-custom">
+                                <input class="picker-custom-input" id="durationCustom" type="text" inputmode="numeric" placeholder="м" maxlength="3">
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="onb-section">
+                        <div class="section-label"><span class="dot"></span> Цена за занятие</div>
+                        <div class="price-wrap">
+                            <input class="price-input input-base" type="text" id="tplPrice" inputmode="numeric" placeholder="0">
+                            <span class="price-suffix">₽</span>
+                        </div>
+                    </div>
+
+                    <div class="onb-section">
+                        <div class="section-label"><span class="dot"></span> Формат</div>
+                        <div class="format-pills" id="formatPills">
+                            <button class="format-pill active" data-value="online">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="2" y="4" width="20" height="14" rx="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/>
+                                </svg>
+                                Онлайн
+                            </button>
+                            <button class="format-pill" data-value="offline">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 10c0 7-8 12-8 12s-8-5-8-12a8 8 0 0 1 16 0z"/><circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Очно
+                            </button>
+                        </div>
+                    </div>
+
+                    <div class="onb-section">
+                        <div class="section-label"><span class="dot"></span> Цвет шаблона</div>
+                        <div class="color-pills" id="colorPills">
+                            <button class="color-pill variant-indigo active" data-value="indigo">
+                                <span class="color-swatch"></span>
+                                <span class="color-label">Индиго</span>
+                            </button>
+                            <button class="color-pill variant-orange" data-value="orange">
+                                <span class="color-swatch"></span>
+                                <span class="color-label">Оранж</span>
+                            </button>
+                            <button class="color-pill variant-green" data-value="green">
+                                <span class="color-swatch"></span>
+                                <span class="color-label">Зелёный</span>
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            <!-- ─── Шаг 3. Рабочие часы ─── -->
+            <section class="onb-step" data-step="3">
+                <div class="onb-body no-scrollbar">
+                    <h1 class="onb-step__title">Когда вы работаете</h1>
+                    <p class="onb-step__subtitle">Ученики смогут записываться только в эти интервалы.</p>
+
+                    <div class="tz-readout" id="tzReadout">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        <span id="tzReadoutText">Москва, UTC+3</span>
+                    </div>
+
+                    <div class="availability-list" id="availabilityList"></div>
+                </div>
+            </section>
+
+            <!-- ─── Шаг 4. Готово ─── -->
+            <section class="onb-step" data-step="4">
+                <div class="onb-body onb-body--center no-scrollbar">
+                    <div class="onb-success">
+                        <div class="onb-success__ring variant-orange">
+                            <div class="onb-success__circle avatar-variant">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/><polyline points="8 12 11 15 16 9"/>
+                                </svg>
+                            </div>
+                        </div>
+                        <h1 class="onb-success__title">Готово! Теперь поделитесь ссылкой</h1>
+                        <p class="onb-success__subtitle">Отправьте эту ссылку ученикам — они смогут зайти в приложение через Telegram и начать записываться на занятия.</p>
+                    </div>
+
+                    <div class="onb-invite-card">
+                        <input class="onb-invite-card__input" id="inviteInput" readonly>
+                        <button class="onb-invite-card__copy icon-box" id="inviteCopyBtn" aria-label="Копировать ссылку">
+                            <svg id="inviteCopyIcon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="9" y="9" width="13" height="13" rx="2"/><path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                            </svg>
+                        </button>
+                    </div>
+                </div>
+            </section>
+
+        </div>
+
+        <!-- ══ Footer ══ -->
+        <footer class="onb-footer">
+            <button class="onb-back-btn" id="onbBackBtn">Назад</button>
+            <button class="onb-next-btn" id="onbNextBtn" disabled>
+                <span id="onbNextLabel">Далее</span>
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+            <a class="onb-finish-link hidden" id="onbFinishLink" href="../calendar/index.html">Завершить и открыть календарь</a>
+        </footer>
+
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="toastText">Ссылка скопирована</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

@@ -1,0 +1,171 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Слайд 7 — Конкуренция и где мы выигрываем</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="../styles/tokens.css">
+    <link rel="stylesheet" href="../styles/base.css">
+    <link rel="stylesheet" href="../styles/slide-7.css">
+</head>
+<body>
+
+<div class="deck">
+
+    <section class="slide" id="slide-7">
+        <header class="slide-header">
+            <div class="brand-logo-placeholder">логотип ТР</div>
+
+            <div class="header-right">
+                <img class="grant-logo" src="../assets/logos/sozdaj-nashe.png" alt="Создай НАШЕ 2026">
+            </div>
+        </header>
+
+        <div class="slide-body s7-body">
+
+            <!-- ── Intro ── -->
+            <div class="s7-intro">
+                <span class="s7-eyebrow">Конкуренция · Позиционирование</span>
+                <h1 class="s7-headline">Конкуренция и&nbsp;где мы&nbsp;выигрываем</h1>
+                <p class="s7-lede">
+                    Рынок CRM для&nbsp;репетиторов разделён надвое: тяжёлые системы для&nbsp;учебных центров (1&nbsp;500–2&nbsp;550&nbsp;₽/мес, перегружены для&nbsp;одиночки) и&nbsp;лёгкие соло-инструменты без&nbsp;онлайн-оплаты, без&nbsp;MAX, без&nbsp;роли родителя. Никто не&nbsp;закрывает три ключевые потребности соло-репетитора одновременно.
+                </p>
+            </div>
+
+            <!-- ── Comparison table ── -->
+            <div class="s7-table-wrap" role="region" aria-label="Сравнение конкурентов">
+                <table class="s7-table">
+                    <colgroup>
+                        <col class="col-player">
+                        <col class="col-aud">
+                        <col class="col-price">
+                        <col class="col-win">
+                        <col class="col-win">
+                        <col class="col-win">
+                        <col class="col-win">
+                    </colgroup>
+                    <thead>
+                        <tr>
+                            <th class="th-player">Игроки</th>
+                            <th>ЦА</th>
+                            <th>Цена/мес</th>
+                            <th class="th-win">Без установки app:<br>веб + 3 мессенджера</th>
+                            <th class="th-win">MAX как канал ученика</th>
+                            <th class="th-win">Отдельная роль родителя</th>
+                            <th class="th-win">Гибкие сценарии уведомлений</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr class="row-us">
+                            <td class="cell-player">
+                                <span class="player-mark" aria-hidden="true"></span>
+                                <span class="player-name">Твой репетитор</span>
+                            </td>
+                            <td>соло (15+&nbsp;уч.)</td>
+                            <td><span class="price">290&nbsp;₽</span></td>
+                            <td class="cell-win"><span class="pill ok"><span class="pill-glyph">✓</span></span><span class="cell-text">веб + MAX + ВК + TG</span></td>
+                            <td class="cell-win"><span class="pill ok"><span class="pill-glyph">✓</span></span><span class="cell-text">нативный двусторонний</span></td>
+                            <td class="cell-win"><span class="pill ok"><span class="pill-glyph">✓</span></span><span class="cell-text">отдельный экран</span></td>
+                            <td class="cell-win"><span class="pill ok"><span class="pill-glyph">✓</span></span><span class="cell-text">связки ученик + родитель</span></td>
+                        </tr>
+                        <tr>
+                            <td class="cell-player"><span class="player-name">AlfaCRM</span></td>
+                            <td>учебный центр</td>
+                            <td><span class="price">от&nbsp;1&nbsp;500&nbsp;₽</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">веб + моб. app</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">только рассылки от&nbsp;админа</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">родитель = контакт ученика</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">базовые шаблоны</span></td>
+                        </tr>
+                        <tr>
+                            <td class="cell-player"><span class="player-name">HolliHop</span></td>
+                            <td>языковая школа</td>
+                            <td><span class="price">от&nbsp;1&nbsp;750&nbsp;₽ + 1&nbsp;000&nbsp;₽ за&nbsp;ЛК</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">веб + моб. app</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">через Green-API +690&nbsp;₽</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">общий ЛК с&nbsp;учеником</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">базовые</span></td>
+                        </tr>
+                        <tr>
+                            <td class="cell-player"><span class="player-name">Параплан</span></td>
+                            <td>детский центр</td>
+                            <td><span class="price">990–2&nbsp;550&nbsp;₽</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">только веб</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">нет</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">ЛК с&nbsp;тарифа «Бизнес»</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">базовые</span></td>
+                        </tr>
+                        <tr>
+                            <td class="cell-player"><span class="player-name">SecRep</span></td>
+                            <td>соло</td>
+                            <td><span class="price">от&nbsp;299&nbsp;₽</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">только моб. app</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">нет</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">нет</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">базовые</span></td>
+                        </tr>
+                        <tr>
+                            <td class="cell-player"><span class="player-name">OkoCRM</span></td>
+                            <td>малый бизнес</td>
+                            <td><span class="price">712&nbsp;₽/польз.</span></td>
+                            <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">веб + MAX</span></td>
+                            <td class="cell-win"><span class="pill ok"><span class="pill-glyph">✓</span></span><span class="cell-text">бесплатно офиц. API</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">нет такой роли</span></td>
+                            <td class="cell-win"><span class="pill ok"><span class="pill-glyph">✓</span></span><span class="cell-text">конструктор ботов, без&nbsp;отраслевой логики</span></td>
+                        </tr>
+                        <tr>
+                            <td class="cell-player"><span class="player-name">Excel + WhatsApp</span></td>
+                            <td>универсал</td>
+                            <td><span class="price">0–500&nbsp;₽</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">только таблица + ручной чат</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">нет</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">нет</span></td>
+                            <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">всё вручную</span></td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
+
+            <!-- ── 3 advantage cards ── -->
+            <div class="s7-cards">
+                <article class="s7-card">
+                    <h3 class="s7-card-title"><span class="s7-card-bullet" aria-hidden="true">🟢</span>Без установки приложения</h3>
+                    <p class="s7-card-text">
+                        Работаем в&nbsp;браузере и&nbsp;трёх мессенджерах: МАКС, Телеграм, ВКонтакте. Ученику и&nbsp;родителю не&nbsp;нужно ставить и&nbsp;обновлять отдельное приложение. У&nbsp;тяжеловесов&nbsp;— веб + моб.&nbsp;app (надо ставить), у&nbsp;соло-CRM&nbsp;— только моб.&nbsp;app, у&nbsp;Excel&nbsp;— только таблица + ручные сообщения.
+                    </p>
+                </article>
+
+                <article class="s7-card">
+                    <h3 class="s7-card-title"><span class="s7-card-bullet" aria-hidden="true">🟢</span>Двусторонний канал в&nbsp;МАКС&nbsp;— для&nbsp;ученика и&nbsp;родителя</h3>
+                    <p class="s7-card-text">
+                        Не&nbsp;«рассылки от&nbsp;админа», а&nbsp;полноценный интерфейс: расписание, оплаты, ДЗ, чат. У&nbsp;14&nbsp;из&nbsp;15&nbsp;конкурентов этого нет. У&nbsp;OkoCRM есть бесплатный MAX-бот, но&nbsp;без&nbsp;отраслевой логики репетитора и&nbsp;без&nbsp;роли родителя&nbsp;— это конструктор, а&nbsp;не&nbsp;готовое решение.
+                    </p>
+                </article>
+
+                <article class="s7-card">
+                    <h3 class="s7-card-title"><span class="s7-card-bullet" aria-hidden="true">🟢</span>Гибкие сценарии уведомлений и&nbsp;отдельная роль родителя</h3>
+                    <p class="s7-card-text">
+                        Связка «ученик + родитель» с&nbsp;настраиваемыми правилами: кому, когда, через какой канал. У&nbsp;соло-CRM роли родителя нет вовсе; у&nbsp;тяжеловесов родитель&nbsp;— это поле в&nbsp;карточке ученика, не&nbsp;самостоятельный пользователь со&nbsp;своим экраном.
+                    </p>
+                </article>
+            </div>
+
+            <!-- ── Micro-footnote ── -->
+            <p class="s7-footnote">данные на&nbsp;26.04.2026 · проверено 15&nbsp;конкурентов, в&nbsp;таблице&nbsp;— 6&nbsp;типовых</p>
+
+        </div>
+
+        <footer class="slide-footer">
+            <span class="page-num">07&nbsp;/&nbsp;15</span>
+        </footer>
+    </section>
+
+</div>
+
+</body>
+</html>

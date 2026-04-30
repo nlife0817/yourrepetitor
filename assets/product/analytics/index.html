@@ -1,0 +1,143 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Аналитика — Репетитор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Header -->
+        <div class="page-header">
+            <h1 class="page-title">Аналитика</h1>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="analytics-content no-scrollbar">
+
+            <!-- Period switcher (sticky) -->
+            <div class="period-sticky">
+                <div class="period-switcher" role="tablist" aria-label="Период">
+                    <button class="picker-chip" data-period="7">7 дней</button>
+                    <button class="picker-chip active" data-period="30">30 дней</button>
+                    <button class="picker-chip" data-period="90">3 месяца</button>
+                    <button class="picker-chip" data-period="365">12 месяцев</button>
+                </div>
+                <div class="period-range" id="periodRange">1 — 30 апреля</div>
+            </div>
+
+            <!-- Summary cards -->
+            <div class="summary-grid" id="summaryGrid">
+                <div class="summary-card" data-key="revenue">
+                    <div class="summary-label">Выручка</div>
+                    <div class="summary-value" data-role="value">—</div>
+                    <div class="summary-trend" data-role="trend">—</div>
+                </div>
+                <div class="summary-card" data-key="lessons">
+                    <div class="summary-label">Проведено занятий</div>
+                    <div class="summary-value" data-role="value">—</div>
+                    <div class="summary-trend" data-role="trend">—</div>
+                </div>
+                <div class="summary-card" data-key="students">
+                    <div class="summary-label">Новые ученики</div>
+                    <div class="summary-value" data-role="value">—</div>
+                    <div class="summary-trend" data-role="trend">—</div>
+                </div>
+                <div class="summary-card" data-key="avgCheck">
+                    <div class="summary-label">Средний чек</div>
+                    <div class="summary-value" data-role="value">—</div>
+                    <div class="summary-trend" data-role="trend">—</div>
+                </div>
+            </div>
+
+            <!-- Area chart card -->
+            <div class="chart-card">
+                <div class="chart-toggle" role="tablist" aria-label="Метрика графика">
+                    <button class="chart-toggle-btn active" data-series="revenue">Выручка</button>
+                    <button class="chart-toggle-btn" data-series="lessons">Занятия</button>
+                </div>
+                <div class="chart-canvas">
+                    <svg id="chartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="chartGradient" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="currentColor" stop-opacity="0.28"/>
+                                <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <g class="chart-grid" id="chartGrid"></g>
+                        <path id="chartArea" class="chart-area" d=""/>
+                        <path id="chartLine" class="chart-line" d=""/>
+                        <g id="chartDots" class="chart-dots"></g>
+                    </svg>
+                </div>
+                <div class="chart-x-axis" id="chartXAxis"></div>
+            </div>
+
+            <!-- Breakdown -->
+            <div class="section-head">
+                <div class="analytics-section-label">Разбивка</div>
+            </div>
+            <div class="view-toggle" role="tablist" aria-label="Группировка">
+                <button class="view-toggle-btn active" data-breakdown="students">По ученикам</button>
+                <button class="view-toggle-btn" data-breakdown="types">По типу</button>
+                <button class="view-toggle-btn" data-breakdown="status">По статусу</button>
+            </div>
+            <ul class="breakdown-list" id="breakdownList"></ul>
+
+            <!-- Debtors -->
+            <div class="section-head">
+                <div class="analytics-section-label" id="debtorsLabel">Должники</div>
+            </div>
+            <ul class="debtors-list" id="debtorsList"></ul>
+
+            <!-- Empty state (debtors) -->
+            <div class="debtors-empty hidden" id="debtorsEmpty">
+                <div class="empty-icon">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 6L9 17l-5-5"/>
+                    </svg>
+                </div>
+                <div class="empty-text">Все платежи в порядке</div>
+            </div>
+
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav">
+                <a class="nav-item" href="../calendar/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Календарь</span>
+                </a>
+                <a class="nav-item" href="../students/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Ученики</span>
+                </a>
+                <a class="nav-item active" aria-current="page" href="#">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <span>Аналитика</span>
+                </a>
+                <a class="nav-item" href="../profile/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

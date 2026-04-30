@@ -1,0 +1,345 @@
+/* ══════════════════════════════════════════
+   slide-8.css — Достигнутые результаты
+   ══════════════════════════════════════════ */
+
+#slide-8 .s8-body {
+    flex: 1;
+    padding: 140px var(--slide-pad-x) 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 18px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(232, 115, 74, 0.06) 0%, transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.04) 0%, transparent 50%),
+        var(--bg);
+}
+
+/* ── Intro ── */
+#slide-8 .s8-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    max-width: 1680px;
+}
+
+#slide-8 .s8-headline {
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: -0.022em;
+    line-height: 1.12;
+    color: var(--text-primary);
+}
+
+#slide-8 .s8-headline-num {
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-weight: 600;
+    color: var(--orange-text);
+    letter-spacing: -0.02em;
+}
+
+#slide-8 .s8-subhead {
+    font-size: 18px;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    letter-spacing: -0.005em;
+    max-width: 1400px;
+}
+
+/* ══ Two columns ══ */
+#slide-8 .s8-cols {
+    display: grid;
+    grid-template-columns: 1.05fr 1fr;
+    gap: 28px;
+    flex: 1;
+    min-height: 0;
+}
+
+#slide-8 .s8-col {
+    padding: 24px 26px 22px;
+    gap: 14px;
+}
+
+/* ── Chart: динамика по месяцам ── */
+.s8-chart {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.s8-chart-eyebrow {
+    font-family: var(--font-mono);
+    font-size: 13px;
+    font-weight: 500;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+.s8-bars {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 18px;
+    height: 140px;
+    align-items: end;
+    padding: 0 6px;
+    border-bottom: 1px solid var(--border-divider);
+}
+
+.s8-bar {
+    position: relative;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+    gap: 0;
+}
+
+.s8-bar-val {
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-weight: 600;
+    font-size: 16px;
+    color: var(--text-secondary);
+    letter-spacing: -0.01em;
+    margin-bottom: 6px;
+}
+
+.s8-bar-fill {
+    width: 100%;
+    max-width: 64px;
+    background: rgba(232, 115, 74, 0.42);
+    border-radius: 6px 6px 0 0;
+    transition: height 0.6s ease;
+}
+
+.s8-bar-last .s8-bar-fill {
+    background: var(--accent);
+    box-shadow: 0 -4px 16px rgba(232, 115, 74, 0.28);
+}
+
+.s8-bar-last .s8-bar-val {
+    color: var(--orange-text);
+    font-size: 18px;
+}
+
+.s8-bar-lbl {
+    position: absolute;
+    bottom: -22px;
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-size: 12px;
+    font-weight: 500;
+    color: var(--text-muted);
+    letter-spacing: 0.06em;
+}
+
+.s8-chart-cap {
+    margin-top: 22px;
+    font-size: 14px;
+    color: var(--text-muted);
+    line-height: 1.4;
+}
+
+.s8-mono {
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.005em;
+    white-space: nowrap;
+}
+
+.s8-mono-accent {
+    color: var(--orange-text);
+}
+
+/* ── Revenue card ── */
+.s8-revenue .portrait-metrics {
+    grid-template-columns: auto 1fr;
+    gap: 6px 16px;
+}
+
+.s8-revenue .portrait-num {
+    font-size: 18px;
+}
+
+.s8-revenue .portrait-label {
+    font-size: 14px;
+    line-height: 1.3;
+}
+
+/* ── Segment list ── */
+.s8-segment {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.s8-segment li {
+    position: relative;
+    padding-left: 18px;
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--text-secondary);
+}
+
+.s8-segment li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 10px;
+    width: 8px;
+    height: 1.5px;
+    background: var(--accent);
+    border-radius: 1px;
+}
+
+.s8-segment strong {
+    font-weight: 500;
+    color: var(--text-primary);
+}
+
+/* ── Quote ── */
+.s8-quote {
+    margin-top: auto;
+    padding: 10px 0 2px 14px;
+    border-left: 3px solid var(--accent);
+}
+
+.s8-quote p {
+    font-size: 14px;
+    font-style: italic;
+    line-height: 1.45;
+    color: var(--text-secondary);
+}
+
+.s8-quote strong {
+    font-weight: 600;
+    font-style: normal;
+    color: var(--text-primary);
+}
+
+/* ══ Column 2 — accent ══ */
+#slide-8 .problem-col-accent .cost-figure {
+    margin-top: 2px;
+}
+
+#slide-8 .problem-col-accent .cost-figure-num {
+    font-size: 78px;
+}
+
+#slide-8 .problem-col-accent .cost-figure-cap {
+    font-size: 16px;
+}
+
+#slide-8 .problem-col-accent .cost-formula {
+    font-size: 14.5px;
+    padding: 12px 14px;
+    line-height: 1.4;
+    font-family: var(--font-sans);
+}
+
+/* WHY: numbers stay mono inside otherwise-prose formula */
+#slide-8 .problem-col-accent .cost-formula {
+    font-feature-settings: 'tnum';
+}
+
+/* ── 2×2 metrics grid ── */
+.s8-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px;
+    margin-top: 4px;
+}
+
+.s8-cell {
+    background: rgba(255, 255, 255, 0.6);
+    border: 1px solid rgba(232, 115, 74, 0.18);
+    border-radius: 12px;
+    padding: 12px 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+}
+
+.s8-cell-num {
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1.05;
+    color: var(--accent);
+    letter-spacing: -0.02em;
+}
+
+.s8-cell-lbl {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    letter-spacing: -0.005em;
+    margin-top: 2px;
+}
+
+.s8-cell-sub {
+    font-size: 12px;
+    color: var(--text-muted);
+    line-height: 1.35;
+}
+
+.s8-active-note {
+    font-size: 13px;
+    line-height: 1.45;
+}
+
+.s8-active-note strong {
+    color: var(--text-primary);
+    font-weight: 600;
+}
+
+.s8-firstweek {
+    font-size: 15px;
+    line-height: 1.4;
+    color: var(--text-secondary);
+    padding: 10px 14px;
+    background: rgba(232, 115, 74, 0.06);
+    border: 1px solid rgba(232, 115, 74, 0.16);
+    border-radius: 10px;
+}
+
+#slide-8 .problem-col-accent .cost-extra {
+    margin-top: auto;
+    gap: 6px;
+    padding-top: 12px;
+}
+
+#slide-8 .problem-col-accent .cost-extra-text {
+    font-size: 14px;
+    line-height: 1.45;
+}
+
+/* ── Sources ── */
+#slide-8 .s8-sources {
+    font-size: 13px;
+    line-height: 1.5;
+    color: var(--text-muted);
+    letter-spacing: 0.005em;
+    margin-top: 4px;
+    max-width: 1500px;
+}
+
+#slide-8 .s8-sources em {
+    font-style: italic;
+}
+
+/* ══════════════ PRINT ══════════════ */
+@media print {
+    #slide-8 .problem-col-accent {
+        transform: none !important;
+    }
+    #slide-8 .s8-bar-fill {
+        transition: none !important;
+    }
+}

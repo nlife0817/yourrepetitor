@@ -1,0 +1,357 @@
+/* ══════════════════════════════════════════
+   slide-9.css — Продуктовый roadmap
+   ══════════════════════════════════════════ */
+
+#slide-9 .s9-body {
+    flex: 1;
+    padding: 136px var(--slide-pad-x) 68px;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+    background:
+        radial-gradient(circle at 70% 0%, rgba(232, 115, 74, 0.05) 0%, transparent 50%),
+        radial-gradient(circle at 0% 100%, rgba(99, 102, 241, 0.04) 0%, transparent 45%),
+        var(--bg);
+}
+
+/* ── Intro ── */
+#slide-9 .s9-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+#slide-9 .s9-headline {
+    font-size: 38px;
+    font-weight: 700;
+    letter-spacing: -0.024em;
+    line-height: 1.1;
+    color: var(--text-primary);
+}
+
+#slide-9 .s9-subhead {
+    font-size: 17px;
+    line-height: 1.45;
+    color: var(--text-muted);
+    letter-spacing: -0.003em;
+}
+
+/* ══ Three steps row ══ */
+#slide-9 .s9-steps {
+    display: flex;
+    align-items: stretch;
+    gap: 0;
+    flex: 1;
+    min-height: 0;
+}
+
+/* ── Arrow between steps ── */
+#slide-9 .s9-arrow {
+    flex-shrink: 0;
+    width: 48px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 28px;
+    font-weight: 400;
+    color: var(--accent);
+    align-self: center;
+    margin-bottom: 24px;
+}
+
+/* ── Step card base ── */
+#slide-9 .s9-step {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    background: var(--surface);
+    border: 1.5px solid var(--border);
+    border-radius: 18px;
+    padding: 24px 26px 22px;
+    box-shadow: var(--shadow-sm);
+}
+
+/* ── 2026 — тихая колонка ── */
+#slide-9 .s9-step-2026 {
+    border-color: rgba(0, 0, 0, 0.08);
+}
+
+/* ── 2027 — переходная ── */
+#slide-9 .s9-step-2027 {
+    border-color: rgba(232, 115, 74, 0.28);
+    background: rgba(255, 255, 255, 0.98);
+}
+
+/* ── 2028 — акцентная ── */
+#slide-9 .s9-step-2028 {
+    border: 2px solid var(--accent);
+    background: rgba(232, 115, 74, 0.04);
+    box-shadow: var(--shadow-sm), 0 0 0 1px rgba(232, 115, 74, 0.10);
+}
+
+/* ── Year row ── */
+#slide-9 .s9-step-year-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+}
+
+#slide-9 .s9-year {
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-weight: 600;
+    font-size: 48px;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--text-primary);
+}
+
+#slide-9 .s9-step-2028 .s9-year {
+    color: var(--orange-text);
+}
+
+#slide-9 .s9-badge {
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    background: rgba(0, 0, 0, 0.05);
+    border-radius: 6px;
+    padding: 4px 10px;
+    white-space: nowrap;
+}
+
+#slide-9 .s9-badge-accent {
+    color: var(--orange-text);
+    background: rgba(232, 115, 74, 0.12);
+}
+
+/* ── Stage label ── */
+#slide-9 .s9-stage {
+    font-size: 20px;
+    font-weight: 600;
+    letter-spacing: -0.014em;
+    color: var(--text-primary);
+    line-height: 1.2;
+    padding-bottom: 12px;
+    border-bottom: 1px solid var(--border-divider);
+}
+
+#slide-9 .s9-step-2028 .s9-stage {
+    color: var(--orange-text);
+}
+
+/* ── Features list ── */
+#slide-9 .s9-features {
+    list-style: none;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    flex: 1;
+}
+
+#slide-9 .s9-features li {
+    position: relative;
+    padding-left: 16px;
+    font-size: 14px;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    letter-spacing: -0.003em;
+}
+
+#slide-9 .s9-features li::before {
+    content: '';
+    position: absolute;
+    left: 0;
+    top: 9px;
+    width: 7px;
+    height: 1.5px;
+    background: var(--accent);
+    border-radius: 1px;
+    opacity: 0.55;
+}
+
+#slide-9 .s9-step-2028 .s9-features li::before {
+    opacity: 1;
+}
+
+/* ── Meta block ── */
+#slide-9 .s9-meta {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    padding: 12px 14px;
+    background: var(--surface-sheet);
+    border-radius: 10px;
+    border: 1px solid var(--border);
+}
+
+#slide-9 .s9-step-2028 .s9-meta {
+    background: rgba(255, 255, 255, 0.6);
+    border-color: rgba(232, 115, 74, 0.16);
+}
+
+#slide-9 .s9-meta-row {
+    display: flex;
+    align-items: baseline;
+    gap: 8px;
+}
+
+#slide-9 .s9-meta-label {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+    flex-shrink: 0;
+    min-width: 52px;
+}
+
+#slide-9 .s9-meta-value {
+    font-size: 13px;
+    line-height: 1.35;
+    color: var(--text-secondary);
+}
+
+#slide-9 .s9-price {
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-weight: 600;
+    font-size: 13px;
+    color: var(--text-primary);
+    letter-spacing: -0.01em;
+}
+
+#slide-9 .s9-grace {
+    font-size: 11.5px;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    padding-top: 2px;
+    padding-left: 60px;
+    font-style: italic;
+}
+
+/* ── Metrics row ── */
+#slide-9 .s9-metrics {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding-top: 4px;
+}
+
+#slide-9 .s9-metric {
+    display: flex;
+    flex-direction: column;
+    gap: 1px;
+}
+
+#slide-9 .s9-metric-num {
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-weight: 600;
+    font-size: 20px;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+#slide-9 .s9-step-2028 .s9-metric-num {
+    color: var(--orange-text);
+}
+
+#slide-9 .s9-metric-lbl {
+    font-size: 11px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+#slide-9 .s9-metric-sep {
+    font-size: 18px;
+    color: var(--border);
+    line-height: 1;
+    margin-bottom: 10px;
+}
+
+/* ── SAM tag (2028 only) ── */
+#slide-9 .s9-sam-tag {
+    display: inline-block;
+    font-family: var(--font-mono);
+    font-size: 12px;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    color: var(--orange-text);
+    background: rgba(232, 115, 74, 0.10);
+    border: 1px solid rgba(232, 115, 74, 0.25);
+    border-radius: 6px;
+    padding: 4px 10px;
+    align-self: flex-start;
+}
+
+/* ══ Drivers strip ══ */
+#slide-9 .s9-drivers {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 14px;
+}
+
+#slide-9 .s9-driver {
+    display: flex;
+    align-items: flex-start;
+    gap: 14px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 18px;
+    box-shadow: var(--shadow-sm);
+}
+
+#slide-9 .s9-driver-num {
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-weight: 600;
+    font-size: 22px;
+    color: var(--accent);
+    line-height: 1;
+    flex-shrink: 0;
+    padding-top: 1px;
+    letter-spacing: -0.02em;
+}
+
+#slide-9 .s9-driver-body {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+#slide-9 .s9-driver-title {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.008em;
+    color: var(--text-primary);
+    line-height: 1.2;
+}
+
+#slide-9 .s9-driver-text {
+    font-size: 13px;
+    line-height: 1.45;
+    color: var(--text-secondary);
+    letter-spacing: -0.003em;
+}
+
+/* ══════════════ PRINT ══════════════ */
+@media print {
+    #slide-9 .s9-step,
+    #slide-9 .s9-driver {
+        box-shadow: none !important;
+    }
+    #slide-9 .s9-step-2028 {
+        box-shadow: none !important;
+    }
+}

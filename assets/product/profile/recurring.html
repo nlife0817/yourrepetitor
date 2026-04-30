@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Регулярные занятия — Репетитор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        .top-nav {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 14px 16px 10px;
+            position: relative;
+            z-index: 10;
+            flex-shrink: 0;
+            animation: headerIn 0.5s ease-out;
+        }
+        .top-nav-back {
+            width: 32px;
+            height: 32px;
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            color: var(--text-primary);
+            transition: background 0.15s;
+            flex-shrink: 0;
+        }
+        .top-nav-back:hover { background: rgba(0, 0, 0, 0.04); }
+        .top-nav-back svg { width: 20px; height: 20px; }
+        .top-nav-title {
+            font-size: 16px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .stub-content {
+            flex: 1;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            gap: 16px;
+            padding: 0 32px 100px;
+            text-align: center;
+        }
+        .stub-icon {
+            width: 64px;
+            height: 64px;
+            border-radius: 20px;
+            background: rgba(0, 0, 0, 0.04);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+        .stub-icon svg {
+            width: 28px;
+            height: 28px;
+            color: var(--text-muted);
+        }
+        .stub-title {
+            font-size: 17px;
+            font-weight: 600;
+            color: var(--text-primary);
+        }
+        .stub-subtitle {
+            font-size: 14px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+    </style>
+</head>
+<body>
+    <div class="app">
+
+        <!-- Top Nav -->
+        <div class="top-nav">
+            <a class="top-nav-back" href="index.html" aria-label="Назад">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </a>
+            <span class="top-nav-title">Регулярные занятия</span>
+        </div>
+
+        <!-- Stub content -->
+        <div class="stub-content">
+            <div class="stub-icon">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                </svg>
+            </div>
+            <div class="stub-title">В разработке</div>
+            <div class="stub-subtitle">Управление повторяющимися занятиями и автоматическое расписание появятся здесь</div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav">
+                <a class="nav-item" href="../calendar/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Календарь</span>
+                </a>
+                <a class="nav-item" href="../students/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Ученики</span>
+                </a>
+                <a class="nav-item" href="../analytics/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <span>Аналитика</span>
+                </a>
+                <a class="nav-item active" aria-current="page" href="index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Ученики — Репетитор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Header -->
+        <div class="page-header">
+            <div class="page-header-left">
+                <h1 class="page-title">Ученики</h1>
+                <p class="page-subtitle" id="studentCount">0 активных</p>
+            </div>
+            <button class="btn-icon-header" id="btnSearch" title="Поиск" aria-label="Поиск учеников">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+            </button>
+        </div>
+
+        <!-- Search bar (hidden by default) -->
+        <div class="search-bar" id="searchBar">
+            <div class="search-input-wrap">
+                <svg aria-hidden="true" class="search-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+                </svg>
+                <input class="search-input" id="searchInput" type="text" placeholder="Поиск по имени..." autocomplete="off">
+                <button class="search-clear" id="searchClear" title="Закрыть">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+                </button>
+            </div>
+        </div>
+
+        <!-- Student list -->
+        <div class="student-list-container no-scrollbar" id="studentListContainer">
+            <!-- Active students -->
+            <div class="student-list" id="studentList"></div>
+
+            <!-- Pending section -->
+            <div id="pendingSection" style="display:none">
+                <div class="list-section-label">Ожидают перехода</div>
+                <div class="student-list" id="pendingList"></div>
+            </div>
+
+            <!-- Archived section -->
+            <div id="archivedSection" style="display:none">
+                <div class="list-section-label">Архив</div>
+                <div class="student-list" id="archivedList"></div>
+            </div>
+
+            <!-- Empty state -->
+            <div class="empty-state" id="emptyState" style="display:none">
+                <div class="empty-state-icon">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                </div>
+                <p class="empty-state-text">Пока нет учеников</p>
+                <p class="empty-state-sub">Нажмите + чтобы пригласить первого</p>
+            </div>
+        </div>
+
+        <!-- Gradient fade behind nav -->
+        <div class="bottom-fade"></div>
+
+        <!-- Bottom bar: nav + fab -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav">
+                <a class="nav-item" href="../calendar/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Календарь</span>
+                </a>
+                <a class="nav-item active" href="#students" aria-current="page">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Ученики</span>
+                </a>
+                <a class="nav-item" href="../analytics/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <span>Аналитика</span>
+                </a>
+                <a class="nav-item" href="../profile/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+            <button class="btn-fab-student" id="btnFab" title="Пригласить ученика" aria-label="Пригласить ученика">
+                <svg aria-hidden="true" class="fab-icon-plus" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sheet overlay -->
+    <div class="sheet-overlay" id="sheetOverlay"></div>
+
+    <!-- ═══ Invite Student Sheet ═══ -->
+    <div class="bottom-sheet sheet-base" id="inviteSheet" role="dialog" aria-modal="true" aria-label="Пригласить ученика">
+        <div class="sheet-handle-area" id="inviteHandle">
+            <div class="sheet-handle"></div>
+        </div>
+
+        <div class="sheet-body no-scrollbar" id="inviteBody">
+            <!-- Step 1: Form -->
+            <div id="inviteFormStep">
+                <div class="sheet-title">Пригласить ученика</div>
+                <p class="invite-hint">Ученик перейдёт по уникальной ссылке и автоматически привяжется к вашему аккаунту в Telegram. Ссылка действует однократно.</p>
+
+                <!-- Имя -->
+                <div class="sheet-section">
+                    <div class="section-label">
+                        <span class="dot"></span> Имя ученика
+                    </div>
+                    <input class="form-input input-base" type="text" id="inviteName" placeholder="Иван Иванов" autocomplete="off">
+                </div>
+
+                <!-- Класс / Уровень chips -->
+                <div class="sheet-section">
+                    <div class="section-label">Класс / уровень</div>
+                    <div class="level-chips" id="inviteLevelChips">
+                        <button class="level-chip" data-value="1 класс">1 класс</button>
+                        <button class="level-chip" data-value="2 класс">2 класс</button>
+                        <button class="level-chip" data-value="3 класс">3 класс</button>
+                        <button class="level-chip" data-value="4 класс">4 класс</button>
+                        <button class="level-chip" data-value="5 класс">5 класс</button>
+                        <button class="level-chip" data-value="6 класс">6 класс</button>
+                        <button class="level-chip" data-value="7 класс">7 класс</button>
+                        <button class="level-chip" data-value="8 класс">8 класс</button>
+                        <button class="level-chip" data-value="9 класс">9 класс</button>
+                        <button class="level-chip" data-value="10 класс">10 класс</button>
+                        <button class="level-chip" data-value="11 класс">11 класс</button>
+                        <button class="level-chip" data-value="ОГЭ">ОГЭ</button>
+                        <button class="level-chip" data-value="ЕГЭ">ЕГЭ</button>
+                        <button class="level-chip" data-value="Студент">Студент</button>
+                        <button class="level-chip" data-value="Взрослый">Взрослый</button>
+                        <button class="level-chip" data-value="Другое">Другое...</button>
+                    </div>
+                </div>
+
+                <!-- Заметки -->
+                <div class="sheet-section">
+                    <div class="section-label">Заметки (только для вас)</div>
+                    <textarea class="form-textarea input-base" id="inviteNotes" placeholder="Предмет, особенности..." rows="3"></textarea>
+                </div>
+            </div>
+
+            <!-- Step 2: Link ready -->
+            <div id="inviteLinkStep" style="display:none">
+                <div class="sheet-title">Пригласить ученика</div>
+
+                <div class="invite-success">
+                    <div class="invite-success-title">Ссылка готова!</div>
+                    <p class="invite-success-sub">Отправьте её <span id="inviteLinkName"></span></p>
+                </div>
+
+                <div class="invite-link-box" id="inviteLinkBox">
+                    <span class="invite-link-text" id="inviteLinkText"></span>
+                </div>
+
+                <button class="btn-submit mt-10" id="btnCopyLink">
+                    Скопировать ссылку
+                </button>
+
+                <button class="btn-outline-full mt-10" id="btnCloseInvite">
+                    Закрыть
+                </button>
+            </div>
+        </div>
+
+        <div class="sheet-footer" id="inviteFooter">
+            <button class="btn-submit" id="btnInviteSubmit">
+                Создать ссылку
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ═══ Student Detail Sheet (active student) ═══ -->
+    <div class="detail-sheet sheet-base" id="detailSheet" role="dialog" aria-modal="true" aria-label="Детали ученика">
+        <div class="detail-sheet-accent" id="detailAccent"></div>
+        <div class="sheet-handle-area" id="detailHandle">
+            <div class="sheet-handle"></div>
+        </div>
+
+        <div class="detail-sheet-body no-scrollbar" id="detailBody">
+            <!-- View mode -->
+            <div id="detailViewMode">
+                <!-- Student header with TG button -->
+                <div class="detail-student-header">
+                    <div class="detail-student-avatar avatar-variant" id="detailAvatar">А</div>
+                    <div class="detail-student-info">
+                        <div class="detail-student-name" id="detailName">Алиса Козлова</div>
+                        <div class="detail-student-level" id="detailLevel">9 класс</div>
+                    </div>
+                    <a class="detail-tg-btn" id="detailTgBtn" href="#" title="Написать в Telegram">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M21.2 4.4L2.4 11.3c-.5.2-.5.9 0 1l4.4 1.5 1.7 5.3c.1.4.6.6 1 .3l2.4-2 4.7 3.5c.4.3 1 .1 1.1-.4L21.9 5.3c.1-.5-.3-.9-.7-.9z" fill="currentColor"/></svg>
+                    </a>
+                </div>
+
+                <!-- Notes (under name) -->
+                <div class="detail-notes-inline" id="detailNotesInline" style="display:none">
+                    <p class="detail-notes-text" id="detailNotesText"></p>
+                </div>
+
+                <!-- Price (like calendar lesson detail) -->
+                <div class="detail-section">
+                    <div class="detail-section-label">Оплата</div>
+                    <div class="detail-payment">
+                        <div class="detail-payment-left">
+                            <div class="icon-box">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+                                </svg>
+                            </div>
+                            <span class="detail-payment-label">Стоимость занятия</span>
+                        </div>
+                        <div>
+                            <span class="detail-payment-amount" id="detailPrice">2 000</span>
+                            <span class="detail-payment-currency">₽</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Packages -->
+                <div class="detail-section">
+                    <div class="detail-section-header">
+                        <div class="detail-section-label">Пакеты занятий</div>
+                        <button class="detail-section-action" id="btnAddPackage">+ Добавить</button>
+                    </div>
+                    <div class="detail-packages-empty" id="packagesEmpty">
+                        Нет активных пакетов
+                    </div>
+                </div>
+
+                <!-- Actions -->
+                <div class="detail-view-actions">
+                    <button class="btn-outline-full" id="btnEdit">Редактировать</button>
+                </div>
+
+                <div class="detail-danger-zone">
+                    <button class="btn-danger-text" id="btnArchiveView">Архивировать ученика</button>
+                </div>
+            </div>
+
+            <!-- Edit mode -->
+            <div id="detailEditMode" style="display:none">
+                <!-- Name -->
+                <div class="sheet-section" style="padding-top: 8px;">
+                    <div class="section-label">Имя ученика</div>
+                    <input class="form-input input-base" type="text" id="editName" value="">
+                </div>
+
+                <!-- Level chips -->
+                <div class="sheet-section">
+                    <div class="section-label">Класс / уровень</div>
+                    <div class="level-chips" id="levelChips">
+                        <button class="level-chip" data-value="1 класс">1 класс</button>
+                        <button class="level-chip" data-value="2 класс">2 класс</button>
+                        <button class="level-chip" data-value="3 класс">3 класс</button>
+                        <button class="level-chip" data-value="4 класс">4 класс</button>
+                        <button class="level-chip" data-value="5 класс">5 класс</button>
+                        <button class="level-chip" data-value="6 класс">6 класс</button>
+                        <button class="level-chip" data-value="7 класс">7 класс</button>
+                        <button class="level-chip" data-value="8 класс">8 класс</button>
+                        <button class="level-chip" data-value="9 класс">9 класс</button>
+                        <button class="level-chip" data-value="10 класс">10 класс</button>
+                        <button class="level-chip" data-value="11 класс">11 класс</button>
+                        <button class="level-chip" data-value="ОГЭ">ОГЭ</button>
+                        <button class="level-chip" data-value="ЕГЭ">ЕГЭ</button>
+                        <button class="level-chip" data-value="Студент">Студент</button>
+                        <button class="level-chip" data-value="Взрослый">Взрослый</button>
+                        <button class="level-chip" data-value="Другое">Другое...</button>
+                    </div>
+                </div>
+
+                <!-- Price -->
+                <div class="sheet-section">
+                    <div class="section-label">Стоимость занятия по умолчанию</div>
+                    <div class="price-wrap">
+                        <input class="price-input input-base" type="text" id="editPrice" value="" inputmode="numeric" placeholder="0">
+                        <span class="price-suffix">₽</span>
+                    </div>
+                </div>
+
+                <!-- Notes -->
+                <div class="sheet-section">
+                    <div class="section-label">Заметки (только для вас)</div>
+                    <textarea class="form-textarea input-base" id="editNotes" placeholder="Приватные заметки" rows="3"></textarea>
+                </div>
+
+                <!-- Edit actions -->
+                <div class="edit-actions">
+                    <button class="btn-outline" id="btnCancelEdit">Отмена</button>
+                    <button class="btn-accent" id="btnSaveEdit">Сохранить</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- ═══ Pending Student Detail Sheet ═══ -->
+    <div class="detail-sheet sheet-base" id="pendingDetailSheet" role="dialog" aria-modal="true" aria-label="Детали ожидающего ученика">
+        <div class="detail-sheet-accent variant-orange" id="pendingAccent"></div>
+        <div class="sheet-handle-area" id="pendingHandle">
+            <div class="sheet-handle"></div>
+        </div>
+
+        <div class="detail-sheet-body no-scrollbar" id="pendingBody">
+            <div class="detail-student-header">
+                <div class="detail-student-avatar avatar-variant variant-orange" id="pendingAvatar">В</div>
+                <div class="detail-student-info">
+                    <div class="detail-student-name" id="pendingName">Имя</div>
+                    <div class="pending-badge-inline">Ожидает перехода</div>
+                </div>
+            </div>
+
+            <!-- Invite link section -->
+            <div class="detail-section">
+                <div class="detail-section-label">Ссылка-приглашение</div>
+                <div class="invite-link-box">
+                    <span class="invite-link-text" id="pendingLinkText"></span>
+                </div>
+            </div>
+
+            <button class="btn-submit" id="btnPendingCopy" style="margin-bottom: 12px;">
+                Скопировать ссылку
+            </button>
+
+            <!-- Level chips -->
+            <div class="sheet-section">
+                <div class="section-label">Класс / уровень</div>
+                <div class="level-chips" id="pendingLevelChips">
+                    <button class="level-chip" data-value="1 класс">1 класс</button>
+                    <button class="level-chip" data-value="2 класс">2 класс</button>
+                    <button class="level-chip" data-value="3 класс">3 класс</button>
+                    <button class="level-chip" data-value="4 класс">4 класс</button>
+                    <button class="level-chip" data-value="5 класс">5 класс</button>
+                    <button class="level-chip" data-value="6 класс">6 класс</button>
+                    <button class="level-chip" data-value="7 класс">7 класс</button>
+                    <button class="level-chip" data-value="8 класс">8 класс</button>
+                    <button class="level-chip" data-value="9 класс">9 класс</button>
+                    <button class="level-chip" data-value="10 класс">10 класс</button>
+                    <button class="level-chip" data-value="11 класс">11 класс</button>
+                    <button class="level-chip" data-value="ОГЭ">ОГЭ</button>
+                    <button class="level-chip" data-value="ЕГЭ">ЕГЭ</button>
+                    <button class="level-chip" data-value="Студент">Студент</button>
+                    <button class="level-chip" data-value="Взрослый">Взрослый</button>
+                    <button class="level-chip" data-value="Другое">Другое...</button>
+                </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="sheet-section">
+                <div class="section-label">Заметки (только для вас)</div>
+                <textarea class="form-textarea input-base" id="pendingNotes" placeholder="Предмет, особенности..." rows="3"></textarea>
+            </div>
+
+            <div class="edit-actions">
+                <button class="btn-outline" id="btnPendingClose">Закрыть</button>
+                <button class="btn-accent" id="btnPendingSave">Сохранить</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="toastText">Ссылка скопирована</span>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

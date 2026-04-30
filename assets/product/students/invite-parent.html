@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Пригласить родителя — Репетитор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="invite-parent.css">
+</head>
+<body>
+    <div class="app inv-app"></div>
+
+    <!-- Sheet overlay -->
+    <div class="inv-overlay" id="invOverlay"></div>
+
+    <!-- ═══ Invite Parent Sheet ═══ -->
+    <div class="sheet-base inv-sheet open" id="invSheet" role="dialog" aria-modal="true" aria-label="Пригласить родителя">
+        <div class="inv-handle-area" id="invHandle">
+            <div class="sheet-handle"></div>
+        </div>
+
+        <button class="inv-close" id="invCloseBtn" aria-label="Закрыть">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+            </svg>
+        </button>
+
+        <div class="inv-title">Пригласить родителя</div>
+
+        <div class="inv-body no-scrollbar">
+
+            <!-- Student context row -->
+            <div class="inv-student-ctx">
+                <div class="inv-student-avatar avatar-variant variant-indigo" id="invStudentAvatar">А</div>
+                <div class="inv-student-info">
+                    <div class="inv-student-name" id="invStudentName">Анна Иванова</div>
+                    <div class="inv-student-meta" id="invStudentMeta">Математика · 8 занятий</div>
+                </div>
+            </div>
+
+            <!-- Section 1: Method pills -->
+            <div class="inv-section">
+                <div class="section-label inv-section-label">Способ приглашения</div>
+                <div class="inv-format-pills">
+                    <button class="inv-format-pill active" data-method="telegram" type="button">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M21.2 4.4L2.4 11.3c-.5.2-.5.9 0 1l4.4 1.5 1.7 5.3c.1.4.6.6 1 .3l2.4-2 4.7 3.5c.4.3 1 .1 1.1-.4L21.9 5.3c.1-.5-.3-.9-.7-.9z"/>
+                        </svg>
+                        <span>Ссылка Telegram</span>
+                    </button>
+                    <button class="inv-format-pill" data-method="email" type="button">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/>
+                            <polyline points="22,6 12,13 2,6"/>
+                        </svg>
+                        <span>По email</span>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Section 2a: Telegram panel -->
+            <div class="inv-panel" id="invTgPanel">
+                <div class="inv-link-card">
+                    <input class="inv-link-input" id="invLinkInput" type="text" readonly value="">
+                    <button class="inv-link-copy" id="invCopyBtn" aria-label="Копировать ссылку">
+                        <svg class="inv-copy-ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="9" y="9" width="13" height="13" rx="2" ry="2"/>
+                            <path d="M5 15H4a2 2 0 0 1-2-2V4a2 2 0 0 1 2-2h9a2 2 0 0 1 2 2v1"/>
+                        </svg>
+                        <svg class="inv-check-ic" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </button>
+                </div>
+                <p class="inv-hint">Отправьте ссылку родителю в любом мессенджере. Он перейдёт в бота, подтвердит связь с <span id="invHintName">Анной</span> и получит доступ к расписанию и оплатам.</p>
+
+                <button class="inv-btn-telegram" id="invShareTgBtn" type="button">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="currentColor">
+                        <path d="M21.2 4.4L2.4 11.3c-.5.2-.5.9 0 1l4.4 1.5 1.7 5.3c.1.4.6.6 1 .3l2.4-2 4.7 3.5c.4.3 1 .1 1.1-.4L21.9 5.3c.1-.5-.3-.9-.7-.9z"/>
+                    </svg>
+                    <span>Поделиться в Telegram</span>
+                </button>
+            </div>
+
+            <!-- Section 2b: Email panel -->
+            <div class="inv-panel hidden" id="invEmailPanel">
+                <input class="inv-email-input input-base" id="invEmailInput" type="email" placeholder="mom@example.com" autocomplete="off">
+                <p class="inv-hint inv-hint-sm">Мы отправим письмо с инструкцией.</p>
+                <button class="inv-btn-submit" id="invEmailSubmit" type="button">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="22" y1="2" x2="11" y2="13"/>
+                        <polygon points="22 2 15 22 11 13 2 9 22 2"/>
+                    </svg>
+                    <span>Отправить приглашение</span>
+                </button>
+            </div>
+
+            <!-- Section 3: Permissions (collapsible) -->
+            <div class="inv-section inv-perms">
+                <button class="inv-perms-header" id="invPermsHeader" type="button" aria-expanded="false">
+                    <span>Что увидит родитель</span>
+                    <svg class="inv-chev" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="6 9 12 15 18 9"/>
+                    </svg>
+                </button>
+                <div class="collapsible inv-perms-list" id="invPermsList">
+                    <div class="inv-perm-item">
+                        <span class="inv-perm-ic inv-perm-ic-ok">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        <span class="inv-perm-text">Расписание занятий ребёнка</span>
+                    </div>
+                    <div class="inv-perm-item">
+                        <span class="inv-perm-ic inv-perm-ic-ok">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        <span class="inv-perm-text">Уведомления об оплатах</span>
+                    </div>
+                    <div class="inv-perm-item">
+                        <span class="inv-perm-ic inv-perm-ic-ok">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.8" stroke-linecap="round" stroke-linejoin="round">
+                                <polyline points="20 6 9 17 4 12"/>
+                            </svg>
+                        </span>
+                        <span class="inv-perm-text">Остатки пакетов</span>
+                    </div>
+                    <div class="inv-perm-item inv-perm-neg">
+                        <span class="inv-perm-ic inv-perm-ic-no">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                                <line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/>
+                            </svg>
+                        </span>
+                        <span class="inv-perm-text"><strong>НЕ</strong> увидит заметки репетитора</span>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Sticky footer -->
+        <div class="inv-footer">
+            <button class="inv-btn-close" id="invCloseFooter" type="button">Закрыть</button>
+        </div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="inv-toast" id="invToast">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="invToastText">Ссылка скопирована</span>
+    </div>
+
+    <script src="invite-parent.js"></script>
+</body>
+</html>

@@ -1,0 +1,195 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Профиль — Ученик</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="profile.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Header -->
+        <div class="page-header pu-page-header">
+            <h1 class="pu-page-title">Профиль</h1>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="pu-content no-scrollbar">
+
+            <!-- ═══ User card (hero) ═══ -->
+            <section class="pu-hero" id="puHero">
+                <button class="pu-hero-edit" id="puHeroEdit" type="button" aria-label="Редактировать профиль" title="Редактировать профиль">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 20h9"/><path d="M16.5 3.5a2.12 2.12 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/>
+                    </svg>
+                </button>
+
+                <div class="pu-hero-row">
+                    <div class="pu-hero-avatar avatar-variant" id="puHeroAvatar">А</div>
+                    <div class="pu-hero-text">
+                        <div class="pu-hero-name" id="puHeroName">Анна Соколова</div>
+                        <div class="pu-hero-meta" id="puHeroMeta">15 лет · 9 класс · Intermediate</div>
+                    </div>
+                </div>
+
+                <div class="pu-tz-chip" id="puTzChip">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span id="puTzText">Europe/Moscow · UTC+3</span>
+                </div>
+            </section>
+
+            <!-- ═══ Мои репетиторы ═══ -->
+            <section class="pu-section">
+                <div class="pu-section-label">Мои репетиторы</div>
+                <div class="pu-card-list" id="puTutorsList"></div>
+            </section>
+
+            <!-- ═══ Связанные родители ═══ -->
+            <section class="pu-section">
+                <div class="pu-section-label">Связанные родители</div>
+                <div class="pu-card-list" id="puParentsList"></div>
+                <div class="pu-empty-inline" id="puParentsEmpty" style="display:none">Никто не привязан</div>
+            </section>
+
+            <!-- ═══ Настройки приложения ═══ -->
+            <section class="pu-section">
+                <div class="pu-section-label">Настройки приложения</div>
+                <div class="pu-settings-list">
+
+                    <div class="pu-setting-row">
+                        <div class="pu-setting-left">
+                            <div class="icon-box">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+                                </svg>
+                            </div>
+                            <div class="pu-setting-text">
+                                <div class="pu-setting-title">Напоминания о занятиях</div>
+                                <div class="pu-setting-sub">За 24 часа до начала</div>
+                            </div>
+                        </div>
+                        <button class="toggle-switch on" data-key="reminders" type="button" role="switch" aria-checked="true" aria-label="Напоминания о занятиях"></button>
+                    </div>
+
+                    <div class="pu-setting-row">
+                        <div class="pu-setting-left">
+                            <div class="icon-box">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <circle cx="12" cy="12" r="10"/><line x1="4.93" y1="4.93" x2="19.07" y2="19.07"/>
+                                </svg>
+                            </div>
+                            <div class="pu-setting-text">
+                                <div class="pu-setting-title">Уведомления об отмене</div>
+                                <div class="pu-setting-sub">При отмене занятия репетитором</div>
+                            </div>
+                        </div>
+                        <button class="toggle-switch on" data-key="cancel-notif" type="button" role="switch" aria-checked="true" aria-label="Уведомления об отмене"></button>
+                    </div>
+
+                    <div class="pu-setting-row">
+                        <div class="pu-setting-left">
+                            <div class="icon-box">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                    <rect x="5" y="2" width="14" height="20" rx="2"/><line x1="12" y1="18" x2="12" y2="18"/>
+                                </svg>
+                            </div>
+                            <div class="pu-setting-text">
+                                <div class="pu-setting-title">Вибрация</div>
+                                <div class="pu-setting-sub">Виброотклик на действия</div>
+                            </div>
+                        </div>
+                        <button class="toggle-switch" data-key="vibration" type="button" role="switch" aria-checked="false" aria-label="Вибрация"></button>
+                    </div>
+
+                </div>
+            </section>
+
+            <!-- ═══ Связанность с Telegram ═══ -->
+            <section class="pu-section">
+                <div class="pu-section-label">Telegram</div>
+                <div class="pu-tg-card">
+                    <div class="pu-tg-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none">
+                            <path d="M21.2 4.4L2.4 11.3c-.5.2-.5.9 0 1l4.4 1.5 1.7 5.3c.1.4.6.6 1 .3l2.4-2 4.7 3.5c.4.3 1 .1 1.1-.4L21.9 5.3c.1-.5-.3-.9-.7-.9z" fill="currentColor"/>
+                        </svg>
+                    </div>
+                    <div class="pu-tg-text">
+                        <div class="pu-tg-title">Telegram подключён</div>
+                        <div class="pu-tg-username" id="puTgUsername">@anna_sokolova</div>
+                    </div>
+                    <button class="pu-tg-unlink" id="puTgUnlink" type="button">Отвязать</button>
+                </div>
+            </section>
+
+            <!-- ═══ Footer actions ═══ -->
+            <div class="pu-footer-actions">
+                <button class="pu-link-btn pu-link-accent" id="puHelpBtn" type="button">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/><path d="M9.09 9a3 3 0 0 1 5.83 1c0 2-3 3-3 3"/><line x1="12" y1="17" x2="12.01" y2="17"/>
+                    </svg>
+                    Помощь и поддержка
+                </button>
+                <button class="pu-link-btn pu-link-danger" id="puLogoutBtn" type="button">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/>
+                    </svg>
+                    Выйти из аккаунта
+                </button>
+                <div class="pu-version">Версия 1.0.0</div>
+            </div>
+
+        </div>
+
+        <!-- Bottom bar: nav (no FAB) -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav" aria-label="Основная навигация">
+                <a class="nav-item" href="schedule.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Расписание</span>
+                </a>
+                <a class="nav-item" href="progress.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+                    </svg>
+                    <span>Прогресс</span>
+                </a>
+                <a class="nav-item active" href="profile.html" aria-current="page">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Confirm dialog (double-confirm для отвязки родителя / telegram) -->
+    <div class="pu-confirm-overlay" id="puConfirmOverlay"></div>
+    <div class="pu-confirm-dialog" id="puConfirmDialog" role="dialog" aria-modal="true" aria-labelledby="puConfirmTitle">
+        <div class="pu-confirm-title" id="puConfirmTitle">Отвязать?</div>
+        <div class="pu-confirm-text" id="puConfirmText">Вы уверены?</div>
+        <div class="pu-confirm-actions">
+            <button class="pu-confirm-btn pu-confirm-cancel" id="puConfirmCancel" type="button">Отмена</button>
+            <button class="pu-confirm-btn pu-confirm-ok" id="puConfirmOk" type="button">Отвязать</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="pu-toast" id="puToast" role="status" aria-live="polite">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="puToastText">Готово</span>
+    </div>
+
+    <script src="profile.js"></script>
+</body>
+</html>

@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Политики отмены — Репетитор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="packages.css">
+    <link rel="stylesheet" href="policies.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Top nav -->
+        <div class="top-nav">
+            <a class="top-nav-back" href="index.html" aria-label="Назад">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </a>
+            <span class="top-nav-title">Политики отмены</span>
+        </div>
+
+        <!-- Content -->
+        <div class="packages-content no-scrollbar" id="policiesContent">
+            <!-- Default policy (single card) -->
+            <div class="policy-default-wrap" id="defaultPolicyWrap" style="display:none">
+                <div class="policy-card policy-card-default" id="defaultPolicyCard"></div>
+            </div>
+
+            <!-- Other policies -->
+            <div class="policy-list-wrap" id="policyListWrap" style="display:none">
+                <div id="policyList"></div>
+            </div>
+
+            <!-- Empty state -->
+            <div class="empty-state" id="emptyState" style="display:none">
+                <div class="empty-state-icon">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/><polyline points="9 12 11 14 15 10"/>
+                    </svg>
+                </div>
+                <p class="empty-state-text">Нет политик отмены</p>
+                <p class="empty-state-sub">Создайте правила штрафов за отмену, чтобы ученики видели условия перед записью</p>
+                <button class="btn-empty-create" id="btnEmptyCreate">Создать политику</button>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav">
+                <a class="nav-item" href="../calendar/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Календарь</span>
+                </a>
+                <a class="nav-item" href="../students/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Ученики</span>
+                </a>
+                <a class="nav-item" href="../analytics/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <span>Аналитика</span>
+                </a>
+                <a class="nav-item active" aria-current="page" href="index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+            <button class="btn-fab-profile" id="btnFab" aria-label="Создать политику" title="Создать политику">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sheet overlay -->
+    <div class="sheet-overlay" id="sheetOverlay"></div>
+
+    <!-- ═══ Create Policy Sheet ═══ -->
+    <div class="bottom-sheet sheet-base" id="createSheet" role="dialog" aria-modal="true">
+        <div class="sheet-handle-area" id="createHandle">
+            <div class="sheet-handle"></div>
+        </div>
+        <div class="sheet-body no-scrollbar">
+            <div class="sheet-title">Новая политика</div>
+
+            <!-- Название -->
+            <div class="sheet-section">
+                <div class="section-label"><span class="dot"></span> Название</div>
+                <input class="form-input input-base" type="text" id="createName" placeholder="Стандартная политика" autocomplete="off">
+            </div>
+
+            <!-- Правила -->
+            <div class="sheet-section">
+                <div class="section-label"><span class="dot"></span> Правила штрафов</div>
+                <div class="rule-list" id="createRuleList"></div>
+                <button class="btn-add-rule" id="btnCreateAddRule" type="button">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    <span>Добавить правило</span>
+                </button>
+            </div>
+
+            <!-- Default toggle -->
+            <div class="sheet-section">
+                <div class="toggle-cell">
+                    <div class="toggle-cell-text">
+                        <div class="toggle-cell-title">Сделать политикой по умолчанию</div>
+                        <div class="toggle-cell-sub">Применяется ко всем занятиям без отдельной политики</div>
+                    </div>
+                    <button class="toggle-switch" id="createDefaultToggle" data-key="create-default" type="button" role="switch" aria-checked="false" aria-label="Сделать политикой по умолчанию"></button>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-footer">
+            <button class="btn-submit" id="btnCreateSubmit">
+                Создать политику
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- ═══ Edit Policy Sheet ═══ -->
+    <div class="bottom-sheet sheet-base" id="editSheet" role="dialog" aria-modal="true">
+        <div class="sheet-handle-area" id="editHandle">
+            <div class="sheet-handle"></div>
+        </div>
+        <div class="sheet-body no-scrollbar">
+            <div class="sheet-title" id="editSheetTitle">Редактировать политику</div>
+
+            <!-- Название -->
+            <div class="sheet-section">
+                <div class="section-label"><span class="dot"></span> Название</div>
+                <input class="form-input input-base" type="text" id="editName" autocomplete="off">
+            </div>
+
+            <!-- Правила -->
+            <div class="sheet-section">
+                <div class="section-label"><span class="dot"></span> Правила штрафов</div>
+                <div class="rule-list" id="editRuleList"></div>
+                <button class="btn-add-rule" id="btnEditAddRule" type="button">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                    </svg>
+                    <span>Добавить правило</span>
+                </button>
+            </div>
+
+            <!-- Default toggle -->
+            <div class="sheet-section">
+                <div class="toggle-cell">
+                    <div class="toggle-cell-text">
+                        <div class="toggle-cell-title">Политика по умолчанию</div>
+                        <div class="toggle-cell-sub">Применяется ко всем занятиям без отдельной политики</div>
+                    </div>
+                    <button class="toggle-switch" id="editDefaultToggle" data-key="edit-default" type="button" role="switch" aria-checked="false" aria-label="Политика по умолчанию"></button>
+                </div>
+            </div>
+
+            <!-- Save -->
+            <div style="padding: 16px 0 4px;">
+                <button class="btn-submit" id="btnEditSave">Сохранить</button>
+            </div>
+
+            <!-- Delete -->
+            <div class="detail-danger-zone">
+                <button class="btn-danger-text" id="btnEditDelete" title="Удалить политику">Удалить политику</button>
+                <div class="btn-danger-hint hidden" id="editDeleteHint">Сначала назначьте другую политику по умолчанию</div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="toastText">Готово</span>
+    </div>
+
+    <script src="policies.js"></script>
+</body>
+</html>

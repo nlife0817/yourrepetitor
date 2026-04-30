@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Записаться на занятие — Ученик</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="booking.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- ════════════════ STEP SCREEN ════════════════ -->
+        <div class="bk-screen" id="bkStepScreen">
+
+            <!-- Top nav -->
+            <div class="top-nav bk-top-nav">
+                <a class="bk-top-back" href="schedule.html" aria-label="Назад">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </a>
+                <h1 class="bk-top-title">Записаться на занятие</h1>
+                <span class="bk-top-spacer" aria-hidden="true"></span>
+            </div>
+
+            <!-- Content -->
+            <div class="bk-content no-scrollbar">
+
+                <!-- Tutor card (sticky) -->
+                <div class="bk-tutor">
+                    <div class="bk-tutor-avatar avatar-variant variant-indigo">Е</div>
+                    <div class="bk-tutor-info">
+                        <div class="bk-tutor-name">Елена Петрова</div>
+                        <div class="bk-tutor-subject">Математика, физика</div>
+                    </div>
+                </div>
+
+                <!-- Step 1: Day -->
+                <section class="bk-step">
+                    <div class="bk-section-label">
+                        <span class="bk-step-num">1</span>
+                        Выберите день
+                    </div>
+                    <div class="bk-days no-scrollbar" id="bkDays" role="radiogroup" aria-label="Выбор дня"></div>
+                </section>
+
+                <!-- Step 2: Time -->
+                <section class="bk-step bk-step-time" id="bkStepTime" hidden>
+                    <div class="bk-section-label">
+                        <span class="bk-step-num">2</span>
+                        Доступное время
+                    </div>
+                    <div class="bk-date-caption" id="bkDateCaption">Понедельник, 22 апреля</div>
+                    <div class="bk-slots" id="bkSlots" role="radiogroup" aria-label="Выбор времени"></div>
+                </section>
+
+                <!-- Step 3: Template -->
+                <section class="bk-step bk-step-template" id="bkStepTemplate" hidden>
+                    <div class="bk-section-label">
+                        <span class="bk-step-num">3</span>
+                        Параметры занятия
+                    </div>
+                    <div class="bk-templates" id="bkTemplates" role="radiogroup" aria-label="Выбор шаблона"></div>
+                </section>
+
+                <!-- Summary -->
+                <section class="bk-summary" id="bkSummary" hidden>
+                    <div class="bk-summary-row">
+                        <span class="bk-summary-label">День</span>
+                        <span class="bk-summary-value" id="bkSumDay">—</span>
+                    </div>
+                    <div class="bk-summary-row">
+                        <span class="bk-summary-label">Время</span>
+                        <span class="bk-summary-value" id="bkSumTime">—</span>
+                    </div>
+                    <div class="bk-summary-row">
+                        <span class="bk-summary-label">Длительность</span>
+                        <span class="bk-summary-value" id="bkSumDuration">—</span>
+                    </div>
+                    <div class="bk-summary-divider"></div>
+                    <div class="bk-summary-row bk-summary-total">
+                        <span class="bk-summary-label">Сумма</span>
+                        <span class="bk-summary-value bk-summary-amount" id="bkSumAmount">—</span>
+                    </div>
+                </section>
+            </div>
+
+            <!-- Footer -->
+            <div class="bk-footer">
+                <button class="bk-submit" id="bkSubmit" disabled>Отправить заявку</button>
+            </div>
+        </div>
+
+        <!-- ════════════════ PENDING SCREEN ════════════════ -->
+        <div class="bk-screen bk-pending" id="bkPendingScreen" hidden>
+
+            <div class="top-nav bk-top-nav">
+                <a class="bk-top-back" href="schedule.html" aria-label="Назад">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="15 18 9 12 15 6"/>
+                    </svg>
+                </a>
+                <h1 class="bk-top-title">Заявка отправлена</h1>
+                <span class="bk-top-spacer" aria-hidden="true"></span>
+            </div>
+
+            <div class="bk-pending-body no-scrollbar">
+                <div class="bk-pending-icon-wrap">
+                    <div class="bk-pending-icon-circle">
+                        <div class="bk-pending-pulse"></div>
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/>
+                            <polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                    </div>
+                </div>
+
+                <h2 class="bk-pending-title">Заявка отправлена</h2>
+                <p class="bk-pending-subtitle">Репетитор подтвердит или отклонит заявку в течение 24 часов. Мы уведомим вас.</p>
+
+                <div class="bk-summary bk-pending-summary">
+                    <div class="bk-summary-row">
+                        <span class="bk-summary-label">Репетитор</span>
+                        <span class="bk-summary-value" id="bkPendTutor">—</span>
+                    </div>
+                    <div class="bk-summary-row">
+                        <span class="bk-summary-label">День</span>
+                        <span class="bk-summary-value" id="bkPendDay">—</span>
+                    </div>
+                    <div class="bk-summary-row">
+                        <span class="bk-summary-label">Время</span>
+                        <span class="bk-summary-value" id="bkPendTime">—</span>
+                    </div>
+                    <div class="bk-summary-row">
+                        <span class="bk-summary-label">Длительность</span>
+                        <span class="bk-summary-value" id="bkPendDuration">—</span>
+                    </div>
+                    <div class="bk-summary-divider"></div>
+                    <div class="bk-summary-row bk-summary-total">
+                        <span class="bk-summary-label">Сумма</span>
+                        <span class="bk-summary-value bk-summary-amount" id="bkPendAmount">—</span>
+                    </div>
+                </div>
+
+                <div class="bk-pending-actions">
+                    <a class="bk-submit" href="schedule.html">Вернуться к расписанию</a>
+                    <button class="bk-text-btn" id="bkBookMore">Записаться ещё</button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Bottom bar: student nav (3 tabs) -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav" aria-label="Основная навигация">
+                <a class="nav-item active" href="schedule.html" aria-current="page">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Расписание</span>
+                </a>
+                <a class="nav-item" href="progress.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+                    </svg>
+                    <span>Прогресс</span>
+                </a>
+                <a class="nav-item" href="profile.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </div>
+
+        <!-- Toast -->
+        <div class="toast bk-toast" id="bkToast">
+            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                <polyline points="20 6 9 17 4 12"/>
+            </svg>
+            <span id="bkToastText">Заявка отправлена</span>
+        </div>
+    </div>
+
+    <script src="booking.js"></script>
+</body>
+</html>

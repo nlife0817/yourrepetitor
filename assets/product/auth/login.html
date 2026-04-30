@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Вход — TutorFlow</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+        <main class="auth-root">
+            <div class="auth-hero">
+                <div class="auth-icon auth-icon--telegram" aria-hidden="true">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="m21.854 2.147-10.94 10.939"/>
+                        <path d="M21.854 2.147 13.5 21.5a.5.5 0 0 1-.925.032l-3.34-6.24a1 1 0 0 0-.434-.434l-6.24-3.34a.5.5 0 0 1 .032-.925L21.854 2.147Z"/>
+                    </svg>
+                </div>
+                <h1 class="auth-title">Войдите через Telegram</h1>
+                <p class="auth-subtitle">TutorFlow работает внутри Telegram. Нажмите кнопку ниже, чтобы вернуться в бота.</p>
+            </div>
+
+            <div class="auth-actions">
+                <a href="#" class="auth-primary-btn auth-primary-btn--telegram" data-action="mock" data-mock-msg="Открываем @tutorflow_bot в Telegram...">
+                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+                        <path d="m21.854 2.147-10.94 10.939"/>
+                        <path d="M21.854 2.147 13.5 21.5a.5.5 0 0 1-.925.032l-3.34-6.24a1 1 0 0 0-.434-.434l-6.24-3.34a.5.5 0 0 1 .032-.925L21.854 2.147Z"/>
+                    </svg>
+                    Открыть в Telegram
+                </a>
+                <a href="#" class="auth-secondary-btn" data-action="mock" data-mock-msg="Переход на tutorflow.app">Подробнее о приложении</a>
+            </div>
+        </main>
+
+        <footer class="auth-footer">
+            Версия 1.0.0 · Поддержка <a href="#" data-action="mock" data-mock-msg="@tutorflow_support">@tutorflow_support</a>
+        </footer>
+    </div>
+    <script src="app.js"></script>
+</body>
+</html>

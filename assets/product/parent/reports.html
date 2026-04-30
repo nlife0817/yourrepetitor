@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Отчёты — Родитель</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="reports.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Header -->
+        <div class="page-header pr2-header">
+            <h1 class="pr2-title">Отчёты</h1>
+            <div class="pr2-subtitle">Аналитика занятий ваших детей</div>
+        </div>
+
+        <!-- Content -->
+        <div class="pr2-content no-scrollbar">
+
+            <!-- Child switcher -->
+            <div class="pr2-child-switcher-wrap" id="pr2ChildSwitcherWrap">
+                <div class="pr2-child-switcher no-scrollbar" id="pr2ChildSwitcher" role="tablist" aria-label="Выбор ребёнка"></div>
+            </div>
+
+            <!-- Single child card -->
+            <div class="pr2-single-child-card" id="pr2SingleChildCard" style="display:none">
+                <div class="pr2-single-child-avatar avatar-variant variant-indigo" id="pr2SingleChildAvatar">А</div>
+                <div class="pr2-single-child-info">
+                    <div class="pr2-single-child-name" id="pr2SingleChildName">Артём</div>
+                    <div class="pr2-single-child-meta" id="pr2SingleChildMeta">8 класс · 14 лет</div>
+                </div>
+            </div>
+
+            <!-- Period switcher -->
+            <div class="pr2-period-sticky">
+                <div class="pr2-period-switcher" role="tablist" aria-label="Период">
+                    <button class="picker-chip" data-period="7" type="button">7 дней</button>
+                    <button class="picker-chip active" data-period="30" type="button">30 дней</button>
+                    <button class="picker-chip" data-period="90" type="button">3 месяца</button>
+                    <button class="picker-chip" data-period="365" type="button">12 месяцев</button>
+                </div>
+                <div class="pr2-period-range" id="pr2PeriodRange">1 — 30 апреля</div>
+            </div>
+
+            <!-- Summary grid 2×2 -->
+            <div class="pr2-summary-grid" id="pr2SummaryGrid">
+                <div class="pr2-summary-card" data-key="lessons">
+                    <div class="pr2-summary-label">Проведено</div>
+                    <div class="pr2-summary-value" data-role="value">—</div>
+                    <div class="pr2-summary-trend" data-role="trend">—</div>
+                </div>
+                <div class="pr2-summary-card" data-key="paid">
+                    <div class="pr2-summary-label">Оплачено</div>
+                    <div class="pr2-summary-value" data-role="value">—</div>
+                    <div class="pr2-summary-trend" data-role="trend">—</div>
+                </div>
+                <div class="pr2-summary-card" data-key="missed">
+                    <div class="pr2-summary-label">Пропущено</div>
+                    <div class="pr2-summary-value" data-role="value">—</div>
+                    <div class="pr2-summary-trend" data-role="trend">—</div>
+                </div>
+                <div class="pr2-summary-card pr2-summary-card--attendance" data-key="attendance">
+                    <div class="pr2-summary-label">Посещаемость</div>
+                    <div class="pr2-attendance-row">
+                        <div class="pr2-progress-circle" id="pr2AttendanceCircle" aria-hidden="true">
+                            <svg viewBox="0 0 36 36">
+                                <circle class="pr2-circle-bg" cx="18" cy="18" r="15.915"/>
+                                <circle class="pr2-circle-fg" cx="18" cy="18" r="15.915" id="pr2CircleFg"/>
+                            </svg>
+                        </div>
+                        <div class="pr2-summary-value" data-role="value">—</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Area chart card -->
+            <div class="pr2-chart-card">
+                <div class="pr2-chart-header">
+                    <div class="pr2-chart-title">Занятия по неделям</div>
+                    <div class="pr2-chart-toggle" role="tablist" aria-label="Метрика графика">
+                        <button class="pr2-chart-toggle-btn active" data-series="lessons" type="button">Занятия</button>
+                        <button class="pr2-chart-toggle-btn" data-series="spend" type="button">Расходы</button>
+                    </div>
+                </div>
+                <div class="pr2-chart-canvas">
+                    <svg id="pr2ChartSvg" viewBox="0 0 320 140" preserveAspectRatio="none" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="pr2ChartGradient" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="currentColor" stop-opacity="0.28"/>
+                                <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <g class="pr2-chart-grid" id="pr2ChartGrid"></g>
+                        <path id="pr2ChartArea" class="pr2-chart-area" d=""/>
+                        <path id="pr2ChartLine" class="pr2-chart-line" d=""/>
+                        <g id="pr2ChartDots" class="pr2-chart-dots"></g>
+                    </svg>
+                </div>
+                <div class="pr2-chart-x-axis" id="pr2ChartXAxis"></div>
+            </div>
+
+            <!-- Subjects -->
+            <div class="pr2-section-head">
+                <div class="pr2-section-label">Разбивка по предметам</div>
+            </div>
+            <ul class="pr2-subjects-list" id="pr2SubjectsList"></ul>
+
+            <!-- Weekly attendance -->
+            <div class="pr2-section-head">
+                <div class="pr2-section-label">Посещаемость по неделям</div>
+            </div>
+            <div class="pr2-attendance-card">
+                <div class="pr2-attendance-bars" id="pr2AttendanceBars"></div>
+            </div>
+
+            <!-- Reports files -->
+            <div class="pr2-section-head">
+                <div class="pr2-section-label">Отчёты-файлы</div>
+            </div>
+            <ul class="pr2-files-list" id="pr2FilesList"></ul>
+
+        </div>
+
+        <!-- Bottom nav (parent: 3 tabs, no FAB) -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav" aria-label="Основная навигация">
+                <a class="nav-item" href="schedule.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Расписание</span>
+                </a>
+                <a class="nav-item active" href="reports.html" aria-current="page">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <span>Отчёты</span>
+                </a>
+                <a class="nav-item" href="profile.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="reports.js"></script>
+</body>
+</html>

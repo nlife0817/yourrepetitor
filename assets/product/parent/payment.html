@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Оплата — Родитель</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="payment.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Top nav -->
+        <div class="top-nav">
+            <a class="top-nav-back" href="profile.html" aria-label="Назад">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </a>
+            <span class="top-nav-title">Оплата</span>
+        </div>
+
+        <!-- Content -->
+        <div class="pm-content no-scrollbar" id="pmContent">
+
+            <!-- ═══ Total hero ═══ -->
+            <section class="pm-total-card" id="pmTotalCard">
+                <div class="pm-total-label">К оплате всего</div>
+                <div class="pm-total-value" id="pmTotalValue">24 200 ₽</div>
+                <div class="pm-total-period" id="pmTotalPeriod">за Апрель 2026</div>
+                <button class="pm-pay-all-btn" id="pmPayAllBtn" type="button">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/>
+                    </svg>
+                    <span>Оплатить всё</span>
+                </button>
+            </section>
+
+            <!-- ═══ По детям ═══ -->
+            <section class="pm-section">
+                <div class="pm-section-label">По детям</div>
+                <div class="pm-children-list" id="pmChildrenList"></div>
+            </section>
+
+            <!-- ═══ Способ оплаты (default) ═══ -->
+            <section class="pm-section">
+                <div class="pm-section-label">Способ оплаты</div>
+                <div class="pm-method-card" id="pmDefaultMethod">
+                    <div class="pm-method-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="2" y="5" width="20" height="14" rx="3"/><line x1="2" y1="10" x2="22" y2="10"/>
+                        </svg>
+                    </div>
+                    <div class="pm-method-text">
+                        <div class="pm-method-title" id="pmDefaultMethodTitle">Visa</div>
+                        <div class="pm-method-sub" id="pmDefaultMethodNumber">•••• 4321</div>
+                    </div>
+                    <button class="pm-method-change" id="pmChangeMethodBtn" type="button">Сменить</button>
+                </div>
+            </section>
+
+            <!-- ═══ История платежей ═══ -->
+            <section class="pm-section">
+                <div class="pm-section-label">История платежей</div>
+                <div class="pm-history-list" id="pmHistoryList"></div>
+            </section>
+
+        </div>
+
+        <!-- Bottom nav (parent: 3 tabs, active Профиль) -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav" aria-label="Основная навигация">
+                <a class="nav-item" href="schedule.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Расписание</span>
+                </a>
+                <a class="nav-item" href="reports.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <span>Отчёты</span>
+                </a>
+                <a class="nav-item active" href="profile.html" aria-current="page">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Sheet overlay -->
+    <div class="sheet-overlay" id="sheetOverlay"></div>
+
+    <!-- ═══ Payment Method Sheet ═══ -->
+    <div class="bottom-sheet sheet-base pm-sheet" id="methodSheet" role="dialog" aria-modal="true" aria-labelledby="pmSheetTitle">
+        <div class="sheet-handle-area" id="methodHandle">
+            <div class="sheet-handle"></div>
+        </div>
+        <div class="sheet-body no-scrollbar">
+            <div class="sheet-title" id="pmSheetTitle">Выбор способа оплаты</div>
+            <div class="pm-methods-list" id="pmMethodsList"></div>
+        </div>
+        <div class="sheet-footer pm-sheet-footer">
+            <div class="pm-sheet-summary">
+                <span class="pm-sheet-summary-label">К оплате</span>
+                <span class="pm-sheet-summary-amount" id="pmSheetAmount">24 200 ₽</span>
+            </div>
+            <button class="pm-pay-confirm-btn" id="pmPayConfirmBtn" type="button">
+                <span class="pm-pay-confirm-label">Оплатить</span>
+                <span class="pm-pay-confirm-amount" id="pmPayConfirmAmount">24 200 ₽</span>
+            </button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="pm-toast" id="pmToast" role="status" aria-live="polite">
+        <svg class="pm-toast-icon" aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="pmToastText">Готово</span>
+    </div>
+
+    <script src="payment.js"></script>
+</body>
+</html>

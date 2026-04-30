@@ -1,0 +1,136 @@
+<!doctype html>
+<html lang="ru">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Твой репетитор — Создай НАШЕ 2026</title>
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/tokens.css">
+    <link rel="stylesheet" href="styles/base.css">
+    <link rel="stylesheet" href="styles/slide-1.css">
+    <link rel="stylesheet" href="styles/slide-2.css">
+    <link rel="stylesheet" href="styles/slide-3.css">
+    <link rel="stylesheet" href="styles/slide-4.css">
+    <link rel="stylesheet" href="styles/slide-5.css">
+    <link rel="stylesheet" href="styles/slide-6.css">
+    <link rel="stylesheet" href="styles/slide-7.css">
+    <link rel="stylesheet" href="styles/slide-8.css">
+    <link rel="stylesheet" href="styles/slide-9.css">
+    <link rel="stylesheet" href="styles/slide-10.css">
+    <link rel="stylesheet" href="styles/slide-11.css">
+    <link rel="stylesheet" href="styles/slide-12.css">
+</head>
+<body>
+
+<div class="deck"></div>
+
+<div class="nav-hint">
+    <kbd>←</kbd><kbd>→</kbd> навигация · <kbd>P</kbd> печать в&nbsp;PDF
+</div>
+
+<script>
+    // ── Slide manifest. Add new entries as slides appear. ──
+    const SLIDES = [
+        { html: 'slides/slide-1.html', css: 'styles/slide-1.css' },
+        { html: 'slides/slide-2.html', css: 'styles/slide-2.css' },
+        { html: 'slides/slide-3.html', css: 'styles/slide-3.css' },
+        { html: 'slides/slide-4.html', css: 'styles/slide-4.css' },
+        { html: 'slides/slide-5.html', css: 'styles/slide-5.css' },
+        { html: 'slides/slide-6.html', css: 'styles/slide-6.css' },
+        { html: 'slides/slide-7.html', css: 'styles/slide-7.css' },
+        { html: 'slides/slide-8.html', css: 'styles/slide-8.css' },
+        { html: 'slides/slide-9.html', css: 'styles/slide-9.css' },
+        { html: 'slides/slide-10.html', css: 'styles/slide-10.css' },
+        { html: 'slides/slide-11.html', css: 'styles/slide-11.css' },
+        { html: 'slides/slide-12.html', css: 'styles/slide-12.css' }
+    ];
+
+    const deck = document.querySelector('.deck');
+    const loadedCss = new Set(['styles/slide-1.css', 'styles/slide-2.css', 'styles/slide-3.css', 'styles/slide-4.css', 'styles/slide-5.css', 'styles/slide-6.css', 'styles/slide-7.css', 'styles/slide-8.css', 'styles/slide-9.css', 'styles/slide-10.css', 'styles/slide-11.css', 'styles/slide-12.css']); // already linked in <head>
+    let ready = false;
+
+    function ensureCss(href) {
+        if (!href || loadedCss.has(href)) return;
+        const link = document.createElement('link');
+        link.rel = 'stylesheet';
+        link.href = href;
+        document.head.appendChild(link);
+        loadedCss.add(href);
+    }
+
+    async function fetchSlide(entry) {
+        const res = await fetch(entry.html);
+        if (!res.ok) throw new Error(`Failed to load ${entry.html}: ${res.status}`);
+        const html = await res.text();
+        const doc = new DOMParser().parseFromString(html, 'text/html');
+        const section = doc.querySelector('section.slide');
+        if (!section) throw new Error(`No <section class="slide"> in ${entry.html}`);
+
+        // Rewrite relative asset paths (slides/* uses ../assets/*) to root-relative.
+        section.querySelectorAll('img[src]').forEach(img => {
+            const src = img.getAttribute('src');
+            if (src && src.startsWith('../')) img.setAttribute('src', src.slice(3));
+        });
+
+        section.querySelectorAll('iframe[src]').forEach(frame => {
+            const src = frame.getAttribute('src');
+            if (src && src.startsWith('../')) frame.setAttribute('src', src.slice(3));
+        });
+
+        return section;
+    }
+
+    document.addEventListener('DOMContentLoaded', async () => {
+        try {
+            const sections = await Promise.all(SLIDES.map(async entry => {
+                ensureCss(entry.css);
+                return await fetchSlide(entry);
+            }));
+            sections.forEach(s => deck.appendChild(s));
+            ready = true;
+        } catch (err) {
+            console.error('[deck] load error:', err);
+            const msg = document.createElement('div');
+            msg.style.cssText = 'padding:48px;font-family:system-ui;color:#dc2626;';
+            msg.textContent = 'Ошибка загрузки слайдов: ' + err.message;
+            deck.appendChild(msg);
+        }
+
+        // Keyboard nav — only after slides are in DOM.
+        document.addEventListener('keydown', (e) => {
+            if (!ready) return;
+            const slides = [...document.querySelectorAll('.slide')];
+            if (!slides.length) return;
+            const current = slides.findIndex(s => {
+                const r = s.getBoundingClientRect();
+                return r.top <= window.innerHeight / 2 && r.bottom >= window.innerHeight / 2;
+            });
+            if (e.key === 'ArrowRight' && current < slides.length - 1) {
+                slides[current + 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (e.key === 'ArrowLeft' && current > 0) {
+                slides[current - 1].scrollIntoView({ behavior: 'smooth', block: 'start' });
+            } else if (e.key.toLowerCase() === 'p' && !e.ctrlKey && !e.metaKey) {
+                if (!ready) {
+                    console.warn('[deck] print blocked — slides still loading');
+                    return;
+                }
+                window.print();
+            }
+        });
+    });
+
+    // Block native print until slides are ready.
+    window.addEventListener('beforeprint', (e) => {
+        if (!ready) {
+            e.preventDefault?.();
+            console.warn('[deck] print blocked — slides still loading');
+        }
+    });
+</script>
+
+</body>
+</html>

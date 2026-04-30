@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Финансы — Репетитор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="finance.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Top nav -->
+        <div class="top-nav">
+            <a class="top-nav-back" href="index.html" aria-label="Назад">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </a>
+            <span class="top-nav-title">Финансы</span>
+        </div>
+
+        <!-- Content -->
+        <div class="fin-content no-scrollbar" id="finContent">
+
+            <!-- Summary -->
+            <div class="fin-summary" id="finSummary">
+                <div class="fin-summary-card fin-summary-card--success">
+                    <div class="fin-summary-label">Поступило</div>
+                    <div class="fin-summary-value" id="sumIncome">₽ 186 400</div>
+                    <div class="fin-summary-trend fin-trend-up">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="18 15 12 9 6 15"/>
+                        </svg>
+                        <span>+12%</span>
+                    </div>
+                </div>
+                <div class="fin-summary-card fin-summary-card--warning">
+                    <div class="fin-summary-label">Ожидает</div>
+                    <div class="fin-summary-value" id="sumPending">₽ 12 500</div>
+                    <div class="fin-summary-trend fin-trend-warn">
+                        <span>3 платежа</span>
+                    </div>
+                </div>
+                <div class="fin-summary-card fin-summary-card--danger">
+                    <div class="fin-summary-label">Должники</div>
+                    <div class="fin-summary-value" id="sumOverdue">₽ 7 600</div>
+                    <div class="fin-summary-trend fin-trend-danger">
+                        <span>2 клиента</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Filters row -->
+            <div class="fin-filters-wrap">
+                <div class="fin-filters no-scrollbar" id="finFilters">
+                    <button class="picker-chip" data-period="today">Сегодня</button>
+                    <button class="picker-chip" data-period="week">Неделя</button>
+                    <button class="picker-chip active" data-period="month">Месяц</button>
+                    <button class="picker-chip" data-period="quarter">3 месяца</button>
+                    <button class="picker-chip" data-period="all">Всё время</button>
+                    <div class="picker-divider"></div>
+                    <button class="picker-chip active" data-status="all">Все</button>
+                    <button class="picker-chip" data-status="paid">Оплачено</button>
+                    <button class="picker-chip" data-status="pending">Ожидает</button>
+                    <button class="picker-chip" data-status="overdue">Просрочено</button>
+                </div>
+                <button class="fin-export-btn" id="btnExport">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/>
+                    </svg>
+                    <span>Экспорт</span>
+                </button>
+            </div>
+
+            <!-- Transactions list -->
+            <div class="fin-txn-groups" id="finGroups"></div>
+
+            <!-- Empty state -->
+            <div class="fin-empty" id="finEmpty" style="display:none">
+                <div class="fin-empty-icon">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 12V8H6a2 2 0 0 1-2-2c0-1.1.9-2 2-2h12v4"/><path d="M4 6v12c0 1.1.9 2 2 2h14v-4"/><path d="M18 12a2 2 0 0 0-2 2c0 1.1.9 2 2 2h4v-4h-4z"/>
+                    </svg>
+                </div>
+                <p class="fin-empty-text">Нет транзакций за выбранный период</p>
+                <button class="fin-empty-reset" id="btnResetFilters">Сбросить фильтры</button>
+            </div>
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav">
+                <a class="nav-item" href="../calendar/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Календарь</span>
+                </a>
+                <a class="nav-item" href="../students/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Ученики</span>
+                </a>
+                <a class="nav-item" href="../analytics/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <span>Аналитика</span>
+                </a>
+                <a class="nav-item active" aria-current="page" href="index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Sheet overlay -->
+    <div class="sheet-overlay" id="sheetOverlay"></div>
+
+    <!-- Txn Detail Sheet -->
+    <div class="bottom-sheet sheet-base" id="txnSheet" role="dialog" aria-modal="true">
+        <div class="sheet-handle-area" id="txnHandle">
+            <div class="sheet-handle"></div>
+        </div>
+        <div class="sheet-body no-scrollbar">
+            <div class="sheet-title">Платёж</div>
+
+            <!-- Big amount -->
+            <div class="fin-detail-amount" id="detailAmount">+ 15 200 ₽</div>
+
+            <!-- Client card -->
+            <div class="fin-detail-client">
+                <div class="fin-detail-avatar avatar-variant variant-indigo" id="detailAvatar">А</div>
+                <div class="fin-detail-client-info">
+                    <div class="fin-detail-client-name" id="detailClient">Анна Сергеева</div>
+                    <div class="fin-detail-client-meta" id="detailDate">20 апреля · 14:30</div>
+                </div>
+                <div class="fin-badge fin-badge-paid" id="detailBadge">Оплачено</div>
+            </div>
+
+            <!-- Details -->
+            <div class="fin-detail-section">
+                <div class="fin-detail-label">Детали</div>
+                <div class="fin-detail-rows">
+                    <div class="fin-detail-row">
+                        <span class="fin-detail-row-label">Клиент</span>
+                        <span class="fin-detail-row-value" id="detailClientName">Анна Сергеева</span>
+                    </div>
+                    <div class="fin-detail-row">
+                        <span class="fin-detail-row-label">Метод</span>
+                        <span class="fin-detail-row-value" id="detailMethod">Перевод</span>
+                    </div>
+                    <div class="fin-detail-row">
+                        <span class="fin-detail-row-label">Занятий</span>
+                        <span class="fin-detail-row-value" id="detailLessons">8</span>
+                    </div>
+                    <div class="fin-detail-row">
+                        <span class="fin-detail-row-label">Статус</span>
+                        <span class="fin-detail-row-value">
+                            <span class="fin-badge fin-badge-paid" id="detailStatusPill">Оплачено</span>
+                        </span>
+                    </div>
+                    <div class="fin-detail-row">
+                        <span class="fin-detail-row-label">ID транзакции</span>
+                        <span class="fin-detail-row-value fin-detail-txn-id" id="detailTxnId">TX-2026-04-20-A8F3</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-footer">
+            <button class="fin-detail-action" id="btnDetailAction">Отметить как «Оплачено»</button>
+        </div>
+    </div>
+
+    <!-- Toast -->
+    <div class="toast" id="toast">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="toastText">Готово</span>
+    </div>
+
+    <script src="finance.js"></script>
+</body>
+</html>

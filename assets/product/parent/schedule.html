@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Расписание — Родитель</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="schedule.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Header -->
+        <div class="page-header pa-page-header">
+            <h1 class="pa-page-title">Расписание</h1>
+            <div class="pa-page-subtitle" id="paPageSubtitle">Понедельник, 20 апреля</div>
+        </div>
+
+        <!-- Content -->
+        <div class="pa-content no-scrollbar">
+
+            <!-- Child switcher (shown if children > 1) -->
+            <div class="pa-child-switcher-wrap" id="paChildSwitcherWrap">
+                <div class="pa-child-switcher no-scrollbar" id="paChildSwitcher" role="tablist" aria-label="Выбор ребёнка"></div>
+            </div>
+
+            <!-- Single child card (shown if only 1 child) -->
+            <div class="pa-single-child-card" id="paSingleChildCard" style="display:none">
+                <div class="pa-single-child-avatar avatar-variant variant-indigo" id="paSingleChildAvatar">А</div>
+                <div class="pa-single-child-info">
+                    <div class="pa-single-child-name" id="paSingleChildName">Артём</div>
+                    <div class="pa-single-child-meta" id="paSingleChildMeta">8 класс · 14 лет</div>
+                </div>
+            </div>
+
+            <!-- View toggle -->
+            <div class="pa-toggle-wrap">
+                <div class="view-toggle pa-view-toggle" role="tablist" aria-label="Вид расписания">
+                    <button class="active" data-view="upcoming" role="tab" aria-selected="true">Ближайшие</button>
+                    <button data-view="past" role="tab" aria-selected="false">История</button>
+                </div>
+            </div>
+
+            <!-- Upcoming list -->
+            <div class="pa-list" id="paListUpcoming"></div>
+
+            <!-- Past list -->
+            <div class="pa-list" id="paListPast" style="display:none"></div>
+
+            <!-- Empty state -->
+            <div class="pa-empty" id="paEmpty" style="display:none">
+                <div class="pa-empty-icon">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/><line x1="10" y1="14" x2="14" y2="18"/><line x1="14" y1="14" x2="10" y2="18"/>
+                    </svg>
+                </div>
+                <p class="pa-empty-title" id="paEmptyTitle">Пока нет занятий</p>
+                <p class="pa-empty-sub">Занятия появятся, когда репетитор их создаст</p>
+            </div>
+        </div>
+
+        <!-- Bottom nav (parent: 3 tabs, no FAB) -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav" aria-label="Основная навигация">
+                <a class="nav-item active" href="schedule.html" aria-current="page">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Расписание</span>
+                </a>
+                <a class="nav-item" href="reports.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/>
+                    </svg>
+                    <span>Отчёты</span>
+                </a>
+                <a class="nav-item" href="profile.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <!-- Sheet overlay -->
+    <div class="sheet-overlay" id="sheetOverlay"></div>
+
+    <!-- Lesson Detail Sheet (parent view-only) -->
+    <div class="detail-sheet sheet-base pa-detail-sheet" id="detailSheet" role="dialog" aria-modal="true" aria-label="Информация о занятии">
+        <div class="detail-sheet-accent variant-indigo" id="detailAccent"></div>
+        <div class="sheet-handle-area" id="detailHandle">
+            <div class="sheet-handle"></div>
+        </div>
+
+        <div class="detail-sheet-body no-scrollbar">
+            <!-- Child header -->
+            <div class="detail-student-header">
+                <div class="detail-student-avatar avatar-variant variant-indigo" id="detailAvatar">А</div>
+                <div class="detail-student-info">
+                    <div class="detail-student-name" id="detailName">Артём</div>
+                    <div class="detail-student-subject" id="detailSubject">Математика</div>
+                </div>
+            </div>
+
+            <!-- Tutor section -->
+            <div class="detail-section pa-tutor-section">
+                <div class="detail-section-label">Репетитор</div>
+                <div class="pa-tutor-row">
+                    <div class="pa-tutor-avatar avatar-variant variant-indigo" id="detailTutorAvatar">Е</div>
+                    <div class="pa-tutor-name" id="detailTutorName">Елена Петрова</div>
+                    <button class="pa-tutor-tg-btn" id="detailTutorTgBtn" type="button" aria-label="Написать репетитору">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M21.2 4.4L2.4 11.3c-.5.2-.5.9 0 1l4.4 1.5 1.7 5.3c.1.4.6.6 1 .3l2.4-2 4.7 3.5c.4.3 1 .1 1.1-.4L21.9 5.3c.1-.5-.3-.9-.7-.9z" fill="currentColor"/></svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Date & Time -->
+            <div class="detail-section">
+                <div class="detail-section-label">Дата и время</div>
+                <div class="detail-datetime">
+                    <div class="icon-box">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <div class="detail-datetime-text">
+                        <div class="detail-datetime-main" id="detailDate">Понедельник, 22 апреля</div>
+                        <div class="detail-datetime-sub" id="detailDuration">14:00 — 15:00 · 1 ч</div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Payment -->
+            <div class="detail-section">
+                <div class="detail-section-label">Оплата</div>
+                <div class="detail-payment">
+                    <div class="detail-payment-left">
+                        <div class="icon-box">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+                            </svg>
+                        </div>
+                        <div class="detail-payment-badge pending" id="detailBadge">Ожидает оплаты</div>
+                    </div>
+                    <div>
+                        <span class="detail-payment-amount" id="detailAmount">1 900</span>
+                        <span class="detail-payment-currency">₽</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reschedule history -->
+            <div class="detail-section reschedule-history-section" id="rescheduleHistorySection" style="display:none">
+                <div class="reschedule-history-header" id="rescheduleHistoryToggle">
+                    <div class="detail-section-label" style="margin-bottom:0">
+                        История переносов
+                        <span class="rh-count" id="rhCount"></span>
+                    </div>
+                    <svg aria-hidden="true" class="rh-chevron" id="rhChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="reschedule-history-body collapsible" id="rescheduleHistoryBody"></div>
+            </div>
+
+            <!-- Footer: single close button -->
+            <div class="pa-detail-footer">
+                <button class="pa-btn-close" id="detailBtnClose" type="button">Закрыть</button>
+            </div>
+        </div>
+    </div>
+
+    <script src="schedule.js"></script>
+</body>
+</html>

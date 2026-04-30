@@ -1,0 +1,600 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Календарь — Расписание</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Header -->
+        <div class="header">
+            <div class="nav-row">
+                <div class="view-toggle">
+                    <button class="active">Неделя</button>
+                    <button>День</button>
+                </div>
+                <div class="month-label" id="monthLabel">Март</div>
+                <div class="nav-arrows">
+                    <button class="btn-today">Сегодня</button>
+                    <button id="btnPrev" title="Назад">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="15 18 9 12 15 6"/>
+                        </svg>
+                    </button>
+                    <button id="btnNext" title="Вперёд">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="9 6 15 12 9 18"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week strip -->
+        <div class="week-strip" id="weekStrip">
+            <div class="day-cell has-events" data-day="0">
+                <span class="day-label">Пн</span>
+                <span class="day-number">9</span>
+            </div>
+            <div class="day-cell has-events" data-day="1">
+                <span class="day-label">Вт</span>
+                <span class="day-number">10</span>
+            </div>
+            <div class="day-cell" data-day="2">
+                <span class="day-label">Ср</span>
+                <span class="day-number">11</span>
+            </div>
+            <div class="day-cell has-events" data-day="3">
+                <span class="day-label">Чт</span>
+                <span class="day-number">12</span>
+            </div>
+            <div class="day-cell" data-day="4">
+                <span class="day-label">Пт</span>
+                <span class="day-number">13</span>
+            </div>
+            <div class="day-cell" data-day="5">
+                <span class="day-label">Сб</span>
+                <span class="day-number">14</span>
+            </div>
+            <div class="day-cell today selected" data-day="6">
+                <span class="day-label">Вс</span>
+                <span class="day-number">15</span>
+            </div>
+        </div>
+
+        <!-- Schedule -->
+        <div class="schedule-container no-scrollbar">
+            <div class="time-grid" id="timeGrid">
+                <div class="time-row"><span class="time-label">00:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">01:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">02:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">03:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">04:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">05:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">06:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">07:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">08:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">09:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">10:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">11:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">12:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">13:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">14:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">15:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">16:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">17:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">18:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">19:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">20:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">21:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">22:00</span><div class="time-line"></div></div>
+                <div class="time-row"><span class="time-label">23:00</span><div class="time-line"></div></div>
+
+                <!-- Current time indicator -->
+                <div class="current-time" id="currentTime" style="display:none">
+                    <span class="current-time-badge" id="currentTimeBadge"></span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Week view grid -->
+        <div class="week-grid-container no-scrollbar" id="weekGridContainer">
+            <div class="week-header" id="weekHeader">
+                <div class="week-header-spacer"></div>
+            </div>
+            <div class="week-grid" id="weekGrid"></div>
+        </div>
+
+        <!-- Bottom bar: nav + fab -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav">
+                <a class="nav-item active" href="#calendar" aria-current="page">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Календарь</span>
+                </a>
+                <a class="nav-item" href="../students/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Ученики</span>
+                </a>
+                <a class="nav-item" href="../analytics/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <span>Аналитика</span>
+                </a>
+                <a class="nav-item" href="../profile/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+            <button class="btn-fab" id="btnFab" title="Добавить запись" aria-label="Добавить запись">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round">
+                    <line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Sheet overlay -->
+    <div class="sheet-overlay" id="sheetOverlay"></div>
+
+    <!-- Bottom Sheet -->
+    <div class="bottom-sheet sheet-base" id="bottomSheet" role="dialog" aria-modal="true" aria-label="Создать занятие">
+        <div class="sheet-handle-area" id="sheetHandle">
+            <div class="sheet-handle"></div>
+        </div>
+
+        <div class="sheet-body no-scrollbar">
+            <!-- Ученик -->
+            <div class="sheet-section">
+                <div class="section-label">
+                    <span class="dot"></span> Ученик
+                </div>
+                <div class="student-search-wrap" id="studentSelect">
+                    <div class="student-search-trigger input-base" id="studentTrigger">
+                        <span class="student-search-display" id="studentDisplay">Выберите ученика</span>
+                        <svg aria-hidden="true" class="student-search-chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Когда -->
+            <div class="sheet-section">
+                <div class="section-label">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    Когда
+                </div>
+                <div class="datetime-row">
+                    <div class="datetime-field">
+                        <input class="dt-input input-base" type="text" id="dateInput" value="15.03.2026" placeholder="дд.мм.гггг">
+                        <span class="dt-input-icon">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                            </svg>
+                        </span>
+                    </div>
+                    <div class="datetime-field narrow">
+                        <input class="dt-input input-base input-time-centered" type="text" id="timeInput" value="16:00" placeholder="чч:мм">
+                    </div>
+                </div>
+
+                <div class="mt-12">
+                    <div class="toggle-inline">
+                        <div class="toggle-inline-left">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>
+                            </svg>
+                            <span class="toggle-inline-label">Регулярное занятие</span>
+                        </div>
+                        <button class="toggle-switch" id="toggleRecurring" type="button" role="switch" aria-checked="false" aria-label="Регулярное занятие"></button>
+                    </div>
+                </div>
+
+                <!-- Recurring options (hidden by default) -->
+                <div class="recurring-options collapsible" id="recurringOptions">
+                    <div class="section-label mt-12">Дни недели <span class="dot"></span></div>
+                    <div class="weekday-chips" id="weekdayChips">
+                        <button class="wd-chip active" data-day="1">Пн</button>
+                        <button class="wd-chip active" data-day="2">Вт</button>
+                        <button class="wd-chip" data-day="3">Ср</button>
+                        <button class="wd-chip active" data-day="4">Чт</button>
+                        <button class="wd-chip" data-day="5">Пт</button>
+                        <button class="wd-chip" data-day="6">Сб</button>
+                        <button class="wd-chip" data-day="0">Вс</button>
+                    </div>
+
+                    <div class="recurring-row">
+                        <div class="recurring-col">
+                            <div class="section-label">Периодичность</div>
+                            <div class="freq-inline input-base">
+                                <span class="freq-inline-label">Каждые</span>
+                                <input class="freq-input" id="freqInput" type="text" inputmode="numeric" value="1" maxlength="2">
+                                <span class="freq-suffix">нед.</span>
+                            </div>
+                        </div>
+                        <div class="recurring-col">
+                            <div class="section-label">Окончание</div>
+                            <div class="end-row">
+                                <div class="student-select-wrap">
+                                    <select class="student-select input-base select-sm" id="endSelect">
+                                        <option value="never" selected>Бессрочно</option>
+                                        <option value="date">До даты</option>
+                                        <option value="count">N занятий</option>
+                                    </select>
+                                </div>
+                                <input class="end-count-input input-base input-sm" id="endCountInput" type="text" inputmode="numeric" placeholder="10" maxlength="3">
+                                <input class="end-count-input input-base input-date-sm" id="endDateInput" type="text" placeholder="дд.мм.гггг" maxlength="10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Длительность -->
+            <div class="sheet-section">
+                <div class="section-label">Длительность</div>
+                <div class="duration-row" id="durationRow">
+                    <button class="dur-chip" data-value="30">30м</button>
+                    <button class="dur-chip" data-value="45">45м</button>
+                    <button class="dur-chip active" data-value="60">1ч</button>
+                    <button class="dur-chip" data-value="90">1.5ч</button>
+                    <button class="dur-chip" data-value="120">2ч</button>
+                    <div class="dur-divider"></div>
+                    <div class="dur-custom">
+                        <input class="dur-custom-input input-base" id="durCustom" type="text" inputmode="numeric" placeholder="..." maxlength="3">
+                        <span class="dur-custom-suffix">м</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Стоимость + Формат -->
+            <div class="sheet-section">
+                <div style="display: flex; gap: 10px;">
+                    <div style="flex: 1;">
+                        <div class="section-label">Стоимость</div>
+                        <div class="price-wrap">
+                            <input class="price-input input-base" type="text" id="priceInput" value="2000" inputmode="numeric" placeholder="0">
+                            <span class="price-suffix">₽</span>
+                        </div>
+                    </div>
+                    <div style="flex: 1;">
+                        <div class="section-label">Формат</div>
+                        <div class="format-pills" id="formatToggle">
+                            <button class="format-pill active" data-value="online">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M15 10l5 5-5 5"/><path d="M4 4v7a4 4 0 0 0 4 4h12"/>
+                                </svg>
+                                Онлайн
+                            </button>
+                            <button class="format-pill" data-value="offline">
+                                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                                    <path d="M20 10c0 6-8 12-8 12s-8-6-8-12a8 8 0 0 1 16 0Z"/><circle cx="12" cy="10" r="3"/>
+                                </svg>
+                                Очно
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="sheet-footer">
+            <button class="btn-submit" id="btnSubmit">
+                Создать занятие
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                    <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                </svg>
+            </button>
+        </div>
+    </div>
+
+    <!-- Lesson Detail Sheet -->
+    <div class="detail-sheet sheet-base" id="detailSheet" role="dialog" aria-modal="true">
+        <div class="detail-sheet-accent variant-indigo" id="detailAccent"></div>
+        <div class="sheet-handle-area" id="detailHandle">
+            <div class="sheet-handle"></div>
+        </div>
+
+        <div class="detail-sheet-body no-scrollbar">
+            <!-- Student header -->
+            <div class="detail-student-header">
+                <div class="detail-student-avatar avatar-variant variant-indigo" id="detailAvatar">А</div>
+                <div class="detail-student-info">
+                    <div class="detail-student-name" id="detailName">Алиса Козлова</div>
+                    <div class="detail-student-subject" id="detailSubject">Математика</div>
+                </div>
+                <a class="detail-tg-btn" id="detailTgBtn" href="#" title="Написать в Telegram">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none"><path d="M21.2 4.4L2.4 11.3c-.5.2-.5.9 0 1l4.4 1.5 1.7 5.3c.1.4.6.6 1 .3l2.4-2 4.7 3.5c.4.3 1 .1 1.1-.4L21.9 5.3c.1-.5-.3-.9-.7-.9z" fill="currentColor"/></svg>
+                </a>
+            </div>
+
+            <!-- Date & Time -->
+            <div class="detail-section">
+                <div class="detail-section-label">Дата и время</div>
+                <div class="detail-datetime">
+                    <div class="icon-box">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="4" width="18" height="18" rx="2"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                        </svg>
+                    </div>
+                    <div class="detail-datetime-text">
+                        <div class="detail-datetime-main" id="detailDate">воскресенье, 15 марта</div>
+                        <div class="detail-datetime-sub" id="detailDuration">15:00 – 16:00 · 1 ч</div>
+                    </div>
+                    <!-- Edit series button (inline, only for recurring) -->
+                    <button class="detail-edit-series-btn" id="detailEditSeriesBtn" style="display:none" title="Редактировать серию">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                            <path d="M17 3a2.85 2.85 0 1 1 4 4L7.5 20.5 2 22l1.5-5.5Z"/>
+                        </svg>
+                    </button>
+                </div>
+                <!-- Recurring info line (shown for recurring lessons) -->
+                <div class="detail-recurring-line" id="detailRecurringBadge" style="display:none">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>
+                    </svg>
+                    <span id="detailRecurringText">Пн, Вт, Чт · каждую неделю</span>
+                </div>
+            </div>
+
+            <!-- Series Edit Mode (hidden by default) -->
+            <div class="detail-series-edit collapsible" id="seriesEditBlock">
+                <!-- Time -->
+                <div class="series-edit-section">
+                    <div class="section-label">
+                        <svg aria-hidden="true" class="icon-sm-muted" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                        </svg>
+                        Время занятия
+                    </div>
+                    <div class="datetime-field narrow">
+                        <input class="dt-input input-base input-time-centered" type="text" id="seriesTimeInput" value="16:00" placeholder="чч:мм">
+                    </div>
+                </div>
+
+                <!-- Days -->
+                <div class="series-edit-section">
+                    <div class="section-label">Дни недели <span class="dot"></span></div>
+                    <div class="weekday-chips" id="seriesWeekdayChips">
+                        <button class="wd-chip" data-day="1">Пн</button>
+                        <button class="wd-chip" data-day="2">Вт</button>
+                        <button class="wd-chip" data-day="3">Ср</button>
+                        <button class="wd-chip" data-day="4">Чт</button>
+                        <button class="wd-chip" data-day="5">Пт</button>
+                        <button class="wd-chip" data-day="6">Сб</button>
+                        <button class="wd-chip" data-day="0">Вс</button>
+                    </div>
+                </div>
+
+                <!-- Duration -->
+                <div class="series-edit-section">
+                    <div class="section-label">Длительность</div>
+                    <div class="duration-row" id="seriesDurationRow">
+                        <button class="dur-chip" data-value="30">30м</button>
+                        <button class="dur-chip" data-value="45">45м</button>
+                        <button class="dur-chip active" data-value="60">1ч</button>
+                        <button class="dur-chip" data-value="90">1.5ч</button>
+                        <button class="dur-chip" data-value="120">2ч</button>
+                        <div class="dur-divider"></div>
+                        <div class="dur-custom">
+                            <input class="dur-custom-input input-base" id="seriesDurCustom" type="text" inputmode="numeric" placeholder="..." maxlength="3">
+                            <span class="dur-custom-suffix">м</span>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Frequency & End -->
+                <div class="series-edit-section">
+                    <div class="recurring-row">
+                        <div class="recurring-col">
+                            <div class="section-label">Периодичность</div>
+                            <div class="freq-inline input-base">
+                                <span class="freq-inline-label">Каждые</span>
+                                <input class="freq-input" id="seriesFreqInput" type="text" inputmode="numeric" value="1" maxlength="2">
+                                <span class="freq-suffix">нед.</span>
+                            </div>
+                        </div>
+                        <div class="recurring-col">
+                            <div class="section-label">Окончание</div>
+                            <div class="end-row">
+                                <div class="student-select-wrap">
+                                    <select class="student-select input-base select-sm" id="seriesEndSelect">
+                                        <option value="never" selected>Бессрочно</option>
+                                        <option value="date">До даты</option>
+                                        <option value="count">N занятий</option>
+                                    </select>
+                                </div>
+                                <input class="end-count-input input-base input-sm" id="seriesEndCountInput" type="text" inputmode="numeric" placeholder="10" maxlength="3">
+                                <input class="end-count-input input-base input-date-sm" id="seriesEndDateInput" type="text" placeholder="дд.мм.гггг" maxlength="10">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Series Edit Actions -->
+                <div class="series-edit-actions">
+                    <button class="series-edit-cancel" id="seriesEditCancel">Отменить</button>
+                    <button class="series-edit-save" id="seriesEditSave">
+                        Сохранить
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+                            <polyline points="20 6 9 17 4 12"/>
+                        </svg>
+                    </button>
+                </div>
+            </div>
+
+            <!-- Payment -->
+            <div class="detail-section">
+                <div class="detail-section-label">Оплата</div>
+                <div class="detail-payment">
+                    <div class="detail-payment-left">
+                        <div class="icon-box">
+                            <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                                <rect x="1" y="4" width="22" height="16" rx="2"/><line x1="1" y1="10" x2="23" y2="10"/>
+                            </svg>
+                        </div>
+                        <div class="detail-payment-badge pending" id="detailBadge">Ожидает оплаты</div>
+                    </div>
+                    <div>
+                        <span class="detail-payment-amount" id="detailAmount">2 000</span>
+                        <span class="detail-payment-currency">₽</span>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Reschedule history (shown by default if has items) -->
+            <div class="detail-section reschedule-history-section" id="rescheduleHistorySection" style="display:none">
+                <div class="reschedule-history-header" id="rescheduleHistoryToggle">
+                    <div class="detail-section-label" style="margin-bottom:0">
+                        История переносов
+                        <span class="rh-count" id="rhCount"></span>
+                    </div>
+                    <svg aria-hidden="true" class="rh-chevron" id="rhChevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg>
+                </div>
+                <div class="reschedule-history-body collapsible" id="rescheduleHistoryBody"></div>
+            </div>
+
+            <!-- Actions -->
+            <div class="detail-actions">
+                <button class="detail-btn btn-paid" id="detailBtnPaid">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="20 6 9 17 4 12"/>
+                    </svg>
+                    Оплачено
+                </button>
+                <button class="detail-btn btn-reschedule" id="detailBtnReschedule">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>
+                    </svg>
+                    Перенести
+                </button>
+            </div>
+
+            <!-- Reschedule form (hidden by default) -->
+            <div class="detail-action-form collapsible" id="rescheduleForm">
+                <div class="action-form-header">
+                    <span class="action-form-title">Перенос занятия</span>
+                    <button class="action-form-close" id="rescheduleFormClose">&times;</button>
+                </div>
+                <div class="action-form-group">
+                    <label class="action-form-label">Причина</label>
+                    <select class="action-form-select input-base" id="rescheduleReason">
+                        <option value="none" selected>Без причины</option>
+                        <option value="student">Просьба ученика</option>
+                        <option value="tutor">Не могу провести</option>
+                        <option value="illness">Болезнь</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                <div class="action-form-group" id="rescheduleCommentGroup" style="display:none">
+                    <label class="action-form-label">Комментарий</label>
+                    <textarea class="action-form-textarea input-base" id="rescheduleComment" placeholder="Опишите причину..." rows="2"></textarea>
+                </div>
+                <button class="action-form-submit reschedule" id="rescheduleConfirm">Перенести</button>
+            </div>
+
+            <!-- Cancel form (hidden by default) -->
+            <div class="detail-action-form collapsible" id="cancelForm">
+                <div class="action-form-header">
+                    <span class="action-form-title">Отмена занятия</span>
+                    <button class="action-form-close" id="cancelFormClose">&times;</button>
+                </div>
+                <div class="action-form-group">
+                    <label class="action-form-label">Причина отмены</label>
+                    <select class="action-form-select input-base" id="cancelReason">
+                        <option value="none" selected>Без причины</option>
+                        <option value="student">Ученик отменил</option>
+                        <option value="tutor">Не могу провести</option>
+                        <option value="illness">Болезнь</option>
+                        <option value="noshow">Неявка</option>
+                        <option value="other">Другое</option>
+                    </select>
+                </div>
+                <div class="action-form-group" id="cancelCommentGroup" style="display:none">
+                    <label class="action-form-label">Комментарий</label>
+                    <textarea class="action-form-textarea input-base" id="cancelComment" placeholder="Опишите причину..." rows="2"></textarea>
+                </div>
+            </div>
+
+            <!-- Cancel button (transforms into confirm on click) -->
+            <div class="detail-cancel">
+                <button class="detail-cancel-btn" id="detailBtnCancel">Отменить занятие</button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Student dropdown (outside bottom-sheet to avoid transform stacking context) -->
+    <div class="student-dropdown" id="studentDropdown">
+        <input class="student-search-input" id="studentSearchInput" type="text" placeholder="Поиск по имени..." autocomplete="off">
+        <div class="student-list no-scrollbar" id="studentList"></div>
+    </div>
+
+    <!-- Toast notification -->
+    <div class="toast" id="toast">
+        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <polyline points="20 6 9 17 4 12"/>
+        </svg>
+        <span id="toastText">Занятие создано</span>
+    </div>
+
+    <!-- Series Save Confirmation Dialog -->
+    <div class="series-confirm-overlay" id="seriesConfirmOverlay">
+        <div class="series-confirm-dialog" id="seriesConfirmDialog" role="dialog" aria-modal="true">
+            <div class="series-confirm-icon">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                    <path d="M17 2l4 4-4 4"/><path d="M3 11v-1a4 4 0 0 1 4-4h14"/><path d="M7 22l-4-4 4-4"/><path d="M21 13v1a4 4 0 0 1-4 4H3"/>
+                </svg>
+            </div>
+            <div class="series-confirm-title">Применить изменения</div>
+            <div class="series-confirm-subtitle">К каким занятиям применить изменения?</div>
+            <div class="series-confirm-options">
+                <button class="series-confirm-option" id="seriesConfirmAll">
+                    <div class="series-confirm-option-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><rect x="14" y="14" width="7" height="7" rx="1"/>
+                        </svg>
+                    </div>
+                    <div class="series-confirm-option-text">
+                        <div class="series-confirm-option-title">Ко всем занятиям</div>
+                        <div class="series-confirm-option-desc">Изменения затронут все занятия в серии</div>
+                    </div>
+                    <svg aria-hidden="true" class="series-confirm-option-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 6 15 12 9 18"/>
+                    </svg>
+                </button>
+                <button class="series-confirm-option" id="seriesConfirmFuture">
+                    <div class="series-confirm-option-icon">
+                        <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                            <line x1="5" y1="12" x2="19" y2="12"/><polyline points="12 5 19 12 12 19"/>
+                        </svg>
+                    </div>
+                    <div class="series-confirm-option-text">
+                        <div class="series-confirm-option-title">Этому и последующим</div>
+                        <div class="series-confirm-option-desc">Прошедшие занятия останутся без изменений</div>
+                    </div>
+                    <svg aria-hidden="true" class="series-confirm-option-arrow" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="9 6 15 12 9 18"/>
+                    </svg>
+                </button>
+            </div>
+            <button class="series-confirm-cancel" id="seriesConfirmCancel">Отмена</button>
+        </div>
+    </div>
+
+    <script src="app.js"></script>
+</body>
+</html>

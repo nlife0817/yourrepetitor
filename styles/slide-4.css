@@ -1,0 +1,376 @@
+/* ══════════════════════════════════════════
+   slide-4.css — Product · channels, roles, flow
+   ══════════════════════════════════════════ */
+
+#slide-4 .s4-body {
+    flex: 1;
+    padding: 124px var(--slide-pad-x) 72px;
+    display: flex;
+    flex-direction: column;
+    gap: 28px;
+    background:
+        radial-gradient(circle at 50% 0%, rgba(232, 115, 74, 0.06) 0%, transparent 55%),
+        radial-gradient(circle at 100% 100%, rgba(99, 102, 241, 0.04) 0%, transparent 50%),
+        var(--bg);
+}
+
+/* ── Intro ── */
+#slide-4 .s4-intro {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    max-width: 1760px;
+}
+
+#slide-4 .s4-eyebrow {
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-muted);
+}
+
+#slide-4 .s4-headline {
+    font-size: 42px;
+    font-weight: 600;
+    letter-spacing: -0.028em;
+    line-height: 1.05;
+    color: var(--text-primary);
+    white-space: nowrap;
+}
+
+/* ── Блок: каналы ── */
+.s4-channels {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.s4-channels-row {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
+}
+
+.s4-channel {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 20px 22px 22px;
+    box-shadow: var(--shadow-sm);
+    min-height: 168px;
+}
+
+.s4-channel-icon {
+    width: 64px;
+    height: 64px;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-primary);
+}
+
+.s4-channel-icon img,
+.s4-channel-icon svg {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.s4-channel-name {
+    font-size: 23px;
+    font-weight: 600;
+    letter-spacing: -0.015em;
+    line-height: 1.1;
+    color: var(--text-primary);
+    margin-top: 2px;
+}
+
+.s4-channel-sub {
+    font-size: 14px;
+    font-weight: 400;
+    line-height: 1.35;
+    color: var(--text-secondary);
+    letter-spacing: -0.003em;
+}
+
+/* МАКС — акцентная плашка */
+.s4-channel.is-utp {
+    background:
+        radial-gradient(circle at 100% 0%, rgba(232, 115, 74, 0.14) 0%, transparent 60%),
+        linear-gradient(180deg, #fff8f4 0%, #fffdfb 100%);
+    border: 1.5px solid var(--accent);
+    box-shadow:
+        0 0 0 4px rgba(232, 115, 74, 0.06),
+        0 12px 28px rgba(232, 115, 74, 0.14),
+        0 4px 12px rgba(0, 0, 0, 0.04);
+}
+
+.s4-utp-badge {
+    display: inline-flex;
+    align-items: center;
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    background: rgba(232, 115, 74, 0.12);
+    border: 1px solid rgba(232, 115, 74, 0.32);
+    border-radius: 999px;
+    padding: 4px 10px;
+    line-height: 1;
+    margin-top: 2px;
+}
+
+.s4-channels-note {
+    font-size: 16px;
+    font-weight: 400;
+    line-height: 1.4;
+    color: var(--text-secondary);
+    letter-spacing: -0.005em;
+    font-style: italic;
+}
+
+/* ── Блок: роли ── */
+.s4-roles {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.s4-roles-row {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 24px;
+}
+
+.s4-role {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 16px 22px 18px;
+    box-shadow: var(--shadow-sm);
+}
+
+.s4-role-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    padding-bottom: 8px;
+    border-bottom: 1px solid var(--border-divider);
+}
+
+.s4-role-eyebrow {
+    font-family: var(--font-sans);
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--accent);
+    line-height: 1;
+}
+
+.s4-role-rule {
+    flex: 1;
+    height: 1px;
+    background: linear-gradient(90deg, var(--accent-soft), transparent);
+}
+
+.s4-role-title {
+    font-size: 26px;
+    font-weight: 700;
+    letter-spacing: -0.02em;
+    line-height: 1.1;
+    color: var(--text-primary);
+}
+
+.s4-role-text {
+    font-size: 15px;
+    line-height: 1.5;
+    color: var(--text-secondary);
+    letter-spacing: -0.003em;
+}
+
+.s4-role-text strong { color: var(--text-primary); font-weight: 600; }
+
+.s4-roles-footnote {
+    background: var(--surface-sheet);
+    border: 1px solid var(--border);
+    border-left: 3px solid var(--accent);
+    border-radius: 10px;
+    padding: 12px 20px;
+    font-size: 14px;
+    line-height: 1.4;
+    font-style: italic;
+    color: var(--text-secondary);
+    letter-spacing: -0.003em;
+}
+
+.s4-roles-footnote strong { color: var(--text-primary); font-weight: 600; font-style: normal; }
+
+/* ── Блок: флоу ── */
+.s4-flow {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+}
+
+.s4-flow-wrap {
+    position: relative;
+    padding-bottom: 36px;
+}
+
+.s4-flow-row {
+    display: grid;
+    grid-template-columns: 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr 24px 1fr;
+    align-items: stretch;
+    gap: 8px;
+}
+
+.s4-flow-step {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 12px 14px 12px;
+    box-shadow: var(--shadow-sm);
+    min-height: 110px;
+}
+
+.s4-flow-step.is-final {
+    border: 1.5px solid var(--accent);
+    background:
+        radial-gradient(circle at 100% 0%, rgba(232, 115, 74, 0.10) 0%, transparent 65%),
+        var(--surface);
+    box-shadow:
+        0 0 0 3px rgba(232, 115, 74, 0.05),
+        var(--shadow-sm);
+}
+
+.s4-flow-num {
+    font-family: var(--font-mono);
+    font-feature-settings: 'tnum';
+    font-weight: 600;
+    font-size: 28px;
+    line-height: 1;
+    letter-spacing: -0.02em;
+    color: var(--accent);
+}
+
+.s4-flow-title {
+    font-size: 14px;
+    font-weight: 600;
+    letter-spacing: -0.005em;
+    line-height: 1.2;
+    color: var(--text-primary);
+    margin-top: 2px;
+}
+
+.s4-flow-text {
+    font-size: 12.5px;
+    line-height: 1.35;
+    color: var(--text-secondary);
+    letter-spacing: -0.002em;
+}
+
+.s4-flow-arrow {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-muted);
+    align-self: center;
+    height: 100%;
+}
+
+.s4-flow-arrow svg {
+    display: block;
+}
+
+/* — Замыкающая дуга — */
+.s4-flow-loop {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    pointer-events: none;
+    height: 36px;
+    overflow: visible;
+}
+
+.s4-flow-loop svg {
+    width: 100%;
+    height: 100%;
+    display: block;
+    overflow: visible;
+}
+
+.s4-flow-loop-label {
+    position: absolute;
+    left: 50%;
+    bottom: 16px;
+    transform: translateX(-50%);
+    font-size: 11px;
+    font-weight: 400;
+    font-style: italic;
+    color: var(--text-muted);
+    letter-spacing: 0.02em;
+    background: var(--bg);
+    padding: 0 10px;
+    line-height: 1;
+}
+
+/* — Финальная плашка под флоу — */
+.s4-flow-aside {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    align-items: center;
+    gap: 24px;
+    background: var(--surface-sheet);
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 14px 24px;
+    box-shadow: var(--shadow-sm);
+}
+
+.s4-flow-aside-eyebrow {
+    font-size: 11px;
+    font-weight: 600;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    color: var(--text-secondary);
+    line-height: 1.2;
+}
+
+.s4-flow-aside-text {
+    font-size: 16px;
+    font-weight: 500;
+    line-height: 1.4;
+    color: var(--text-primary);
+    letter-spacing: -0.005em;
+}
+
+/* ══════════════ PRINT ══════════════ */
+@media print {
+    .s4-channel,
+    .s4-role,
+    .s4-flow-step,
+    .s4-flow-aside,
+    .s4-roles-footnote {
+        box-shadow: none !important;
+    }
+    .s4-channel.is-utp {
+        box-shadow: 0 0 0 3px rgba(232, 115, 74, 0.06) !important;
+    }
+}

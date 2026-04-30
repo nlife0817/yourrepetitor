@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Прогресс — Ученик</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="progress.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Header -->
+        <div class="page-header pr-page-header">
+            <h1 class="pr-page-title">Прогресс</h1>
+        </div>
+
+        <!-- Scrollable content -->
+        <div class="pr-content no-scrollbar">
+
+            <!-- Summary cards (3 columns) -->
+            <div class="pr-summary-grid" id="prSummaryGrid"></div>
+
+            <!-- Area chart card -->
+            <div class="pr-chart-card">
+                <div class="pr-chart-head">
+                    <div class="pr-chart-title">За 30 дней</div>
+                    <div class="pr-chart-legend">
+                        <span class="pr-legend-item"><span class="pr-legend-dot plan"></span>план</span>
+                        <span class="pr-legend-item"><span class="pr-legend-dot fact"></span>факт</span>
+                    </div>
+                </div>
+                <div class="pr-chart-canvas">
+                    <svg id="prChartSvg" viewBox="0 0 320 120" preserveAspectRatio="none" aria-hidden="true">
+                        <defs>
+                            <linearGradient id="prChartGradient" x1="0" y1="0" x2="0" y2="1">
+                                <stop offset="0%" stop-color="currentColor" stop-opacity="0.28"/>
+                                <stop offset="100%" stop-color="currentColor" stop-opacity="0"/>
+                            </linearGradient>
+                        </defs>
+                        <g class="pr-chart-grid" id="prChartGrid"></g>
+                        <path id="prChartArea" class="pr-chart-area" d=""/>
+                        <path id="prChartPlan" class="pr-chart-plan" d=""/>
+                        <path id="prChartFact" class="pr-chart-fact" d=""/>
+                        <g id="prChartDotsPlan" class="pr-chart-dots plan"></g>
+                        <g id="prChartDotsFact" class="pr-chart-dots fact"></g>
+                    </svg>
+                </div>
+                <div class="pr-chart-foot">
+                    <span class="pr-chart-x">4 недели</span>
+                    <span class="pr-chart-avg">7 занятий/неделю в среднем</span>
+                </div>
+            </div>
+
+            <!-- By subject -->
+            <div class="pr-section-head">
+                <div class="pr-section-label">По предметам</div>
+            </div>
+            <div class="pr-subjects" id="prSubjects"></div>
+
+            <!-- Lesson history -->
+            <div class="pr-section-head">
+                <div class="pr-section-label">История занятий</div>
+            </div>
+            <div class="pr-history" id="prHistory"></div>
+            <button class="pr-show-all" id="prShowAll" type="button">Показать все</button>
+
+            <!-- Achievements (horizontal scroll) -->
+            <div class="pr-section-head">
+                <div class="pr-section-label">Достижения</div>
+            </div>
+            <div class="pr-achievements no-scrollbar" id="prAchievements"></div>
+
+        </div>
+
+        <!-- Bottom bar: student nav (3 tabs, active = Прогресс) -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav" aria-label="Основная навигация">
+                <a class="nav-item" href="schedule.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Расписание</span>
+                </a>
+                <a class="nav-item active" aria-current="page" href="progress.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <polyline points="23 6 13.5 15.5 8.5 10.5 1 18"/><polyline points="17 6 23 6 23 12"/>
+                    </svg>
+                    <span>Прогресс</span>
+                </a>
+                <a class="nav-item" href="profile.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="progress.js"></script>
+</body>
+</html>

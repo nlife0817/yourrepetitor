@@ -1,0 +1,605 @@
+/* ══════════════════════════════════════════
+   ── student/profile.css — Профиль ученика ──
+   ══════════════════════════════════════════ */
+
+/* ══ Header ══ */
+.pu-page-header {
+    padding: 18px 20px 14px;
+    position: relative;
+    z-index: 10;
+    animation: headerIn 0.5s ease-out;
+    flex-shrink: 0;
+}
+.pu-page-title {
+    font-size: 22px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    color: var(--text-primary);
+    line-height: 1.15;
+}
+
+/* ══ Scrollable content ══ */
+.pu-content {
+    flex: 1;
+    overflow-y: auto;
+    padding: 16px 20px 100px;
+    position: relative;
+}
+
+/* ══════════════════════════════════════════
+   ── Hero card (user) ──
+   ══════════════════════════════════════════ */
+.pu-hero {
+    position: relative;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 18px;
+    padding: 20px;
+    box-shadow: var(--shadow-sm);
+    margin-bottom: 22px;
+    animation: cardIn 0.4s ease-out both;
+}
+
+.pu-hero-edit {
+    position: absolute;
+    top: 12px;
+    right: 12px;
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    border: none;
+    background: transparent;
+    color: var(--text-muted);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    transition: background 0.15s, color 0.15s;
+    padding: 0;
+}
+.pu-hero-edit:hover {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-secondary);
+}
+.pu-hero-edit svg {
+    width: 16px;
+    height: 16px;
+}
+
+.pu-hero-row {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    padding-right: 36px; /* space for edit icon */
+}
+
+.pu-hero-avatar {
+    width: 72px;
+    height: 72px;
+    border-radius: 20px;
+    font-size: 26px;
+    letter-spacing: -0.5px;
+}
+
+.pu-hero-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.pu-hero-name {
+    font-size: 19px;
+    font-weight: 700;
+    color: var(--text-primary);
+    letter-spacing: -0.3px;
+    line-height: 1.2;
+}
+
+.pu-hero-meta {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-top: 4px;
+    line-height: 1.35;
+}
+
+.pu-tz-chip {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    margin-top: 14px;
+    padding: 4px 10px;
+    background: var(--accent-soft);
+    border-radius: 8px;
+    color: var(--accent);
+    font-family: 'JetBrains Mono', monospace;
+    font-size: 12px;
+    font-weight: 500;
+}
+.pu-tz-chip svg {
+    width: 12px;
+    height: 12px;
+}
+
+/* ══════════════════════════════════════════
+   ── Section & labels ──
+   ══════════════════════════════════════════ */
+.pu-section {
+    margin-bottom: 22px;
+    animation: cardIn 0.4s ease-out both;
+}
+.pu-section:nth-of-type(2) { animation-delay: 0.05s; }
+.pu-section:nth-of-type(3) { animation-delay: 0.08s; }
+.pu-section:nth-of-type(4) { animation-delay: 0.12s; }
+.pu-section:nth-of-type(5) { animation-delay: 0.16s; }
+
+.pu-section-label {
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--text-muted);
+    padding: 0 4px 10px;
+}
+
+/* ══ Card list (tutors, parents) ══ */
+.pu-card-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pu-person-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 12px 14px;
+    box-shadow: var(--shadow-xs);
+}
+
+.pu-person-avatar {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    font-size: 15px;
+}
+
+.pu-person-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.pu-person-name {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.25;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}
+
+.pu-person-sub {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-top: 2px;
+    line-height: 1.3;
+}
+
+.pu-person-sub.muted {
+    font-size: 12px;
+    color: var(--text-muted);
+}
+
+/* Telegram write button (tutor) */
+.pu-person-tg-btn {
+    width: 32px;
+    height: 32px;
+    border-radius: 10px;
+    border: none;
+    background: var(--telegram);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    flex-shrink: 0;
+    transition: transform 0.15s, box-shadow 0.15s;
+    padding: 0;
+}
+.pu-person-tg-btn:hover {
+    transform: translateY(-1px);
+    box-shadow: 0 4px 12px rgba(42, 171, 238, 0.3);
+}
+.pu-person-tg-btn svg {
+    width: 16px;
+    height: 16px;
+}
+
+/* Unlink text button (parent) */
+.pu-person-unlink {
+    border: none;
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: 'Onest', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 6px 10px;
+    border-radius: 8px;
+    transition: color 0.15s, background 0.15s;
+    flex-shrink: 0;
+}
+.pu-person-unlink:hover {
+    color: var(--danger);
+    background: rgba(220, 38, 38, 0.06);
+}
+.pu-person-unlink.confirming {
+    color: var(--danger);
+    background: rgba(220, 38, 38, 0.1);
+}
+
+/* Empty inline */
+.pu-empty-inline {
+    font-size: 13px;
+    color: var(--text-muted);
+    padding: 14px 4px;
+    text-align: center;
+}
+
+/* ══════════════════════════════════════════
+   ── Settings list (toggle rows) ──
+   ══════════════════════════════════════════ */
+.pu-settings-list {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+}
+
+.pu-setting-row {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--shadow-xs);
+}
+
+.pu-setting-left {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    flex: 1;
+    min-width: 0;
+}
+
+.pu-setting-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.pu-setting-title {
+    font-size: 14.5px;
+    font-weight: 500;
+    color: var(--text-primary);
+    line-height: 1.25;
+}
+
+.pu-setting-sub {
+    font-size: 12px;
+    font-weight: 400;
+    color: var(--text-muted);
+    margin-top: 2px;
+    line-height: 1.3;
+}
+
+/* Toggle switch (reused pattern from notifications) */
+.toggle-switch {
+    width: 44px;
+    height: 26px;
+    border-radius: 13px;
+    border: none;
+    background: rgba(0, 0, 0, 0.09);
+    cursor: pointer;
+    position: relative;
+    transition: background 0.3s ease;
+    flex-shrink: 0;
+    padding: 0;
+}
+.toggle-switch::after {
+    content: '';
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    width: 20px;
+    height: 20px;
+    border-radius: 50%;
+    background: #fff;
+    box-shadow: 0 1px 3px rgba(0, 0, 0, 0.18);
+    transition: transform 0.3s var(--ease-bounce);
+}
+.toggle-switch.on {
+    background: var(--accent);
+}
+.toggle-switch.on::after {
+    transform: translateX(18px);
+}
+
+/* ══════════════════════════════════════════
+   ── Telegram card ──
+   ══════════════════════════════════════════ */
+.pu-tg-card {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 14px;
+    padding: 14px;
+    box-shadow: var(--shadow-xs);
+}
+
+.pu-tg-icon {
+    width: 40px;
+    height: 40px;
+    border-radius: 12px;
+    background: var(--telegram);
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+}
+.pu-tg-icon svg {
+    width: 20px;
+    height: 20px;
+}
+
+.pu-tg-text {
+    flex: 1;
+    min-width: 0;
+}
+
+.pu-tg-title {
+    font-size: 14px;
+    font-weight: 600;
+    color: var(--text-primary);
+    line-height: 1.25;
+}
+
+.pu-tg-username {
+    font-size: 13px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    margin-top: 2px;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+.pu-tg-unlink {
+    border: 1px solid var(--border-input);
+    background: transparent;
+    color: var(--text-secondary);
+    font-family: 'Onest', sans-serif;
+    font-size: 13px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 8px 12px;
+    border-radius: 10px;
+    transition: color 0.15s, background 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+}
+.pu-tg-unlink:hover {
+    color: var(--danger);
+    border-color: rgba(220, 38, 38, 0.2);
+    background: rgba(220, 38, 38, 0.04);
+}
+
+/* ══════════════════════════════════════════
+   ── Footer actions ──
+   ══════════════════════════════════════════ */
+.pu-footer-actions {
+    margin-top: 28px;
+    display: flex;
+    flex-direction: column;
+    align-items: stretch;
+    gap: 4px;
+    animation: cardIn 0.4s ease-out both;
+    animation-delay: 0.2s;
+}
+
+.pu-link-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    border: none;
+    background: transparent;
+    font-family: 'Onest', sans-serif;
+    font-size: 14px;
+    font-weight: 500;
+    cursor: pointer;
+    padding: 14px 12px;
+    border-radius: 12px;
+    transition: background 0.15s;
+}
+.pu-link-btn svg {
+    width: 16px;
+    height: 16px;
+}
+.pu-link-accent {
+    color: var(--accent);
+}
+.pu-link-accent:hover {
+    background: var(--accent-soft);
+}
+.pu-link-danger {
+    color: var(--danger);
+}
+.pu-link-danger:hover {
+    background: rgba(220, 38, 38, 0.06);
+}
+
+.pu-version {
+    text-align: center;
+    font-size: 12px;
+    color: var(--text-muted);
+    padding: 14px 0 0;
+    font-family: 'JetBrains Mono', monospace;
+}
+
+/* ══════════════════════════════════════════
+   ── Confirm dialog ──
+   ══════════════════════════════════════════ */
+.pu-confirm-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(10, 10, 18, 0.45);
+    backdrop-filter: blur(2px);
+    -webkit-backdrop-filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    transition: opacity 0.3s var(--ease-sheet);
+    z-index: 140;
+}
+.pu-confirm-overlay.open {
+    opacity: 1;
+    pointer-events: auto;
+}
+
+.pu-confirm-dialog {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%) scale(0.95);
+    opacity: 0;
+    pointer-events: none;
+    width: calc(100% - 48px);
+    max-width: 340px;
+    background: var(--surface);
+    border-radius: 18px;
+    padding: 22px 20px 16px;
+    box-shadow: 0 12px 40px rgba(0, 0, 0, 0.18);
+    z-index: 150;
+    transition: opacity 0.25s var(--ease-sheet), transform 0.25s var(--ease-sheet);
+}
+.pu-confirm-dialog.open {
+    opacity: 1;
+    pointer-events: auto;
+    transform: translate(-50%, -50%) scale(1);
+}
+
+.pu-confirm-title {
+    font-size: 16px;
+    font-weight: 700;
+    color: var(--text-primary);
+    text-align: center;
+}
+.pu-confirm-text {
+    font-size: 13.5px;
+    font-weight: 400;
+    color: var(--text-secondary);
+    text-align: center;
+    margin-top: 8px;
+    line-height: 1.4;
+}
+.pu-confirm-actions {
+    display: flex;
+    gap: 8px;
+    margin-top: 18px;
+}
+.pu-confirm-btn {
+    flex: 1;
+    height: 44px;
+    border-radius: 12px;
+    border: none;
+    font-family: 'Onest', sans-serif;
+    font-size: 14px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background 0.15s;
+}
+.pu-confirm-cancel {
+    background: rgba(0, 0, 0, 0.04);
+    color: var(--text-primary);
+}
+.pu-confirm-cancel:hover {
+    background: rgba(0, 0, 0, 0.07);
+}
+.pu-confirm-ok {
+    background: var(--danger);
+    color: #fff;
+}
+.pu-confirm-ok:hover {
+    background: var(--danger-hover);
+}
+
+/* ══════════════════════════════════════════
+   ── Toast ──
+   ══════════════════════════════════════════ */
+.pu-toast {
+    position: fixed;
+    bottom: 90px;
+    left: 50%;
+    transform: translateX(-50%) translateY(16px);
+    opacity: 0;
+    pointer-events: none;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    background: var(--text-primary);
+    color: #fff;
+    padding: 10px 16px;
+    border-radius: 12px;
+    font-size: 13px;
+    font-weight: 500;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.18);
+    z-index: 200;
+    transition: opacity 0.3s ease, transform 0.3s var(--ease-sheet);
+}
+.pu-toast.show {
+    opacity: 1;
+    transform: translateX(-50%) translateY(0);
+}
+.pu-toast svg {
+    width: 16px;
+    height: 16px;
+    color: var(--success);
+}
+
+/* ══════════════════════════════════════════
+   ── Responsive ──
+   ══════════════════════════════════════════ */
+@media (max-width: 414px) {
+    .pu-content { padding: 14px 18px 100px; }
+}
+
+@media (max-width: 375px) {
+    .pu-hero { padding: 18px; }
+    .pu-hero-avatar { width: 64px; height: 64px; border-radius: 18px; font-size: 24px; }
+    .pu-hero-name { font-size: 18px; }
+    .pu-hero-meta { font-size: 12.5px; }
+}
+
+@media (max-width: 360px) {
+    .pu-page-header { padding: 14px 16px 10px; }
+    .pu-content { padding: 12px 14px 100px; }
+    .pu-hero { padding: 16px; border-radius: 16px; }
+    .pu-hero-row { gap: 12px; padding-right: 32px; }
+    .pu-hero-avatar { width: 60px; height: 60px; border-radius: 16px; font-size: 22px; }
+    .pu-hero-name { font-size: 17px; }
+    .pu-hero-meta { font-size: 12px; }
+    .pu-tz-chip { font-size: 11.5px; }
+    .pu-person-card { padding: 10px 12px; gap: 10px; }
+    .pu-person-avatar { width: 36px; height: 36px; border-radius: 10px; font-size: 14px; }
+    .pu-person-name { font-size: 13.5px; }
+    .pu-person-sub { font-size: 12px; }
+    .pu-setting-row { padding: 12px; }
+    .pu-setting-title { font-size: 13.5px; }
+    .pu-tg-card { padding: 12px; }
+}

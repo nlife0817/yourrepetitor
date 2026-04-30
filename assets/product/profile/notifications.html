@@ -1,0 +1,223 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>Уведомления — Репетитор</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="../shared.css">
+    <link rel="stylesheet" href="notifications.css">
+</head>
+<body>
+    <div class="app">
+
+        <!-- Top nav -->
+        <div class="top-nav">
+            <a class="top-nav-back" href="index.html">
+                <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+                    <polyline points="15 18 9 12 15 6"/>
+                </svg>
+            </a>
+            <span class="top-nav-title">Уведомления</span>
+        </div>
+
+        <!-- Description -->
+        <div class="notif-description">
+            Уведомления отправляются в Telegram. Отключённые типы не будут отправляться.
+        </div>
+
+        <!-- Content -->
+        <div class="notif-content no-scrollbar">
+
+            <!-- ═══ Мне ═══ -->
+            <div class="notif-group">
+                <div class="notif-group-header">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Мне</span>
+                </div>
+                <div class="notif-list">
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Напоминание о занятии</div>
+                            <div class="notif-item-sub">За 1 час до начала</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="me-reminder" type="button" role="switch" aria-checked="true" aria-label="Напоминание о занятии"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Отмена занятия</div>
+                            <div class="notif-item-sub">При отмене занятия</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="me-cancel" type="button" role="switch" aria-checked="true" aria-label="Отмена занятия"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Перенос занятия</div>
+                            <div class="notif-item-sub">При переносе занятия</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="me-reschedule" type="button" role="switch" aria-checked="true" aria-label="Перенос занятия"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Напоминание об оплате</div>
+                            <div class="notif-item-sub">Через 24ч после занятия</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="me-payment" type="button" role="switch" aria-checked="true" aria-label="Напоминание об оплате"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Низкий баланс пакета</div>
+                            <div class="notif-item-sub">Мало оставшихся занятий</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="me-low-balance" type="button" role="switch" aria-checked="true" aria-label="Низкий баланс пакета"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Пакет исчерпан</div>
+                            <div class="notif-item-sub">Занятия в пакете закончились</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="me-exhausted" type="button" role="switch" aria-checked="true" aria-label="Пакет исчерпан"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ Ученикам ═══ -->
+            <div class="notif-group">
+                <div class="notif-group-header">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <span>Ученикам</span>
+                </div>
+                <div class="notif-list">
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Напоминание о занятии</div>
+                            <div class="notif-item-sub">За 1 час до начала</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="student-reminder" type="button" role="switch" aria-checked="true" aria-label="Напоминание о занятии"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Новое занятие</div>
+                            <div class="notif-item-sub">При создании занятия</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="student-new" type="button" role="switch" aria-checked="true" aria-label="Новое занятие"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Отмена занятия</div>
+                            <div class="notif-item-sub">При отмене занятия</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="student-cancel" type="button" role="switch" aria-checked="true" aria-label="Отмена занятия"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Перенос занятия</div>
+                            <div class="notif-item-sub">При переносе занятия</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="student-reschedule" type="button" role="switch" aria-checked="true" aria-label="Перенос занятия"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Напоминание об оплате</div>
+                            <div class="notif-item-sub">Через 24ч после занятия</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="student-payment" type="button" role="switch" aria-checked="true" aria-label="Напоминание об оплате"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Низкий баланс пакета</div>
+                            <div class="notif-item-sub">Мало оставшихся занятий</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="student-low-balance" type="button" role="switch" aria-checked="true" aria-label="Низкий баланс пакета"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Пакет исчерпан</div>
+                            <div class="notif-item-sub">Занятия в пакете закончились</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="student-exhausted" type="button" role="switch" aria-checked="true" aria-label="Пакет исчерпан"></button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ═══ Родителям ═══ -->
+            <div class="notif-group">
+                <div class="notif-group-header">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Родителям</span>
+                </div>
+                <div class="notif-list">
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Напоминание об оплате</div>
+                            <div class="notif-item-sub">Через 24ч после занятия</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="parent-payment" type="button" role="switch" aria-checked="true" aria-label="Напоминание об оплате"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Низкий баланс пакета</div>
+                            <div class="notif-item-sub">Мало оставшихся занятий</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="parent-low-balance" type="button" role="switch" aria-checked="true" aria-label="Низкий баланс пакета"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Пакет исчерпан</div>
+                            <div class="notif-item-sub">Занятия в пакете закончились</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="parent-exhausted" type="button" role="switch" aria-checked="true" aria-label="Пакет исчерпан"></button>
+                    </div>
+                    <div class="notif-item">
+                        <div class="notif-item-text">
+                            <div class="notif-item-title">Еженедельный отчёт</div>
+                            <div class="notif-item-sub">Отчёт по понедельникам</div>
+                        </div>
+                        <button class="toggle-switch on" data-key="parent-report" type="button" role="switch" aria-checked="true" aria-label="Еженедельный отчёт"></button>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Bottom bar -->
+        <div class="bottom-bar">
+            <nav class="bottom-nav">
+                <a class="nav-item" href="../calendar/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <rect x="3" y="4" width="18" height="18" rx="3"/><line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/><line x1="3" y1="10" x2="21" y2="10"/>
+                    </svg>
+                    <span>Календарь</span>
+                </a>
+                <a class="nav-item" href="../students/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/><circle cx="9" cy="7" r="4"/><path d="M23 21v-2a4 4 0 0 0-3-3.87"/><path d="M16 3.13a4 4 0 0 1 0 7.75"/>
+                    </svg>
+                    <span>Ученики</span>
+                </a>
+                <a class="nav-item" href="../analytics/index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/>
+                    </svg>
+                    <span>Аналитика</span>
+                </a>
+                <a class="nav-item active" aria-current="page" href="index.html">
+                    <svg aria-hidden="true" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <span>Профиль</span>
+                </a>
+            </nav>
+        </div>
+    </div>
+
+    <script src="notifications.js"></script>
+</body>
+</html>
