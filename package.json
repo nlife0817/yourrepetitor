@@ -1,0 +1,22 @@
+{
+  "name": "tvoj-repetitor-deck",
+  "type": "module",
+  "private": true,
+  "scripts": {
+    "dev": "slidev --open",
+    "build": "slidev build",
+    "export": "slidev export",
+    "export:pdf": "slidev export --format pdf --with-clicks",
+    "export:pptx": "slidev export --format pptx"
+  },
+  "dependencies": {
+    "@slidev/cli": "latest",
+    "@slidev/theme-default": "latest",
+    "@slidev/theme-seriph": "latest",
+    "vue": "^3.4.0"
+  },
+  "devDependencies": {
+    "@slidev/types": "^52.15.0",
+    "playwright-chromium": "latest"
+  }
+}

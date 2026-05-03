@@ -3,3 +3,14 @@ Thumbs.db
 *.log
 .vscode/
 .idea/
+
+# Slidev
+node_modules/
+dist/
+.slidev/
+*.local
+
+# Slidev export artefacts (keep final PDFs in Итог/, not here)
+slides-export.pdf
+slides-export.pptx
+

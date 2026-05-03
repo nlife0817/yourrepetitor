@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "slidev",
+      "runtimeExecutable": "pnpm",
+      "runtimeArgs": ["exec", "slidev", "--port", "3030", "--open=false"],
+      "port": 3030
+    }
+  ]
+}

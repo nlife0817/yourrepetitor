@@ -1,8 +1,10 @@
-/* ══════════════════════════════════════════
-   tokens.css — design tokens
-   Презентация «Твой репетитор» × Создай НАШЕ 2026
-   Размер: 16:9, 1920×1080 px
-   ══════════════════════════════════════════ */
+/*
+  style.css — global Slidev styles.
+  Loaded via setup/main.ts (idiomatic Slidev hook).
+  Tokens inlined here so that @import resolution under Vite never breaks.
+*/
+
+@import url('https://fonts.googleapis.com/css2?family=Onest:wght@300;400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap');
 
 :root {
     --slide-w: 1920px;
@@ -44,4 +46,38 @@
 
     --font-sans: 'Onest', -apple-system, BlinkMacSystemFont, 'Segoe UI', system-ui, sans-serif;
     --font-mono: 'JetBrains Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+    --slidev-slide-container-background: var(--bg);
+}
+
+html, body, #app {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    font-feature-settings: 'cv11', 'ss01';
+    -webkit-font-smoothing: antialiased;
+    text-rendering: optimizeLegibility;
+}
+
+.slidev-layout {
+    background: var(--bg);
+    color: var(--text-primary);
+    font-family: var(--font-sans);
+    padding: 0;
+    --slidev-code-padding: 0;
+}
+
+.slidev-layout h1,
+.slidev-layout h2,
+.slidev-layout h3,
+.slidev-layout h4,
+.slidev-layout p {
+    margin: 0;
+    color: inherit;
+}
+
+.is-mono { font-family: var(--font-mono); font-feature-settings: 'tnum' 1, 'ss01' 1; }
+
+@media print {
+    *, *::before, *::after { animation: none !important; transition: none !important; }
 }
