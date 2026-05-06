@@ -1,6 +1,9 @@
 ---
 layout: clean
 ---
+<script setup>
+const base = import.meta.env.BASE_URL
+</script>
 <section class="slide-body s5-body">
   <div class="s5-intro">
     <h1 class="s5-headline">
@@ -12,7 +15,7 @@ layout: clean
       <span class="s5-mockup-eyebrow">01 · Календарь</span>
       <div class="s5-phone">
         <div class="s5-phone-screen">
-          <iframe src="/product/calendar/index.html" title="Календарь репетитора" loading="eager" frameborder="0" referrerpolicy="no-referrer"></iframe>
+          <iframe :src="base + 'product/calendar/index.html'" title="Календарь репетитора" loading="eager" frameborder="0" referrerpolicy="no-referrer"></iframe>
         </div>
       </div>
       <p class="s5-mockup-caption">
@@ -23,7 +26,7 @@ layout: clean
       <span class="s5-mockup-eyebrow">02 · Аналитика</span>
       <div class="s5-phone">
         <div class="s5-phone-screen">
-          <iframe src="/product/analytics/index.html" title="Аналитика" loading="eager" frameborder="0" referrerpolicy="no-referrer"></iframe>
+          <iframe :src="base + 'product/analytics/index.html'" title="Аналитика" loading="eager" frameborder="0" referrerpolicy="no-referrer"></iframe>
         </div>
       </div>
       <p class="s5-mockup-caption">
@@ -34,7 +37,7 @@ layout: clean
       <span class="s5-mockup-eyebrow">03 · Уведомления</span>
       <div class="s5-phone">
         <div class="s5-phone-screen">
-          <iframe src="/product/profile/notifications.html" title="Настройки уведомлений" loading="eager" frameborder="0" referrerpolicy="no-referrer"></iframe>
+          <iframe :src="base + 'product/profile/notifications.html'" title="Настройки уведомлений" loading="eager" frameborder="0" referrerpolicy="no-referrer"></iframe>
         </div>
       </div>
       <p class="s5-mockup-caption">
