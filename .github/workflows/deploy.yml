@@ -21,10 +21,8 @@ jobs:
       - uses: actions/setup-node@v4
         with: { node-version: 20, cache: pnpm }
       - run: pnpm install --frozen-lockfile
-        working-directory: Презентация
       - run: pnpm build --base /yourrepetitor/
-        working-directory: Презентация
       - uses: actions/upload-pages-artifact@v3
-        with: { path: Презентация/dist }
+        with: { path: dist }
       - uses: actions/deploy-pages@v4
         id: deployment
