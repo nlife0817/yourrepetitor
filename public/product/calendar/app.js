@@ -358,10 +358,9 @@ document.querySelectorAll('.day-cell').forEach((cell, i) => {
     });
 });
 
-// ── Nav item click ──
+// ── Nav item click — allow href navigation, just add visual feedback ──
 document.querySelectorAll('.nav-item').forEach(item => {
-    item.addEventListener('click', (e) => {
-        e.preventDefault();
+    item.addEventListener('click', () => {
         document.querySelectorAll('.nav-item').forEach(i => i.classList.remove('active'));
         item.classList.add('active');
     });
