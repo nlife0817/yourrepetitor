@@ -24,24 +24,24 @@ layout: default
           <rect x="217" y="158" width="100" height="42"  rx="5" fill="rgba(99,102,241,0.28)"/>
           <rect x="383" y="106" width="100" height="94"  rx="5" fill="rgba(99,102,241,0.38)"/>
           <rect x="550" y="45"  width="100" height="155" rx="5" fill="rgba(232,115,74,0.88)"/>
-          <text x="100" y="173" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="17" fill="#6b6d7b">8</text>
-          <text x="267" y="150" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="17" fill="#6b6d7b">23</text>
-          <text x="433" y="98"  text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="17" fill="#6b6d7b">51</text>
-          <text x="600" y="37"  text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="17" fill="#e8734a">84</text>
+          <text class="s8-bar-num" x="100" y="173" text-anchor="middle" fill="#6b6d7b">8</text>
+          <text class="s8-bar-num" x="267" y="150" text-anchor="middle" fill="#6b6d7b">23</text>
+          <text class="s8-bar-num" x="433" y="98"  text-anchor="middle" fill="#6b6d7b">51</text>
+          <text class="s8-bar-num s8-bar-num-last" x="600" y="37"  text-anchor="middle" fill="#e8734a">84</text>
           <rect x="245" y="108" width="44" height="16" rx="3" fill="rgba(232,115,74,0.12)"/>
-          <text x="267" y="120" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="11" fill="#c2603a">+15</text>
+          <text class="s8-bar-delta" x="267" y="120" text-anchor="middle" fill="#c2603a">+15</text>
           <rect x="411" y="56" width="44" height="16" rx="3" fill="rgba(232,115,74,0.12)"/>
-          <text x="433" y="68" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="11" fill="#c2603a">+28</text>
+          <text class="s8-bar-delta" x="433" y="68" text-anchor="middle" fill="#c2603a">+28</text>
           <rect x="578" y="3" width="44" height="16" rx="3" fill="rgba(232,115,74,0.12)"/>
-          <text x="600" y="15" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="11" fill="#c2603a">+33</text>
-          <text x="100" y="213" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="12" fill="#a0a2b1">M1</text>
-          <text x="100" y="225" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#a0a2b1">фев 26</text>
-          <text x="267" y="213" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="12" fill="#a0a2b1">M2</text>
-          <text x="267" y="225" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#a0a2b1">мар 26</text>
-          <text x="433" y="213" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="12" fill="#a0a2b1">M3</text>
-          <text x="433" y="225" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#a0a2b1">апр 26</text>
-          <text x="600" y="213" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-weight="600" font-size="12" fill="#a0a2b1">M4</text>
-          <text x="600" y="225" text-anchor="middle" font-family="'JetBrains Mono',monospace" font-size="10" fill="#a0a2b1">май 26 · идёт</text>
+          <text class="s8-bar-delta" x="600" y="15" text-anchor="middle" fill="#c2603a">+33</text>
+          <text class="s8-bar-month" x="100" y="213" text-anchor="middle" fill="#a0a2b1">M1</text>
+          <text class="s8-bar-date"  x="100" y="225" text-anchor="middle" fill="#a0a2b1">фев 26</text>
+          <text class="s8-bar-month" x="267" y="213" text-anchor="middle" fill="#a0a2b1">M2</text>
+          <text class="s8-bar-date"  x="267" y="225" text-anchor="middle" fill="#a0a2b1">мар 26</text>
+          <text class="s8-bar-month" x="433" y="213" text-anchor="middle" fill="#a0a2b1">M3</text>
+          <text class="s8-bar-date"  x="433" y="225" text-anchor="middle" fill="#a0a2b1">апр 26</text>
+          <text class="s8-bar-month" x="600" y="213" text-anchor="middle" fill="#a0a2b1">M4</text>
+          <text class="s8-bar-date"  x="600" y="225" text-anchor="middle" fill="#a0a2b1">май 26 · идёт</text>
         </svg>
       </div>
       <p class="s8-growth-note">
@@ -252,6 +252,14 @@ layout: default
   width: 100%; height: 100%;
   display: block; overflow: visible;
 }
+.s8-body .s8-bar-svg text {
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum';
+}
+.s8-body .s8-bar-svg .s8-bar-num   { font-size: 17px; font-weight: 600; }
+.s8-body .s8-bar-svg .s8-bar-delta { font-size: 11px; font-weight: 600; }
+.s8-body .s8-bar-svg .s8-bar-month { font-size: 12px; font-weight: 600; }
+.s8-body .s8-bar-svg .s8-bar-date  { font-size: 10px; font-weight: 400; }
 
 .s8-body .s8-growth-note {
   font-size: 13px;
