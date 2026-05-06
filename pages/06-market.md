@@ -8,7 +8,7 @@ layout: default
       TAM / SAM / SOM: размер рынка и&nbsp;возможностей
     </h1>
     <p class="s6-subhead">
-      Российский рынок частного репетиторства — <span class="s6-num">230&nbsp;млрд&nbsp;₽/год</span>, <span class="s6-num">+10%</span> CAGR. SaaS-проекция к&nbsp;2026 — <span class="s6-num">1,39&nbsp;млрд&nbsp;₽/год</span>.
+      Российский рынок частного репетиторства — <span class="s6-num">230&nbsp;млрд&nbsp;₽/год</span>, <span class="s6-num">+10%</span> CAGR.
     </p>
   </div>
   <div class="s6-funnel" aria-label="Воронка TAM SAM SOM">

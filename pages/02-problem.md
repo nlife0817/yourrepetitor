@@ -32,7 +32,7 @@ layout: default
           </div>
           <div class="portrait-row">
             <span class="portrait-num">~80&nbsp;000&nbsp;₽/мес</span>
-            <span class="portrait-label">доход</span>
+            <span class="portrait-label">доход в&nbsp;сезон</span>
           </div>
         </div>
         <p class="portrait-source"><em>По&nbsp;данным: Skyeng&nbsp;×&nbsp;Консоль (Коммерсантъ, 2025); Авито&nbsp;×&nbsp;ProgressMe, n=1&nbsp;717 (09.2025)</em></p>
@@ -99,7 +99,7 @@ layout: default
           <div class="why-body">
             <h3 class="why-title">Ниша свободна</h3>
             <ul class="why-bullets">
-              <li>Тяжеловесы (AlfaCRM, HolliHop) — <span class="why-num">1500–11&nbsp;200&nbsp;₽/мес</span>, перегружены</li>
+              <li>Тяжеловесы (AlfaCRM, HolliHop) — <span class="why-num">1500–2&nbsp;550&nbsp;₽/мес</span>, перегружены</li>
               <li>SecRep (<span class="why-num">299&nbsp;₽</span>) — нет МАКС, нет интерфейса для родителей, обязательное мобильное приложение</li>
               <li><strong class="why-strong">«Твой репетитор» — МАКС&nbsp;· ВК&nbsp;· Телеграм · веб-приложение: единая точка входа без обязательной установки</strong></li>
             </ul>

@@ -4,7 +4,7 @@ layout: cover
 <div class="cover-text">
 <h1 class="cover-title">Твой репетитор</h1>
 <p class="cover-tagline">
-  Инструмент для частных репетиторов, встроенный в&nbsp;МАКС, ВКонтакте и&nbsp;Телеграм — повышаем конверсию, уменьшаем отмены, автоматизируем рутину.
+  Инструмент для частных репетиторов, встроенный в&nbsp;МАКС, ВКонтакте, Телеграм и&nbsp;веб-кабинет — повышаем конверсию, уменьшаем отмены, автоматизируем рутину.
 </p>
 <p class="cover-tagline">
   Помогаем <span class="accent-num">400&nbsp;000</span> репетиторам в&nbsp;России превратить хобби в&nbsp;управляемый бизнес — без таблиц, инструкций и&nbsp;часов на&nbsp;настройку.
@@ -27,7 +27,7 @@ layout: cover
   </div>
   <div>
     <dt>Интерактивная презентация</dt>
-    <dd><a class="is-mono" href="https://nlife0817.github.io/yourrepetitor/" target="_blank" rel="noopener">presentation.ru</a></dd>
+    <dd><a class="is-mono" href="https://nlife0817.github.io/yourrepetitor/" target="_blank" rel="noopener">nlife0817.github.io/yourrepetitor</a></dd>
   </div>
 </dl>
 </div>

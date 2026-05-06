@@ -173,7 +173,7 @@ layout: default
     <span class="s10-unit-item"><b>Устойчивая операционная прибыльность</b><span class="s10-unit-num">с&nbsp;2028</span></span>
   </div>
   <p class="s10-thesis">
-    <span class="s10-num-inline">15%</span> SAM к&nbsp;2030 при&nbsp;CAGR рынка <span class="s10-num-inline">+10%</span>&nbsp;— реалистичная траектория для&nbsp;лидера соло-сегмента. Конкуренты-тяжеловесы (AlfaCRM, HolliHop, BigBen) не&nbsp;пересобирают продукт под&nbsp;соло; OkoCRM и&nbsp;VK&nbsp;Tutoria&nbsp;— горизонтальные, без&nbsp;отраслевой логики репетитора. Профиль роста <span class="s10-num-inline">+200%</span> → <span class="s10-num-inline">+100%</span> → <span class="s10-num-inline">+25%</span> → <span class="s10-num-inline">+20%</span>&nbsp;— фаза продуктового масштабирования сменяется фазой уплотнения чека.
+    <span class="s10-num-inline">15%</span> SAM к&nbsp;2030 при&nbsp;CAGR рынка <span class="s10-num-inline">+10%</span>&nbsp;— реалистичная траектория для&nbsp;лидера соло-сегмента. Конкуренты-тяжеловесы (AlfaCRM, HolliHop, BigBen) не&nbsp;пересобирают продукт под&nbsp;соло; OkoCRM и&nbsp;VK&nbsp;Tutoria&nbsp;— горизонтальные, без&nbsp;отраслевой логики репетитора. Профиль роста <span class="s10-num-inline">+262%</span> → <span class="s10-num-inline">+110%</span> → <span class="s10-num-inline">+36%</span> → <span class="s10-num-inline">+26%</span>&nbsp;— фаза продуктового масштабирования сменяется фазой уплотнения чека.
   </p>
 </section>
 

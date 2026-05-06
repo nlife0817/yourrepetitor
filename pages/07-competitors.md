@@ -85,7 +85,7 @@ layout: default-light
           <td>малый бизнес</td>
           <td><span class="price">712&nbsp;₽/польз.</span></td>
           <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">веб + MAX</span></td>
-          <td class="cell-win"><span class="pill ok"><span class="pill-glyph">✓</span></span><span class="cell-text">бесплатно офиц. API</span></td>
+          <td class="cell-win"><span class="pill warn"><span class="pill-glyph">!</span></span><span class="cell-text">только уведомления через API</span></td>
           <td class="cell-win"><span class="pill no"><span class="pill-glyph">−</span></span><span class="cell-text">нет такой роли</span></td>
           <td class="cell-win"><span class="pill ok"><span class="pill-glyph">✓</span></span><span class="cell-text">конструктор ботов, без&nbsp;отраслевой логики</span></td>
         </tr>
@@ -111,7 +111,7 @@ layout: default-light
     <article class="s7-card">
       <h3 class="s7-card-title"><span class="s7-card-bullet" aria-hidden="true">🟢</span>Двусторонний канал в&nbsp;МАКС</h3>
       <p class="s7-card-text">
-        Не&nbsp;«рассылки от&nbsp;админа», а&nbsp;полноценный интерфейс ученика и&nbsp;родителя: расписание, оплаты, ДЗ, чат. У&nbsp;14&nbsp;из&nbsp;15&nbsp;конкурентов этого нет; у&nbsp;OkoCRM&nbsp;— конструктор без&nbsp;отраслевой логики.
+        Не&nbsp;«рассылки от&nbsp;админа», а&nbsp;полноценный интерфейс ученика и&nbsp;родителя: расписание, оплаты, ДЗ, чат. Ни&nbsp;у&nbsp;одного из&nbsp;15&nbsp;проверенных конкурентов этого нет: у&nbsp;OkoCRM&nbsp;— только уведомления через API, без&nbsp;двустороннего бота.
       </p>
     </article>
     <article class="s7-card">

@@ -31,5 +31,14 @@ const fmt = (n: number) => String(n).padStart(2, '0')
   font-size: 17px;
   color: var(--text-secondary);
   letter-spacing: 0.05em;
+  background: var(--surface);
+  border: 1px solid var(--border);
+  border-radius: 999px;
+  padding: 6px 14px;
+  box-shadow: var(--shadow-sm);
+}
+
+@media print {
+  .deck-footer__page { box-shadow: none; }
 }
 </style>

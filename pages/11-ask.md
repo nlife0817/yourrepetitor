@@ -18,12 +18,6 @@ layout: default
         <div class="s11-ask-num">1&nbsp;000&nbsp;000&nbsp;₽</div>
         <p>на масштабирование продаж и маркетинга в 2026 году</p>
       </article>
-      <article class="s11-proof">
-        <span class="s11-proof-label">Почему не на MVP</span>
-        <p>
-          Разработка, продукт, дизайн, архитектура и юридическая поддержка закрываются ресурсами основателя. Поэтому бюджет направлен в рост, а не в создание продукта с нуля.
-        </p>
-      </article>
       <div class="s11-effect">
         <div class="s11-effect-row">
           <span class="s11-effect-before">84</span>

@@ -92,7 +92,7 @@ layout: default
         </header>
         <h3 class="s4-role-title">Репетитор</h3>
         <p class="s4-role-text">
-          <strong>Веб-кабинет:</strong> календарь, ученики, аналитика, уведомления, настройки. Индивидуальные пуши о&nbsp;новых записях, переносах, отменах.
+          <strong>Доступно на&nbsp;всех платформах и&nbsp;всегда под&nbsp;рукой:</strong> календарь, ученики, аналитика, уведомления, настройки. Индивидуальные пуши о&nbsp;новых записях, переносах, отменах.
         </p>
       </article>
       <article class="s4-role">
@@ -139,7 +139,7 @@ layout: default
           </div>
           <div class="s4-channel-body">
             <span class="s4-channel-name">ВКонтакте</span>
-            <span class="s4-channel-sub">Бот&nbsp;+ авторизация</span>
+            <span class="s4-channel-sub">Двусторонний бот&nbsp;через мини-приложение</span>
           </div>
         </article>
         <article class="s4-channel">
@@ -148,7 +148,7 @@ layout: default
           </div>
           <div class="s4-channel-body">
             <span class="s4-channel-name">Телеграм</span>
-            <span class="s4-channel-sub">Бот&nbsp;+ авторизация</span>
+            <span class="s4-channel-sub">Двусторонний бот&nbsp;через мини-приложение</span>
           </div>
         </article>
         <article class="s4-channel">
@@ -162,7 +162,7 @@ layout: default
           </div>
           <div class="s4-channel-body">
             <span class="s4-channel-name">Веб</span>
-            <span class="s4-channel-sub">Веб-кабинет для&nbsp;репетитора</span>
+            <span class="s4-channel-sub">Интерфейс для&nbsp;входа через desktop</span>
           </div>
         </article>
       </div>
@@ -175,7 +175,7 @@ layout: default
           <span class="s4-why-num">01</span>
           <div class="s4-why-content">
             <strong class="s4-why-title">Ученик уже там</strong>
-            <p class="s4-why-text">ВК, Телеграм и&nbsp;МАКС — привычная среда для&nbsp;140+&nbsp;млн активных пользователей. Нет барьера «скачай отдельное приложение».</p>
+            <p class="s4-why-text">ВК, Телеграм и&nbsp;МАКС — привычная среда для&nbsp;140+&nbsp;млн активных пользователей в&nbsp;ВК&nbsp;+ Telegram&nbsp;+ МАКС. Нет барьера «скачай отдельное приложение».</p>
           </div>
         </div>
         <span class="s4-why-sep" aria-hidden="true"></span>

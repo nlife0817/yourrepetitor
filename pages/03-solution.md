@@ -31,11 +31,11 @@ layout: default
         <span class="s3-saving-label">Экономия</span>
         <div class="s3-saving-row">
           <span class="s3-saving-prefix">до</span>
-          <span class="s3-saving-num">12&nbsp;000&nbsp;₽</span>
+          <span class="s3-saving-num">13&nbsp;500&nbsp;₽</span>
           <span class="s3-saving-unit">/ мес</span>
         </div>
         <p class="s3-saving-note">
-          <em>Расчёт: 47&nbsp;уроков × 1&nbsp;500&nbsp;₽ × снижение отмен 19% → 2% ≈ 12&nbsp;000&nbsp;₽ сохранённого дохода. См.&nbsp;слайд&nbsp;2.</em>
+          <em>Расчёт: 53&nbsp;урока × 1&nbsp;500&nbsp;₽ × снижение отмен 19% → 2% ≈ 13&nbsp;500&nbsp;₽ сохранённого дохода. См.&nbsp;слайд&nbsp;2.</em>
         </p>
       </div>
     </div>
