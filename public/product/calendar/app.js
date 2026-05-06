@@ -1082,7 +1082,7 @@ const detailOverlay = document.getElementById('sheetOverlay'); // reuse same ove
 // Demo data for lessons (maps to events on the calendar)
 const DAY_NAMES_FULL = ['воскресенье','понедельник','вторник','среда','четверг','пятница','суббота'];
 const lessonData = {
-    'Алиса Козлова': { subject: 'Математика', price: '2 000', variant: 'indigo', initial: 'А', payment: 'pending', recurring: { days: [1, 3, 5], freq: 1, end: 'never' } },
+    'Алиса Козлова': { subject: 'Математика', price: '2 000', variant: 'indigo', initial: 'А', payment: 'paid', recurring: { days: [1, 3, 5], freq: 1, end: 'never' } },
     'Дима Морозов': { subject: 'Физика', price: '1 500', variant: 'orange', initial: 'Д', payment: 'pending', recurring: { days: [2, 4], freq: 1, end: 'count', count: 12 } },
     'Соня Волкова': { subject: 'Информатика', price: '1 800', variant: 'green', initial: 'С', payment: 'paid', recurring: null },
 };
@@ -1607,3 +1607,9 @@ seriesConfirmOverlay.addEventListener('click', (e) => {
 
 // ── Initialize with week view (matches active button in HTML) ──
 setView('week');
+
+// ── Auto-open detail sheet for Алиса Козлова with reschedule history expanded ──
+window.addEventListener('load', () => {
+    openDetailSheet({ name: 'Алиса Козлова', hour: 9, duration: 1, date: new Date(2026, 2, 15) });
+    expandRescheduleHistory();
+});
