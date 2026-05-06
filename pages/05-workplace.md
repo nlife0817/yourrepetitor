@@ -15,7 +15,7 @@ const base = import.meta.env.BASE_URL
       <span class="s5-mockup-eyebrow">01 · Календарь</span>
       <div class="s5-phone">
         <div class="s5-phone-screen">
-          <iframe :src="base + 'product/calendar/index.html'" title="Календарь репетитора" loading="eager" frameborder="0" referrerpolicy="no-referrer"></iframe>
+          <img :src="base + 'mockups/calendar.png'" alt="Календарь репетитора" class="s5-mockup-img">
         </div>
       </div>
       <p class="s5-mockup-caption">
@@ -26,7 +26,7 @@ const base = import.meta.env.BASE_URL
       <span class="s5-mockup-eyebrow">02 · Аналитика</span>
       <div class="s5-phone">
         <div class="s5-phone-screen">
-          <iframe :src="base + 'product/analytics/index.html'" title="Аналитика" loading="eager" frameborder="0" referrerpolicy="no-referrer"></iframe>
+          <img :src="base + 'mockups/analytics.png'" alt="Аналитика" class="s5-mockup-img">
         </div>
       </div>
       <p class="s5-mockup-caption">
@@ -37,7 +37,7 @@ const base = import.meta.env.BASE_URL
       <span class="s5-mockup-eyebrow">03 · Уведомления</span>
       <div class="s5-phone">
         <div class="s5-phone-screen">
-          <iframe :src="base + 'product/profile/notifications.html'" title="Настройки уведомлений" loading="eager" frameborder="0" referrerpolicy="no-referrer"></iframe>
+          <img :src="base + 'mockups/notifications.png'" alt="Настройки уведомлений" class="s5-mockup-img">
         </div>
       </div>
       <p class="s5-mockup-caption">
@@ -144,12 +144,15 @@ const base = import.meta.env.BASE_URL
   z-index: 1;
 }
 
-.s5-body .s5-phone-screen iframe {
+.s5-body .s5-phone-screen iframe,
+.s5-body .s5-phone-screen .s5-mockup-img {
   display: block;
   width: 100%;
   height: 100%;
   border: 0;
   background: var(--bg);
+  object-fit: cover;
+  object-position: top center;
 }
 
 .s5-body .s5-mockup-caption {
@@ -169,7 +172,7 @@ const base = import.meta.env.BASE_URL
       0 4px 12px rgba(0, 0, 0, 0.08),
       0 1px 0 rgba(255, 255, 255, 0.06) inset !important;
   }
-  .s5-body .s5-phone-screen iframe {
+  .s5-body .s5-phone-screen .s5-mockup-img {
     print-color-adjust: exact;
     -webkit-print-color-adjust: exact;
   }
