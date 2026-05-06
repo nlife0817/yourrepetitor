@@ -117,9 +117,9 @@ layout: default
         </g>
       </svg>
       <ul class="s10-milestones">
-        <li><span class="s10-ms-year">2026</span><span class="s10-ms-text">старт, MAX-бот в&nbsp;проде</span></li>
-        <li><span class="s10-ms-year">2027</span><span class="s10-ms-text">положительный operating cash&nbsp;flow</span></li>
-        <li><span class="s10-ms-year">2028</span><span class="s10-ms-text">устойчивая операционная прибыльность, marketplace в&nbsp;проде</span></li>
+        <li><span class="s10-ms-year">2026</span><span class="s10-ms-text">старт, MAX-бот в&nbsp;проде, break-even по&nbsp;cash в&nbsp;Q4</span></li>
+        <li><span class="s10-ms-year">2027</span><span class="s10-ms-text">устойчивая операционная прибыль, мост 1&nbsp;500&nbsp;→&nbsp;3&nbsp;000</span></li>
+        <li><span class="s10-ms-year">2028</span><span class="s10-ms-text">marketplace в&nbsp;проде, расширение каналов</span></li>
         <li class="is-post"><span class="s10-ms-year">2029</span><span class="s10-ms-text">AI-Pro как&nbsp;отдельный платный SKU</span></li>
         <li class="is-post"><span class="s10-ms-year">2030</span><span class="s10-ms-text">продукт-агностик в&nbsp;смежных нишах</span></li>
       </ul>
@@ -168,9 +168,9 @@ layout: default
     <span class="s10-unit-sep" aria-hidden="true">·</span>
     <span class="s10-unit-item"><b>LTV&nbsp;/&nbsp;CAC</b><span class="s10-unit-num">&gt;&nbsp;10×</span></span>
     <span class="s10-unit-sep" aria-hidden="true">·</span>
-    <span class="s10-unit-item"><b>Положительный operating cash&nbsp;flow</b><span class="s10-unit-num">конец&nbsp;2027</span></span>
+    <span class="s10-unit-item"><b>Break-even по&nbsp;cash</b><span class="s10-unit-num">Q4&nbsp;2026</span></span>
     <span class="s10-unit-sep" aria-hidden="true">·</span>
-    <span class="s10-unit-item"><b>Устойчивая операционная прибыльность</b><span class="s10-unit-num">с&nbsp;2028</span></span>
+    <span class="s10-unit-item"><b>Устойчивая операционная прибыль</b><span class="s10-unit-num">с&nbsp;2027</span></span>
   </div>
   <p class="s10-thesis">
     <span class="s10-num-inline">15%</span> SAM к&nbsp;2030 при&nbsp;CAGR рынка <span class="s10-num-inline">+10%</span>&nbsp;— реалистичная траектория для&nbsp;лидера соло-сегмента. Конкуренты-тяжеловесы (AlfaCRM, HolliHop, BigBen) не&nbsp;пересобирают продукт под&nbsp;соло; OkoCRM и&nbsp;VK&nbsp;Tutoria&nbsp;— горизонтальные, без&nbsp;отраслевой логики репетитора. Профиль роста <span class="s10-num-inline">+262%</span> → <span class="s10-num-inline">+110%</span> → <span class="s10-num-inline">+36%</span> → <span class="s10-num-inline">+26%</span>&nbsp;— фаза продуктового масштабирования сменяется фазой уплотнения чека.

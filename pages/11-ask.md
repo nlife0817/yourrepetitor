@@ -8,7 +8,7 @@ layout: default
       1&nbsp;млн&nbsp;₽ гранта ускоряет переход от&nbsp;<span>84</span> до&nbsp;<span>1&nbsp;000</span> платящих репетиторов
     </h1>
     <p class="s11-subhead">
-      Продукт уже создан собственными силами. Грант закрывает главный ограничитель роста — системное привлечение репетиторов через outreach-помощника, микроинфлюенсеров, платную рекламу и профессиональные сообщества.
+      Продукт создан собственными силами. Грант 1&nbsp;млн&nbsp;₽ финансирует B2C-рост за&nbsp;12 месяцев (июнь&nbsp;2026 → май&nbsp;2027): outreach, платная реклама, посевы, авторы, CPA, AI-инфраструктура. Минимальный cash runway за&nbsp;период&nbsp;— <strong>833&nbsp;тыс.&nbsp;₽</strong>, остаток на&nbsp;31.05.2027&nbsp;— <strong>2,36&nbsp;млн&nbsp;₽</strong>.
     </p>
   </div>
   <div class="s11-layout">
@@ -22,9 +22,11 @@ layout: default
         <div class="s11-effect-row">
           <span class="s11-effect-before">84</span>
           <span class="s11-effect-arrow">→</span>
-          <span class="s11-effect-after">1&nbsp;000</span>
+          <span class="s11-effect-mid">1&nbsp;000</span>
+          <span class="s11-effect-arrow">→</span>
+          <span class="s11-effect-after">1&nbsp;500</span>
         </div>
-        <p>платящих репетиторов к концу 2026</p>
+        <p><span class="s11-effect-step">май&nbsp;2026</span> факт · <span class="s11-effect-step">дек&nbsp;2026</span> цель гранта · <span class="s11-effect-step">май&nbsp;2027</span> мост к&nbsp;3&nbsp;000 в&nbsp;2027</p>
       </div>
     </aside>
     <main class="s11-budget" aria-label="Распределение бюджета">
@@ -120,11 +122,37 @@ layout: default
     </aside>
   </div>
   <div class="s11-bottom">
-    <p>
-      <strong>Грант закрывает не продуктовый риск, а риск скорости:</strong>
-      продукт уже работает, теперь нужно быстрее занять нишу CRM для соло-репетиторов до входа крупных игроков.
-    </p>
-    <span>Цель 2026 · 1&nbsp;000 репетиторов · ARR run-rate 3,48&nbsp;млн&nbsp;₽</span>
+    <div class="s11-bottom-head">
+      <span class="s11-bottom-eyebrow">Финансовая модель гранта · июнь&nbsp;2026 → май&nbsp;2027</span>
+      <p><strong>Грант закрывает не&nbsp;продуктовый риск, а&nbsp;риск скорости:</strong> продукт работает, нужно быстрее занять нишу CRM для&nbsp;соло-репетиторов до&nbsp;входа крупных игроков.</p>
+    </div>
+    <div class="s11-kpi-grid">
+      <div class="s11-kpi">
+        <span class="s11-kpi-label">Безубыточность по cash</span>
+        <span class="s11-kpi-value">Q4&nbsp;2026</span>
+        <span class="s11-kpi-hint">5-й месяц после старта гранта</span>
+      </div>
+      <div class="s11-kpi">
+        <span class="s11-kpi-label">Мин. cash runway</span>
+        <span class="s11-kpi-value">833&nbsp;тыс&nbsp;₽</span>
+        <span class="s11-kpi-hint">не уходит в&nbsp;минус ни в&nbsp;одном месяце</span>
+      </div>
+      <div class="s11-kpi">
+        <span class="s11-kpi-label">ARR run-rate · дек&nbsp;2026</span>
+        <span class="s11-kpi-value">3,48&nbsp;млн&nbsp;₽</span>
+        <span class="s11-kpi-hint">3,34&nbsp;млн после реферальных скидок</span>
+      </div>
+      <div class="s11-kpi">
+        <span class="s11-kpi-label">Чистая прибыль · 12&nbsp;мес</span>
+        <span class="s11-kpi-value">968&nbsp;тыс&nbsp;₽</span>
+        <span class="s11-kpi-hint">после УСН&nbsp;6%, эквайринга и&nbsp;взносов ИП</span>
+      </div>
+      <div class="s11-kpi is-accent">
+        <span class="s11-kpi-label">Cash на&nbsp;31.05.2027</span>
+        <span class="s11-kpi-value">2,36&nbsp;млн&nbsp;₽</span>
+        <span class="s11-kpi-hint">старт следующей фазы без&nbsp;внешних денег</span>
+      </div>
+    </div>
   </div>
 </section>
 
@@ -208,8 +236,7 @@ layout: default
     0 12px 28px rgba(232, 115, 74, 0.13);
 }
 
-.s11-body .s11-ask-label,
-.s11-body .s11-proof-label {
+.s11-body .s11-ask-label {
   display: block;
   font-size: 12px;
   font-weight: 700;
@@ -234,23 +261,6 @@ layout: default
   margin-top: 10px;
   font-size: 16px;
   line-height: 1.35;
-  color: var(--text-secondary);
-}
-
-.s11-body .s11-proof {
-  background: var(--surface);
-  border: 1px solid var(--border);
-  border-radius: 16px;
-  padding: 16px 20px;
-  box-shadow: var(--shadow-sm);
-}
-
-.s11-body .s11-proof-label { color: var(--text-muted); }
-
-.s11-body .s11-proof p {
-  margin-top: 9px;
-  font-size: 14.5px;
-  line-height: 1.42;
   color: var(--text-secondary);
 }
 
@@ -279,29 +289,45 @@ layout: default
 }
 
 .s11-body .s11-effect-before {
-  font-size: 42px;
-  color: rgba(255, 255, 255, 0.58);
-  text-decoration: line-through;
-  text-decoration-thickness: 2px;
+  font-size: 32px;
+  color: rgba(255, 255, 255, 0.50);
+}
+
+.s11-body .s11-effect-mid {
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum';
+  font-weight: 700;
+  font-size: 36px;
+  line-height: 1;
+  letter-spacing: -0.05em;
+  color: rgba(255, 255, 255, 0.85);
 }
 
 .s11-body .s11-effect-after {
-  font-size: 52px;
-  color: #fff;
+  font-size: 44px;
+  color: var(--accent);
 }
 
 .s11-body .s11-effect-arrow {
   font-family: var(--font-mono);
-  font-size: 34px;
+  font-size: 22px;
   font-weight: 600;
-  color: var(--accent);
+  color: rgba(232, 115, 74, 0.7);
 }
 
 .s11-body .s11-effect p {
   margin-top: 9px;
-  font-size: 14.5px;
-  line-height: 1.35;
+  font-size: 12.5px;
+  line-height: 1.4;
   color: rgba(255, 255, 255, 0.72);
+}
+
+.s11-body .s11-effect-step {
+  font-family: var(--font-mono);
+  font-feature-settings: 'tnum';
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.95);
+  letter-spacing: -0.005em;
 }
 
 .s11-body .s11-budget {
@@ -448,19 +474,32 @@ layout: default
 
 .s11-body .s11-bottom {
   display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 28px;
-  background: rgba(26, 26, 31, 0.92);
+  flex-direction: column;
+  gap: 10px;
+  background: rgba(26, 26, 31, 0.94);
   color: #fff;
   border-radius: 16px;
-  padding: 11px 20px;
+  padding: 14px 20px 16px;
   box-shadow: 0 16px 36px rgba(26, 26, 31, 0.14);
 }
 
+.s11-body .s11-bottom-head {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.s11-body .s11-bottom-eyebrow {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  color: var(--accent);
+}
+
 .s11-body .s11-bottom p {
-  font-size: 15.5px;
-  line-height: 1.28;
+  font-size: 14px;
+  line-height: 1.32;
   color: rgba(255, 255, 255, 0.78);
   letter-spacing: -0.004em;
 }
@@ -470,15 +509,62 @@ layout: default
   font-weight: 600;
 }
 
-.s11-body .s11-bottom span {
-  flex-shrink: 0;
+.s11-body .s11-kpi-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 10px;
+}
+
+.s11-body .s11-kpi {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 10px 12px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.10);
+  border-radius: 10px;
+}
+
+.s11-body .s11-kpi.is-accent {
+  background:
+    radial-gradient(circle at 100% 0%, rgba(232, 115, 74, 0.22) 0%, transparent 70%),
+    rgba(232, 115, 74, 0.06);
+  border-color: rgba(232, 115, 74, 0.45);
+}
+
+.s11-body .s11-kpi-label {
+  font-size: 10px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  color: rgba(255, 255, 255, 0.52);
+}
+
+.s11-body .s11-kpi.is-accent .s11-kpi-label {
+  color: var(--accent);
+}
+
+.s11-body .s11-kpi-value {
   font-family: var(--font-mono);
   font-feature-settings: 'tnum';
-  font-size: 13.5px;
-  font-weight: 600;
+  font-size: 22px;
+  font-weight: 700;
+  line-height: 1.05;
+  letter-spacing: -0.035em;
   color: #fff;
-  letter-spacing: -0.01em;
   white-space: nowrap;
+}
+
+.s11-body .s11-kpi.is-accent .s11-kpi-value {
+  color: var(--accent);
+  text-shadow: 0 1px 12px rgba(232, 115, 74, 0.32);
+}
+
+.s11-body .s11-kpi-hint {
+  font-size: 11px;
+  line-height: 1.32;
+  color: rgba(255, 255, 255, 0.6);
+  letter-spacing: -0.002em;
 }
 
 .s11-body .s11-budget-total {
